@@ -1,0 +1,11 @@
+{
+  "name": "domino",
+  "version": "0.0.1",
+  "main": "./lib",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "devDependencies": {
+    "mocha": "0.10.x"
+  }
+}

@@ -2,7 +2,7 @@
 
 http://www.w3.org/DOM/Test/
 
-Since domino doesn't implement deprecated DOM features some tests are no longer relevant. These tests have been renamed to `.obsolete` so that they are excluded from the suite. The files have been kept in place for documentation purposes.
+Since domino doesn't implement deprecated DOM features some tests are no longer relevant. These tests have been moved to the `obsolete` directory so that they are excluded from the suite.
 
 ## Attributes vs. Nodes
 

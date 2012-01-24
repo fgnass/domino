@@ -107,7 +107,7 @@ function hc_namednodemapgetnameditem() {
       attributes = testEmployee.attributes;
 
       domesticAttr = attributes.getNamedItem("title");
-      attrName = domesticAttr.nodeName;
+      attrName = domesticAttr.name;
 
       assertEqualsAutoCase("attribute", "nodeName","title",attrName);
        

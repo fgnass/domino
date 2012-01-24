@@ -119,7 +119,7 @@ function hc_nodecloneattributescopied() {
 
       for(var indexN10076 = 0;indexN10076 < attributes.length; indexN10076++) {
       attributeNode = attributes.item(indexN10076);
-      attributeName = attributeNode.nodeName;
+      attributeName = attributeNode.name;
 
       result[result.length] = attributeName;
 

@@ -114,7 +114,7 @@ function hc_elementretrieveallattributes() {
 
       for(var indexN1006B = 0;indexN1006B < attributes.length; indexN1006B++) {
       attribute = attributes.item(indexN1006B);
-      attributeName = attribute.nodeName;
+      attributeName = attribute.name;
 
       actual[actual.length] = attributeName;
 

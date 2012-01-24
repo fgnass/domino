@@ -115,7 +115,7 @@ function hc_nodeelementnodeattributes() {
 
       for(var indexN10070 = 0;indexN10070 < addrAttr.length; indexN10070++) {
       attrNode = addrAttr.item(indexN10070);
-      attrName = attrNode.nodeName;
+      attrName = attrNode.name;
 
       attrList[attrList.length] = attrName;
 

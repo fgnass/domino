@@ -227,7 +227,7 @@ function assertURIEquals(assertID, scheme, path, host, file, name, query, fragme
   }
 
   if(isAbsolute != null) {
-    assertEquals(assertID, isAbsolute, actualPath.substring(0,1) == "/");
+    assertEquals(assertID + ' ' + actualPath, isAbsolute, actualPath.substring(0,1) == "/");
   }
 }
 

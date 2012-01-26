@@ -20,7 +20,7 @@ var globals = {
     globals.assertEquals(message, null, actual);
   },
   assertNotNull: function(message, actual) {
-    assert.notStrictEqual(actual, null, message);
+    assert.notEqual(actual, null, message);
   },
   console: console
 };

@@ -19,7 +19,8 @@ function list(dir, fn) {
       result[file] = list(path, fn);
     }
     else if (file.match(/\.x?html$/)) {
-      result[file] = fn(path);
+      var test = fn(path);
+      if (test) result[file] = test;
     }
   });
   return result;
@@ -27,15 +28,18 @@ function list(dir, fn) {
 
 module.exports = function(path) {
   return list(path, function(file) {
-    return function() {
-      var html = read(file);
-      var window = domino.createWindow(html);
-      window._run(testharness);
-      var scripts = window.document.getElementsByTagName('script');
-      if (scripts.length) {
-        var script = scripts[scripts.length-1];
-        window._run(script.textContent);
+    var html = read(file);
+    var window = domino.createWindow(html);
+    window._run(testharness);
+    var scripts = window.document.getElementsByTagName('script');
+    if (scripts.length) {
+      var script = scripts[scripts.length-1];
+      var code = script.textContent;
+      if (/assert/.test(code)) {
+        return function() {
+          window._run(code);
+        };
       }
-    };
+    }
   });
 };

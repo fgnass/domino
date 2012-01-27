@@ -32,9 +32,8 @@ Domino provides support for `querySelector()` and `querySelectorAll()` backed by
 Domino includes test from the [W3C DOM Conformance Suites](http://www.w3.org/DOM/Test/)
 as well as tests from [HTML Working Group](http://www.w3.org/html/wg/wiki/Testing).
 
-The tests can be run using [Mocha](http://visionmedia.github.com/mocha/):
+The tests can be run using [Mocha](http://visionmedia.github.com/mocha/).
 
-![mocha](./test/screenshot.png)
 
 ## License and Credits
 

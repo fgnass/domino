@@ -7,11 +7,15 @@ In contrast to the original [dom.js](https://github.com/andreasgal/dom.js) proje
 
 ## Speed over Compliance
 
-Domino is intended to _build_ pages rather than scraping them. Hence compatibility with existing code out in the wild is not a primary goal.
+Domino is intended for _building_ pages rather than scraping them. Hence Domino doesn't execute scripts nor does it download external resources.
+
+Also Domino doesn't implement any properties which have been deprecated in HTML5.
+
+Domino sticks to the [DOM level 4](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#interface-attr) working draft, which means that Attributes do not inherit the Node interface. Also [Element.attributes](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#dom-element-attributes) returns a read-only array instead of a NamedNodeMap.
 
 ## Designed for Node
 
-As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de. The library is organized in CommonJS modules and doesn't require any additional build steps. Domino doesn't use any harmony features like proxies or WeakMaps and will also run in older Node versions. It's written in pure JavaScript and doesn't require any native extensions.
+As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de. The library is organized in CommonJS modules and doesn't require any additional build steps. Domino currently doesn't use any harmony features like proxies or WeakMaps and will also run in older Node versions.
 
 ## CSS Selector Support
 
@@ -32,8 +36,9 @@ Domino provides support for `querySelector()` and `querySelectorAll()` backed by
 Domino includes test from the [W3C DOM Conformance Suites](http://www.w3.org/DOM/Test/)
 as well as tests from [HTML Working Group](http://www.w3.org/html/wg/wiki/Testing).
 
-The tests can be run using [Mocha](http://visionmedia.github.com/mocha/).
+The tests can be run via `npm test` or directly though the [Mocha](http://visionmedia.github.com/mocha/) command line:
 
+![Screenshot](http://fgnass.github.com/images/domino.png)
 
 ## License and Credits
 

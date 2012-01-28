@@ -1,7 +1,8 @@
 # Server-side DOM implementation based on Mozilla's dom.js
 
+[![Build Status](https://secure.travis-ci.org/fgnass/domino.png)](http://travis-ci.org/fgnass/domino])
 
-## Simplicity over Isolation
+As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de. The library is organized in CommonJS modules and doesn't require any additional build steps. Domino currently doesn't use any harmony features like proxies or WeakMaps and will also run in older Node versions.
 
 In contrast to the original [dom.js](https://github.com/andreasgal/dom.js) project, domino was not designed to run untrusted code. Hence it doesn't have to hide its internals behind a proxy facade which makes the code not only simpler, but eventually also more performant.
 
@@ -12,10 +13,6 @@ Domino is intended for _building_ pages rather than scraping them. Hence Domino 
 Also Domino doesn't implement any properties which have been deprecated in HTML5.
 
 Domino sticks to the [DOM level 4](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#interface-attr) working draft, which means that Attributes do not inherit the Node interface. Also [Element.attributes](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#dom-element-attributes) returns a read-only array instead of a NamedNodeMap.
-
-## Designed for Node
-
-As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de. The library is organized in CommonJS modules and doesn't require any additional build steps. Domino currently doesn't use any harmony features like proxies or WeakMaps and will also run in older Node versions.
 
 ## CSS Selector Support
 

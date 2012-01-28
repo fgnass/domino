@@ -39,4 +39,4 @@ The tests can be run via `npm test` or directly though the [Mocha](http://vision
 
 ## License and Credits
 
-The majority of the code was written by [Andreas Gal](https://github.com/andreasgal/) and [David Flanagan](https://github.com/davidflanagan) as part of Mozilla's dom.js project. Please refer to the included LICENSE file for the original copyright notice and disclaimer.
+The majority of the code was written by [Andreas Gal](https://github.com/andreasgal/) and [David Flanagan](https://github.com/davidflanagan) as part of the [dom.js](https://github.com/andreasgal/dom.js) project. Please refer to the included LICENSE file for the original copyright notice and disclaimer.

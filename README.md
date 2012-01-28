@@ -1,6 +1,6 @@
 # Server-side DOM implementation based on Mozilla's dom.js
 
-[![Build Status](https://secure.travis-ci.org/fgnass/domino.png)](http://travis-ci.org/fgnass/domino])
+[![Build Status](https://secure.travis-ci.org/fgnass/domino.png)](http://travis-ci.org/fgnass/domino)
 
 As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de. The library is organized in CommonJS modules and doesn't require any additional build steps. Domino currently doesn't use any harmony features like proxies or WeakMaps and will also run in older Node versions.
 

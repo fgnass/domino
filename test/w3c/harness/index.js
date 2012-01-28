@@ -1,14 +1,17 @@
 var fs = require('fs');
 var vm = require('vm');
 var assert = require('assert');
-var printf = require('util').format;
+var util = require('util');
 var Path = require('path');
 var domino = require('../../../lib');
 var impl = domino.createDOMImplementation();
 
 var globals = {
   assertEquals: function(message, expected, actual) {
-    assert.equal(actual, expected, printf('%s: expected %j got %j', message, expected, actual));
+    assert.equal(actual, expected, message + ': expected ' +
+      util.inspect(expected, false, 0) + ' got ' +
+      util.inspect(actual, false, 0)
+    );
   },
   assertTrue: function(message, actual) {
     globals.assertEquals(message, true, actual);

@@ -20,13 +20,15 @@ Domino provides support for `querySelector()` and `querySelectorAll()` backed by
 
 ## Usage
 
-    var domino = require('domino');
+```javascript
+var domino = require('domino');
 
-    var window = domino.createWindow('<h1>Hello world</h1>');
-    var document = window.document;
+var window = domino.createWindow('<h1>Hello world</h1>');
+var document = window.document;
 
-    var h1 = document.querySelector('h1');
-    console.log(h1.innerHTML);
+var h1 = document.querySelector('h1');
+console.log(h1.innerHTML);
+```
 
 ## Tests
 

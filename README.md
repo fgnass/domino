@@ -16,7 +16,7 @@ Domino sticks to the [DOM level 4](http://dvcs.w3.org/hg/domcore/raw-file/tip/Ov
 
 ## CSS Selector Support
 
-Domino provides support for `querySelector()` and `querySelectorAll()` backed by the [Sizzle](http://sizzlejs.com/) selector engine.
+Domino provides support for `querySelector()` and `querySelectorAll()` backed by the [Zest](https://github.com/chjj/zest) selector engine.
 
 ## Usage
 

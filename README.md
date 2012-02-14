@@ -2,9 +2,11 @@
 
 [![Build Status](https://secure.travis-ci.org/fgnass/domino.png)](http://travis-ci.org/fgnass/domino)
 
-As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de. The library is organized in CommonJS modules and doesn't require any additional build steps. Domino currently doesn't use any harmony features like proxies or WeakMaps and will also run in older Node versions.
+As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de.
 
-In contrast to the original [dom.js](https://github.com/andreasgal/dom.js) project, domino was not designed to run untrusted code. Hence it doesn't have to hide its internals behind a proxy facade which makes the code not only simpler, but eventually also more performant.
+In contrast to the original [dom.js](https://github.com/andreasgal/dom.js) project, domino was not designed to run untrusted code. Hence it doesn't have to hide its internals behind a proxy facade which makes the code not only simpler, but also [more performant](https://github.com/fgnass/dombench).
+
+Domino currently doesn't use any harmony features like proxies or WeakMaps and therefore also runs in older Node versions.
 
 ## Speed over Compliance
 

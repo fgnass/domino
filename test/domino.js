@@ -44,3 +44,10 @@ exports.attributes = function() {
   el.attributes.should.have.length(2);
   el.attributes.item(1).value.should.equal('baz');
 }
+
+exports.jquery = function() {
+  var window = domino.createWindow(html);
+  window._run(fs.readFileSync(__dirname + '/fixture/jquery-1.6.2.js', 'utf8'));
+  window.$.should.be.ok;
+  window.$('.foo').should.have.length(3);
+}

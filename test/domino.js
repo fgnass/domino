@@ -45,6 +45,26 @@ exports.attributes = function() {
   el.attributes.item(1).value.should.equal('baz');
 }
 
+exports.classList = function() {
+  var d = domino.createDocument();
+  var el = d.body;
+  el.className = 'foo bar boo';
+
+  var cl = el.classList;
+  cl.should.have.length(3);
+  cl[0].should.equal('foo');
+  cl.contains('bar').should.be.ok;
+  cl.contains('baz').should.not.be.ok;
+  cl.add('baz');
+  cl.contains('baz').should.be.ok;
+  cl.should.have.length(4);
+  el.className.should.match(/baz/);
+  cl.remove('foo');
+  cl.should.have.length(3);
+  el.className.should.not.match(/foo/);
+  cl[0].should.not.equal('foo');
+}
+
 exports.jquery = function() {
   var window = domino.createWindow(html);
   window._run(fs.readFileSync(__dirname + '/fixture/jquery-1.6.2.js', 'utf8'));

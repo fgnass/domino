@@ -19,14 +19,14 @@ exports.querySelectorAll = function() {
 exports.children = function() {
   var d = domino.createDocument(html);
   var c = d.body.children;
-  c.should.have.length(3);
+  c.should.have.length(4);
   c.should.have.property(0);
   var a = Array.prototype.slice.call(c);
   a.should.be.an.instanceof(Array);
-  a.should.have.length(3);
+  a.should.have.length(4);
   d.body.appendChild(d.createElement('p'));
   a = Array.prototype.slice.call(c);
-  a.should.have.length(4);
+  a.should.have.length(5);
 }
 
 
@@ -70,4 +70,27 @@ exports.jquery = function() {
   window._run(fs.readFileSync(__dirname + '/fixture/jquery-1.6.2.js', 'utf8'));
   window.$.should.be.ok;
   window.$('.foo').should.have.length(3);
+}
+
+exports.treeWalker = function() {
+  var window = domino.createWindow(html);
+  var d = window.document;
+  var root = d.getElementById('tw');
+  var tw = d.createTreeWalker(root, window.NodeFilter.SHOW_TEXT);
+  tw.root.should.equal(root);
+  tw.currentNode.should.equal(root);
+  tw.whatToShow.should.equal(0x4);
+  tw.filter.constructor.should.equal(window.NodeFilter.constructor);
+
+  var actual = [];
+  while (tw.nextNode() !== null) {
+    actual.push(tw.currentNode);
+  }
+
+  actual.should.eql([
+    root.firstChild.firstChild,
+    root.firstChild.lastChild.firstChild,
+    root.lastChild.firstChild,
+    root.lastChild.lastChild.firstChild
+  ]);
 }

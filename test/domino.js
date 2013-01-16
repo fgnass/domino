@@ -16,6 +16,14 @@ exports.querySelectorAll = function() {
   nodeList.should.have.length(1);
 }
 
+exports.qsaOrder = function() {
+  var window = domino.createDocument('<h2></h2><h3></h3><h3></h3><h2></h2><h3></h3>');
+  window.querySelectorAll('h2, h3').map(function(el) {
+    return el.tagName
+  })
+  .should.eql(['H2', 'H3', 'H3', 'H2', 'H3'])
+}
+
 exports.children = function() {
   var d = domino.createDocument(html);
   var c = d.body.children;

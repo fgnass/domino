@@ -19,9 +19,13 @@ exports.querySelectorAll = function() {
 exports.qsaOrder = function() {
   var window = domino.createDocument('<h2></h2><h3></h3><h3></h3><h2></h2><h3></h3>');
   window.querySelectorAll('h2, h3').map(function(el) {
-    return el.tagName
+    return el.tagName;
   })
-  .should.eql(['H2', 'H3', 'H3', 'H2', 'H3'])
+  .should.eql(['H2', 'H3', 'H3', 'H2', 'H3']);
+}
+
+exports.evilHandler = function() {
+  var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
 }
 
 exports.children = function() {

@@ -77,9 +77,20 @@ exports.classList = function() {
   cl[0].should.not.equal('foo');
 }
 
+exports.attributes = function() {
+  var d = domino.createDocument();
+  var div = d.createElement('div');
+  div.setAttribute('onclick', 't');
+  div.attributes.should.have.property('onclick');
+  div.attributes.onclick.should.have.property('value', 't');
+  div.removeAttribute('onclick');
+  div.attributes.should.not.have.property('onclick');
+}
+
 exports.jquery = function() {
   var window = domino.createWindow(html);
-  window._run(fs.readFileSync(__dirname + '/fixture/jquery-1.6.2.js', 'utf8'));
+  var f = __dirname + '/fixture/jquery-1.9.1.js';
+  window._run(fs.readFileSync(f, 'utf8'), f);
   window.$.should.be.ok;
   window.$('.foo').should.have.length(3);
 }

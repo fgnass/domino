@@ -106,3 +106,30 @@ exports.treeWalker = function() {
     root.lastChild.lastChild.firstChild
   ]);
 }
+
+exports.innerHTML = function() {
+  var d = domino.createDocument();
+  ['pre','textarea','listing'].forEach(function(elementName) {
+    var div = d.createElement('div')
+    var el = d.createElement(elementName);
+    el.innerHTML = "a";
+    div.appendChild(el);
+    // no extraneous newline after element tag in this case
+    div.innerHTML.should.equal('<'+elementName+'>a</'+elementName+'>');
+    el.innerHTML = "\nb";
+    // first newline after element is swallowed.  needs two.
+    div.innerHTML.should.equal('<'+elementName+'>\n\nb</'+elementName+'>');
+  });
+}
+
+exports.outerHTML = function() {
+  var tests = [
+    '<body><pre>\n\na\n</pre></body>',
+    '<body bgcolor="white"><h1 style="color: red">\nOne\n2 &amp; 3</h1></body>',
+    '<body data-test="<>&amp;&quot;\'"></body>'
+  ];
+  tests.forEach(function(html) {
+    var d = domino.createDocument(html);
+    d.body.outerHTML.should.equal(html);
+  });
+}

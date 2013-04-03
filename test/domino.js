@@ -31,6 +31,21 @@ exports.orphanQSA = function() {
   p.querySelectorAll('p').should.have.length(0);
 };
 
+exports.gh22 = function() {
+  var d=domino.createDocument("<div><h1>Hello world</h1><p>Hi</p></div>");
+  d.querySelectorAll('div').should.have.length(1);
+  d.body.querySelectorAll('div').should.have.length(1);
+  d.body.querySelectorAll('h1').should.have.length(1);
+  d.body.querySelectorAll('p').should.have.length(1);
+
+  var w=domino.createWindow("<div><h1>Hello world</h1><p>Hi</p></div>");
+  d=w.document;
+  d.querySelectorAll('div').should.have.length(1);
+  d.body.querySelectorAll('div').should.have.length(1);
+  d.body.querySelectorAll('h1').should.have.length(1);
+  d.body.querySelectorAll('p').should.have.length(1);
+};
+
 exports.evilHandler = function() {
   var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
 }

@@ -24,6 +24,13 @@ exports.qsaOrder = function() {
   .should.eql(['H2', 'H3', 'H3', 'H2', 'H3']);
 }
 
+exports.orphanQSA = function() {
+  var document = domino.createDocument('<h1>foo</h1>');
+  var p = document.createElement('p');
+  p.querySelectorAll('p').should.have.length(0);
+  p.querySelectorAll('p').should.have.length(0);
+};
+
 exports.evilHandler = function() {
   var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
 }

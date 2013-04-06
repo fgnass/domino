@@ -62,6 +62,34 @@ exports.evilHandler = function() {
   var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
 }
 
+exports.title = function() {
+  var d = domino.createDocument(html);
+  if (d.head) { d.documentElement.removeChild(d.head); }
+  d.should.have.property('head', null);
+  d.should.have.property('title', '');
+  d.querySelectorAll('head > title').should.have.length(0);
+
+  // per the spec, if there is no <head>, then setting Document.title should
+  // be a no-op.
+  d.title = "Lorem!";
+  d.title.should.equal('');
+  d.querySelectorAll('head > title').should.have.length(0);
+
+  // but if there is a <head>, then setting Document.title should create the
+  // <title> element if necessary.
+  d.documentElement.insertBefore(d.createElement('head'), d.body);
+  d.head.should.not.equal(null);
+  d.title.should.equal('');
+  d.title = "Lorem!";
+  d.title.should.equal("Lorem!");
+  d.querySelectorAll('head > title').should.have.length(1);
+
+  // verify that setting <title> works if there's already a title
+  d.title = "ipsum";
+  d.title.should.equal("ipsum");
+  d.querySelectorAll('head > title').should.have.length(1); // still only 1!
+};
+
 exports.children = function() {
   var d = domino.createDocument(html);
   var c = d.body.children;

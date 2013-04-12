@@ -16,6 +16,12 @@ Also Domino doesn't implement any properties which have been deprecated in HTML5
 
 Domino sticks to the [DOM level 4](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#interface-attr) working draft, which means that Attributes do not inherit the Node interface. Also [Element.attributes](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#dom-element-attributes) returns a read-only array instead of a NamedNodeMap.
 
+<b>Note that</b> because domino does not use proxies,
+`Element.attributes` is not a true JavaScript array; it is an object
+with a `length` property and an `item(n)` accessor method.  See
+[github issue #27](https://github.com/fgnass/domino/issues/27) for
+further discussion.
+
 ## CSS Selector Support
 
 Domino provides support for `querySelector()` and `querySelectorAll()` backed by the [Zest](https://github.com/chjj/zest) selector engine.

@@ -206,3 +206,13 @@ exports.outerHTML = function() {
     d.body.outerHTML.should.equal(html);
   });
 }
+
+exports.largeAttribute = function() {
+  var html = '<body><span data-large="';
+  for (var i=0; i<400000; i++) {
+    html += '&amp;';
+  }
+  html += '"></span></body>';
+  // this should not crash with a stack overflow!
+  domino.createDocument(html);
+};

@@ -220,8 +220,11 @@ exports.outerHTML = function() {
 }
 
 exports.largeAttribute = function() {
+  var size = 400000;
+  // work around a performance regression in node 0.4.x - 0.6.x
+  if (/^v0\.[0-6]\./.test(process.version)) { size = 50000; }
   var html = '<body><span data-large="';
-  for (var i=0; i<400000; i++) {
+  for (var i=0; i<size; i++) {
     html += '&amp;';
   }
   html += '"></span></body>';

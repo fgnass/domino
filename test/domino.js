@@ -58,9 +58,21 @@ exports.gh22 = function() {
   d.body.querySelectorAll('p').should.have.length(1);
 };
 
+exports.gh31 = function() {
+    var document, heading1, heading2;
+
+    document = domino.createDocument("<h1>First</h1><h1>Second</h1>");
+    document.querySelectorAll('h1').should.have.length(2);
+    heading1 = document.body.querySelector('h1');
+    heading1.getElementsByTagName('h1').should.have.length(0);
+    heading1.querySelectorAll('h1').should.have.length(0);
+    heading2 = document.body.querySelector('h1 + h1');
+    heading2.querySelectorAll('h1').should.have.length(0);
+};
+
 exports.evilHandler = function() {
   var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
-}
+};
 
 exports.title = function() {
   var d = domino.createDocument(html);

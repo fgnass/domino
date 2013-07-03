@@ -231,3 +231,22 @@ exports.largeAttribute = function() {
   // this should not crash with a stack overflow!
   domino.createDocument(html);
 };
+
+exports.createTextNodeWithNonString = function() {
+  var document = domino.createDocument('<html></html>');
+  var tests = [
+    [false, 'false'],
+    [NaN, 'NaN'],
+    [123, '123'],
+    [{}, '[object Object]'],
+    [[], ''],
+    [null, 'null'],
+    [undefined, 'undefined'],
+  ];
+  for(var i=0; i<tests.length; i++) {
+    var element = document.createElement('div');
+    var textNode = document.createTextNode(tests[i][0]);
+    element.appendChild(textNode);
+    element.innerHTML.should.equal(tests[i][1]);
+  }
+};

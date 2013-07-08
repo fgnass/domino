@@ -252,6 +252,7 @@ exports.createTextNodeWithNonString = function() {
 };
 
 exports.adoption = function() {
+  // See https://github.com/fgnass/domino/pull/36
   var html = "<b>X<b>Y</b>Z</b>";
   var doc = domino.createDocument(html);
   doc.body.innerHTML.should.equal(html);

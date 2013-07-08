@@ -250,3 +250,9 @@ exports.createTextNodeWithNonString = function() {
     element.innerHTML.should.equal(tests[i][1]);
   }
 };
+
+exports.adoption = function() {
+  var html = "<b>X<b>Y</b>Z</b>";
+  var doc = domino.createDocument(html);
+  doc.body.innerHTML.should.equal(html);
+};

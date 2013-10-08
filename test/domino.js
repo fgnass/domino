@@ -70,6 +70,13 @@ exports.gh31 = function() {
     heading2.querySelectorAll('h1').should.have.length(0);
 };
 
+exports.gh38 = function() {
+  var d = domino.createDocument('<table><tr><th>Header cell</th><td>Data cell</td></tr></table>');
+  var r = d.querySelector('tr');
+  r.should.have.property('cells');
+  r.cells.should.have.length(2);
+};
+
 exports.evilHandler = function() {
   var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
 };

@@ -1,6 +1,6 @@
 # Server-side DOM implementation based on Mozilla's dom.js
 
-[![Build Status](https://secure.travis-ci.org/fgnass/domino.png)](http://travis-ci.org/fgnass/domino)
+[![Build Status][1]][2] [![dependency status][3]][4] [![dev dependency status][5]][6]
 
 As the name might suggest, domino's goal is to provide a <b>DOM in No</b>de.
 
@@ -50,3 +50,10 @@ The tests can be run via `npm test` or directly though the [Mocha](http://vision
 ## License and Credits
 
 The majority of the code was written by [Andreas Gal](https://github.com/andreasgal/) and [David Flanagan](https://github.com/davidflanagan) as part of the [dom.js](https://github.com/andreasgal/dom.js) project. Please refer to the included LICENSE file for the original copyright notice and disclaimer.
+
+[1]: https://travis-ci.org/fgnass/domino.png
+[2]: https://travis-ci.org/fgnass/domino
+[3]: https://david-dm.org/fgnass/domino.png
+[4]: https://david-dm.org/fgnass/domino
+[5]: https://david-dm.org/fgnass/domino/dev-status.png
+[6]: https://david-dm.org/fgnass/domino#info=devDependencies

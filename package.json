@@ -13,7 +13,7 @@
     "test": "./node_modules/.bin/mocha"
   },
   "devDependencies": {
-    "mocha": "~1.13.0",
-    "should": "~2.0.1"
+    "mocha": "~1.15.1",
+    "should": "~2.1.0"
   }
 }

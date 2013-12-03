@@ -44,7 +44,10 @@ module.exports = function(path) {
     return ctx;
   }
 
-  var ctx = vm.createContext(globals);
+  var ctx = vm.createContext(); // create new independent context
+  Object.keys(globals).forEach(function(k) {
+    ctx[k] = globals[k]; // shallow clone
+  });
 
   ctx.createConfiguredBuilder = function() {
     return {

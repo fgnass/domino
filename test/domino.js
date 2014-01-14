@@ -134,7 +134,7 @@ exports.children = function() {
 }
 
 
-exports.attributes = function() {
+exports.attributes1 = function() {
   var d = domino.createDocument();
   var el = d.createElement('div');
   el.setAttribute('foo', 'foo');
@@ -169,7 +169,7 @@ exports.classList = function() {
   cl[0].should.not.equal('foo');
 }
 
-exports.attributes = function() {
+exports.attributes2 = function() {
   var d = domino.createDocument();
   var div = d.createElement('div');
   div.setAttribute('onclick', 't');
@@ -274,4 +274,32 @@ exports.adoption = function() {
   var html = "<b>X<b>Y</b>Z</b>";
   var doc = domino.createDocument(html);
   doc.body.innerHTML.should.equal(html);
+};
+
+exports.attributeSelector = function() {
+  var html = '<h1>foo</h1><h2 id="x" title="y" lang="en" dir="ltr" ' +
+    'accessKey="z" hidden tabIndex="2">bar</h2>';
+  var doc = domino.createDocument(html);
+  var h1 = doc.querySelector('h1');
+  h1.matches('*[id]').should.equal(false);
+  h1.matches('*[title]').should.equal(false);
+  h1.matches('*[lang]').should.equal(false);
+  h1.matches('*[dir]').should.equal(false);
+  h1.matches('*[accessKey]').should.equal(false);
+  h1.matches('*[hidden]').should.equal(false);
+  h1.matches('*[tabIndex]').should.equal(false);
+
+  var h2 = doc.querySelector('h2');
+  h2.matches('*[id]').should.equal(true);
+  h2.matches('*[title]').should.equal(true);
+  h2.matches('*[lang]').should.equal(true);
+  h2.matches('*[dir]').should.equal(true);
+  h2.matches('*[accessKey]').should.equal(true);
+  h2.matches('*[hidden]').should.equal(true);
+  h2.matches('*[tabIndex]').should.equal(true);
+
+  h1.matches('*[matches]').should.equal(false);
+  h1.matches('*[querySelector]').should.equal(false);
+
+  h1.matches('*[isHTML]').should.equal(false);
 };

@@ -24,7 +24,7 @@ further discussion.
 
 ## CSS Selector Support
 
-Domino provides support for `querySelector()` and `querySelectorAll()` backed by the [Zest](https://github.com/chjj/zest) selector engine.
+Domino provides support for `querySelector()`, `querySelectorAll()`, and `matches()` backed by the [Zest](https://github.com/chjj/zest) selector engine.
 
 ## Usage
 

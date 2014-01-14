@@ -2,6 +2,17 @@ var domino = require('../lib');
 var fs = require('fs');
 var html = fs.readFileSync(__dirname + '/fixture/doc.html', 'utf8');
 
+exports = exports.domino = {};
+
+exports.matches = function() {
+  // see https://developer.mozilla.org/en-US/docs/Web/API/Element.matches
+  var d = domino.createWindow(html).document;
+  var h1 = d.getElementById('lorem');
+  h1.matches('h1').should.equal(true);
+  h1.matches('body > h1').should.equal(true); // not rooted
+  h1.matches('h1 > p').should.equal(false);
+};
+
 exports.querySelectorAll = function() {
   var window = domino.createWindow(html);
   var d = window.document;

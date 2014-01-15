@@ -11,6 +11,8 @@ exports.matches = function() {
   h1.matches('h1').should.equal(true);
   h1.matches('body > h1').should.equal(true); // not rooted
   h1.matches('h1 > p').should.equal(false);
+  h1.matches('h1,h2').should.equal(true);
+  h1.matches('h2,h1').should.equal(true);
 };
 
 exports.querySelectorAll = function() {

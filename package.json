@@ -10,7 +10,8 @@
     "url": "https://github.com/fgnass/domino.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha",
+    "test-spec": "./node_modules/.bin/mocha -R spec"
   },
   "devDependencies": {
     "mocha": "~1.17.0",

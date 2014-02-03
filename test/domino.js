@@ -325,3 +325,12 @@ exports.eqAttr = function() {
   div.children.length.should.equal(1);
   div.children[0].tagName.should.equal('A=B');
 };
+
+exports.tagNameCase = function() {
+  // See https://github.com/fgnass/domino/pull/41
+  var impl = domino.createDOMImplementation();
+  var namespace = 'http://schemas.xmlsoap.org/soap/envelope/';
+  var qualifiedName = 'Envelope';
+  var doc = impl.createDocument(namespace, qualifiedName, null);
+  doc.documentElement.tagName.should.equal(qualifiedName);
+}

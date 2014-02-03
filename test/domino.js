@@ -305,3 +305,12 @@ exports.attributeSelector = function() {
 
   h1.matches('*[isHTML]').should.equal(false);
 };
+
+exports.xmlNamespace = function() {
+  // See https://github.com/fgnass/domino/pull/42
+  var impl = domino.createDOMImplementation();
+  var namespace = 'http://schemas.xmlsoap.org/soap/envelope/';
+  var qualifiedName = 'Envelope';
+  var doc = impl.createDocument(namespace, qualifiedName, null);
+  doc.serialize().should.equal('<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/"/>');
+}

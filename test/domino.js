@@ -305,3 +305,12 @@ exports.attributeSelector = function() {
 
   h1.matches('*[isHTML]').should.equal(false);
 };
+
+exports.crHandling = function() {
+  var html = '<div\rid=a data-test=1\rfoo="\r"\rbar=\'\r\'\rbat=\r>\r</div\r>';
+  var doc = domino.createDocument(html);
+  var div = doc.querySelector('#a');
+  div.should.not.equal(null);
+  // all \r should be converted to \n
+  div.outerHTML.should.equal('<div id="a" data-test="1" foo="\n" bar="\n" bat="">\n</div>');
+};

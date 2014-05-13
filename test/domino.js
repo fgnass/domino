@@ -314,3 +314,14 @@ exports.crHandling = function() {
   // all \r should be converted to \n
   div.outerHTML.should.equal('<div id="a" data-test="1" foo="\n" bar="\n" bat="">\n</div>');
 };
+
+exports.eqAttr = function() {
+  var html = "<div id=a ==x><a=B></A=b></div>";
+  var doc = domino.createDocument(html);
+  var div = doc.querySelector('#a');
+  div.should.not.equal(null);
+  div.attributes.length.should.equal(2);
+  div.attributes.item(1).name.should.equal('=');
+  div.children.length.should.equal(1);
+  div.children[0].tagName.should.equal('A=B');
+};

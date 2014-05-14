@@ -333,4 +333,16 @@ exports.tagNameCase = function() {
   var qualifiedName = 'Envelope';
   var doc = impl.createDocument(namespace, qualifiedName, null);
   doc.documentElement.tagName.should.equal(qualifiedName);
-}
+};
+
+exports.fastAttributes = function() {
+  // test the SIMPLETAG/SIMPLEATTR path in HTMLParser
+  var html = "<div id=a b=\"x &quot;y\" c='a \rb'><\np></div>";
+  var doc = domino.createDocument(html);
+  var div = doc.querySelector('#a');
+  div.should.not.equal(null);
+  div.attributes.length.should.equal(3);
+  div.attributes.item(1).value.should.equal('x "y');
+  div.attributes.item(2).value.should.equal('a \nb');
+  div.children.length.should.equal(0);
+};

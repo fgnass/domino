@@ -126,7 +126,7 @@ exports.children = function() {
   var d = domino.createDocument(html);
   var c = d.body.children;
   c.should.have.length(4);
-  c.should.have.property(0);
+  c.should.have.property('0');
   var a = Array.prototype.slice.call(c);
   a.should.be.an.instanceof(Array);
   a.should.have.length(4);
@@ -178,7 +178,7 @@ exports.attributes2 = function() {
   div.attributes.should.have.property('onclick');
   div.attributes.onclick.should.have.property('value', 't');
   div.removeAttribute('onclick');
-  div.attributes.should.not.have.property('onclick');
+  (div.attributes.onclick === undefined).should.be.true;
 }
 
 exports.jquery = function() {
@@ -310,7 +310,7 @@ exports.crHandling = function() {
   var html = '<div\rid=a data-test=1\rfoo="\r"\rbar=\'\r\'\rbat=\r>\r</div\r>';
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  div.should.not.equal(null);
+  (div != null).should.be.true;
   // all \r should be converted to \n
   div.outerHTML.should.equal('<div id="a" data-test="1" foo="\n" bar="\n" bat="">\n</div>');
 };
@@ -319,7 +319,7 @@ exports.eqAttr = function() {
   var html = "<div id=a ==x><a=B></A=b></div>";
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  div.should.not.equal(null);
+  (div != null).should.be.true;
   div.attributes.length.should.equal(2);
   div.attributes.item(1).name.should.equal('=');
   div.children.length.should.equal(1);
@@ -340,7 +340,7 @@ exports.fastAttributes = function() {
   var html = "<div id=a b=\"x &quot;y\" c='a \rb'><\np></div>";
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  div.should.not.equal(null);
+  (div != null).should.be.true;
   div.attributes.length.should.equal(3);
   div.attributes.item(1).value.should.equal('x "y');
   div.attributes.item(2).value.should.equal('a \nb');

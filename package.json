@@ -14,7 +14,7 @@
     "test-spec": "./node_modules/.bin/mocha -R spec"
   },
   "devDependencies": {
-    "mocha": "~1.17.0",
-    "should": "~2.1.0"
+    "mocha": "~1.18.2",
+    "should": "~3.3.1"
   }
 }

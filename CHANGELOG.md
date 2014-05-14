@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.17 (14 May 2014)
 * Brown paper bag bug fix for an HTML parsing regression introduced in
   domino 1.0.16. (#45)
 * Update `mocha` dependency to 1.18.x and `should` to 3.3.x.

@@ -1,5 +1,6 @@
 # domino x.x.x (not yet released)
 * HTMLAnchorElement now implements URLUtils. (#47)
+* Be consistent with our handling of null/empty namespaces. (#48)
 
 # domino 1.0.17 (14 May 2014)
 * Brown paper bag bug fix for an HTML parsing regression introduced in

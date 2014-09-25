@@ -346,3 +346,38 @@ exports.fastAttributes = function() {
   div.attributes.item(2).value.should.equal('a \nb');
   div.children.length.should.equal(0);
 };
+
+exports.anchorElement = function() {
+  var html = "<a href='http://user:pass@example.com:1234/foo/bar?bat#baz'>!</a>";
+  var doc = domino.createDocument(html);
+  var a = doc.querySelector('a');
+  (a != null).should.be.true;
+  a.href.should.equal('http://user:pass@example.com:1234/foo/bar?bat#baz');
+  a.protocol.should.equal('http:');
+  a.host.should.equal('example.com:1234');
+  a.hostname.should.equal('example.com');
+  a.port.should.equal('1234');
+  a.pathname.should.equal('/foo/bar');
+  a.search.should.equal('?bat');
+  a.hash.should.equal('#baz');
+  a.username.should.equal('user');
+  a.password.should.equal('pass');
+  a.origin.should.equal('http://example.com:1234');
+  // now try mutating!
+  a.protocol = 'https:';
+  a.href.should.equal('https://user:pass@example.com:1234/foo/bar?bat#baz');
+  a.hostname = 'other.net';
+  a.href.should.equal('https://user:pass@other.net:1234/foo/bar?bat#baz');
+  a.port = 5678;
+  a.href.should.equal('https://user:pass@other.net:5678/foo/bar?bat#baz');
+  a.pathname = '/blam/';
+  a.href.should.equal('https://user:pass@other.net:5678/blam/?bat#baz');
+  a.search = '?bat&banana';
+  a.href.should.equal('https://user:pass@other.net:5678/blam/?bat&banana#baz');
+  a.hash = '#oranges';
+  a.href.should.equal('https://user:pass@other.net:5678/blam/?bat&banana#oranges');
+  a.username = 'joe';
+  a.href.should.equal('https://joe:pass@other.net:5678/blam/?bat&banana#oranges');
+  a.password = 'smith';
+  a.href.should.equal('https://joe:smith@other.net:5678/blam/?bat&banana#oranges');
+};

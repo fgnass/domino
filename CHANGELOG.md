@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.18 (25 Sep 2014)
 * HTMLAnchorElement now implements URLUtils. (#47)
 * Be consistent with our handling of null/empty namespaces. (#48)
 * Update `mocha` dependency to 1.21.x and `should` to 4.0.x.

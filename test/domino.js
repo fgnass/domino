@@ -110,7 +110,7 @@ exports.title = function() {
   // but if there is a <head>, then setting Document.title should create the
   // <title> element if necessary.
   d.documentElement.insertBefore(d.createElement('head'), d.body);
-  d.head.should.not.equal(null);
+  (d.head === null).should.be.false;
   d.title.should.equal('');
   d.title = "Lorem!";
   d.title.should.equal("Lorem!");

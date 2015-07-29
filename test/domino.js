@@ -193,7 +193,10 @@ exports.treeWalker = function() {
   var window = domino.createWindow(html);
   var d = window.document;
   var root = d.getElementById('tw');
-  var tw = d.createTreeWalker(root, window.NodeFilter.SHOW_TEXT);
+  var tw = d.createTreeWalker(root, window.NodeFilter.SHOW_TEXT, function(n) {
+    return (n.data === 'ignore') ?
+      window.NodeFilter.FILTER_REJECT : window.NodeFilter.FILTER_ACCEPT;
+  });
   tw.root.should.equal(root);
   tw.currentNode.should.equal(root);
   tw.whatToShow.should.equal(0x4);
@@ -204,6 +207,7 @@ exports.treeWalker = function() {
     actual.push(tw.currentNode);
   }
 
+  actual.length.should.equal(4);
   actual.should.eql([
     root.firstChild.firstChild,
     root.firstChild.lastChild.firstChild,

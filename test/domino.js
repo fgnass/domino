@@ -110,7 +110,7 @@ exports.title = function() {
   // but if there is a <head>, then setting Document.title should create the
   // <title> element if necessary.
   d.documentElement.insertBefore(d.createElement('head'), d.body);
-  (d.head === null).should.be.false;
+  (d.head === null).should.be.false();
   d.title.should.equal('');
   d.title = "Lorem!";
   d.title.should.equal("Lorem!");
@@ -159,10 +159,10 @@ exports.classList = function() {
   var cl = el.classList;
   cl.should.have.length(3);
   cl[0].should.equal('foo');
-  cl.contains('bar').should.be.ok;
-  cl.contains('baz').should.not.be.ok;
+  cl.contains('bar').should.be.ok();
+  cl.contains('baz').should.not.be.ok();
   cl.add('baz');
-  cl.contains('baz').should.be.ok;
+  cl.contains('baz').should.be.ok();
   cl.should.have.length(4);
   el.className.should.match(/baz/);
   cl.remove('foo');
@@ -178,14 +178,14 @@ exports.attributes2 = function() {
   div.attributes.should.have.property('onclick');
   div.attributes.onclick.should.have.property('value', 't');
   div.removeAttribute('onclick');
-  (div.attributes.onclick === undefined).should.be.true;
+  (div.attributes.onclick === undefined).should.be.true();
 }
 
 exports.jquery = function() {
   var window = domino.createWindow(html);
   var f = __dirname + '/fixture/jquery-1.9.1.js';
   window._run(fs.readFileSync(f, 'utf8'), f);
-  window.$.should.be.ok;
+  window.$.should.be.ok();
   window.$('.foo').should.have.length(3);
 }
 
@@ -341,7 +341,7 @@ exports.crHandling = function() {
   var html = '<div\rid=a data-test=1\rfoo="\r"\rbar=\'\r\'\rbat=\r>\r</div\r>';
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  (div != null).should.be.true;
+  (div != null).should.be.true();
   // all \r should be converted to \n
   div.outerHTML.should.equal('<div id="a" data-test="1" foo="\n" bar="\n" bat="">\n</div>');
 };
@@ -350,7 +350,7 @@ exports.eqAttr = function() {
   var html = "<div id=a ==x><a=B></A=b></div>";
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  (div != null).should.be.true;
+  (div != null).should.be.true();
   div.attributes.length.should.equal(2);
   div.attributes.item(1).name.should.equal('=');
   div.children.length.should.equal(1);
@@ -371,7 +371,7 @@ exports.fastAttributes = function() {
   var html = "<div id=a b=\"x &quot;y\" c='a \rb'><\np></div>";
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  (div != null).should.be.true;
+  (div != null).should.be.true();
   div.attributes.length.should.equal(3);
   div.attributes.item(1).value.should.equal('x "y');
   div.attributes.item(2).value.should.equal('a \nb');
@@ -382,7 +382,7 @@ exports.anchorElement = function() {
   var html = "<a href='http://user:pass@example.com:1234/foo/bar?bat#baz'>!</a>";
   var doc = domino.createDocument(html);
   var a = doc.querySelector('a');
-  (a != null).should.be.true;
+  (a != null).should.be.true();
   a.href.should.equal('http://user:pass@example.com:1234/foo/bar?bat#baz');
   a.protocol.should.equal('http:');
   a.host.should.equal('example.com:1234');

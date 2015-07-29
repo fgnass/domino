@@ -1,4 +1,8 @@
 # domino x.x.x (not yet released)
+* Bug fixes for `TreeWalker` / `document.createTreeWalker` (filter
+  argument was ignored; various traversal issues)
+* Implement `NodeIterator` / `document.createNodeIterator` (#54)
+* Update `mocha` dependency to 2.2.x and `should` to 7.0.x.
 
 # domino 1.0.18 (25 Sep 2014)
 * HTMLAnchorElement now implements URLUtils. (#47)

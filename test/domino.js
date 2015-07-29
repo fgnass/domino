@@ -216,6 +216,33 @@ exports.treeWalker = function() {
   ]);
 }
 
+exports.nodeIterator = function() {
+  var window = domino.createWindow(html);
+  var d = window.document;
+  var root = d.getElementById('tw');
+  var ni = d.createNodeIterator(root, window.NodeFilter.SHOW_TEXT, function(n) {
+    return (n.data === 'ignore') ?
+      window.NodeFilter.FILTER_REJECT : window.NodeFilter.FILTER_ACCEPT;
+  });
+  ni.root.should.equal(root);
+  ni.referenceNode.should.equal(root);
+  ni.whatToShow.should.equal(0x4);
+  ni.filter.constructor.should.equal(window.NodeFilter.constructor);
+
+  var actual = [], n;
+  for (var n = ni.nextNode(); n ; n = ni.nextNode()) {
+	actual.push(n);
+  }
+
+  actual.length.should.equal(4);
+  actual.should.eql([
+    root.firstChild.firstChild,
+    root.firstChild.lastChild.firstChild,
+    root.lastChild.firstChild,
+    root.lastChild.lastChild.firstChild
+  ]);
+}
+
 exports.innerHTML = function() {
   var d = domino.createDocument();
   ['pre','textarea','listing'].forEach(function(elementName) {

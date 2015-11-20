@@ -1,6 +1,7 @@
 # domino x.x.x (not yet released)
 * CharacterData implements the NonDocumentTypeChildNode
   interface. (#57, #58)
+* Fix CSS `[style]` selector. (#59)
 
 # domino 1.0.19 (29 Jul 2015)
 * Bug fixes for `TreeWalker` / `document.createTreeWalker` (filter

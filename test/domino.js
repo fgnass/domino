@@ -412,3 +412,11 @@ exports.anchorElement = function() {
   a.password = 'smith';
   a.href.should.equal('https://joe:smith@other.net:5678/blam/?bat&banana#oranges');
 };
+
+exports.gh59 = function() {
+  var html = '<html><body><span style="display:none">foo</span></body></html>';
+  var doc = domino.createDocument(html);
+  doc.querySelectorAll('span[style]').should.have.length(1);
+  doc.querySelectorAll('span[style="display:none"]').should.have.length(1);
+  doc.querySelectorAll('span[style*="display:none"]').should.have.length(1);
+};

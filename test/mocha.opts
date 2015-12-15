@@ -3,4 +3,4 @@
 --require should
 --slow 20
 --growl
-
+--check-leaks

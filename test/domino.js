@@ -420,3 +420,27 @@ exports.gh59 = function() {
   doc.querySelectorAll('span[style="display:none"]').should.have.length(1);
   doc.querySelectorAll('span[style*="display:none"]').should.have.length(1);
 };
+
+exports.duplicateID = function() {
+  var doc = domino.createDocument('<root></root>');
+  var root = doc.documentElement;
+
+  function makeElement(name) {
+    var elt = doc.createElement(name);
+    elt.setAttribute("id", "x");
+    return elt;
+  }
+
+  var a = root.appendChild(makeElement("a"));
+  var b = root.appendChild(makeElement("b"));
+  var c = root.appendChild(makeElement("c"));
+  var d = root.appendChild(makeElement("d"));
+  doc.getElementById("x").should.equal(a);
+  root.removeChild(a);
+  doc.getElementById("x").should.equal(b);
+  root.removeChild(c);
+  root.removeChild(b);
+  doc.getElementById("x").should.equal(d);
+  root.removeChild(d);
+  (doc.getElementById("x") === null).should.be.true();
+}

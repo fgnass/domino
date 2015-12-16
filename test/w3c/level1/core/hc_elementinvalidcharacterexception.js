@@ -107,7 +107,7 @@ function hc_elementinvalidcharacterexception() {
 	{
 		success = false;
 		try {
-            testAddress.setAttribute("invalid^Name","value");
+            testAddress.setAttribute("invalid>Name","value");
         }
 		catch(ex) {
       success = (typeof(ex.code) != 'undefined' && ex.code == 5);

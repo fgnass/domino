@@ -444,3 +444,13 @@ exports.duplicateID = function() {
   root.removeChild(d);
   (doc.getElementById("x") === null).should.be.true();
 }
+
+exports.normalize = function() {
+  var doc = domino.createDocument('<span id="x"><!---->foo</span>');
+  var span = doc.getElementById("x");
+  span.appendChild(doc.createTextNode('bar'));
+  span.outerHTML.should.equal('<span id="x"><!---->foobar</span>');
+  span.normalize();
+  span.outerHTML.should.equal('<span id="x"><!---->foobar</span>');
+  span.childNodes[1].nodeValue.should.equal('foobar');
+};

@@ -1,4 +1,8 @@
 # domino x.x.x (not yet released)
+* Improve performance when adding nodes with duplicate IDs. (#60)
+* Be more careful about setting prototype to `null` when using
+  Objects as a Map. (#61)
+* Fix a global leak in NodeIterator.
 
 # domino 1.0.20 (20 Nov 2015)
 * CharacterData implements the NonDocumentTypeChildNode

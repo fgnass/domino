@@ -3,6 +3,8 @@
 * Be more careful about setting prototype to `null` when using
   Objects as a Map. (#61)
 * Fix a global leak in NodeIterator.
+* Bug fix for `Node#normalize` which could cause deletion of empty
+  `Comment` or `ProcessingInstruction` nodes. (#63)
 
 # domino 1.0.20 (20 Nov 2015)
 * CharacterData implements the NonDocumentTypeChildNode

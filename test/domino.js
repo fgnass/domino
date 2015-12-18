@@ -443,7 +443,7 @@ exports.duplicateID = function() {
   doc.getElementById("x").should.equal(d);
   root.removeChild(d);
   (doc.getElementById("x") === null).should.be.true();
-}
+};
 
 exports.normalize = function() {
   var doc = domino.createDocument('<span id="x"><!---->foo</span>');
@@ -453,4 +453,74 @@ exports.normalize = function() {
   span.normalize();
   span.outerHTML.should.equal('<span id="x"><!---->foobar</span>');
   span.childNodes[1].nodeValue.should.equal('foobar');
+};
+
+exports.replaceChild = function() {
+  var impl = new domino.impl.DOMImplementation();
+  var doc = impl.createDocument();
+  var root = doc.appendChild(doc.createElement('root'));
+  root.outerHTML.should.equal('<root></root>');
+  var a = root.appendChild(doc.createElement('a'));
+  root.outerHTML.should.equal('<root><a></a></root>');
+  var b = doc.createElement('b');
+
+  function capture(f) {
+    var events = [];
+    doc._setMutationHandler(function(info) {
+      events.push(info);
+    });
+    f();
+    doc._setMutationHandler(null);
+    return events;
+  }
+
+  // Replace with unrooted
+  capture(function() {
+    root.replaceChild(b, a).should.equal(a);
+  }).should.deepEqual([
+    {
+      type: 4, // Remove
+      target: root,
+      node: a
+    },
+    {
+      type: 6, // Insert
+      target: root,
+      node: b
+    }]);
+  root.outerHTML.should.equal('<root><b></b></root>');
+
+  root.replaceChild(a, b).should.equal(b);
+  root.outerHTML.should.equal('<root><a></a></root>');
+
+  // Move node
+  var c = doc.createElement('c');
+  root.appendChild(b);
+  root.appendChild(c);
+  capture(function() {
+    root.replaceChild(c, a);
+  }).should.deepEqual([
+    {
+      type: 4, // Remove
+      target: root,
+      node: a
+    },
+    {
+      type: 5, // Move
+      target: c
+    }]);
+  root.outerHTML.should.equal('<root><c></c><b></b></root>');
+
+  // Replace under unrooted parent
+  var df = doc.createDocumentFragment();
+  var d = df.appendChild(doc.createElement('d'));
+  var e = df.appendChild(doc.createElement('e'));
+  var f = doc.createElement('f');
+  df.replaceChild(f, e);
+  df.serialize().should.equal('<d></d><f></f>');
+
+  // Replace rooted node with document fragment
+  root.appendChild(a);
+  root.replaceChild(df, b);
+  root.outerHTML.should.equal('<root><c></c><d></d><f></f><a></a></root>');
 };

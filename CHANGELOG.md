@@ -3,6 +3,7 @@
 * Be more careful about setting prototype to `null` when using
   Objects as a Map. (#61)
 * Fix a global leak in NodeIterator.
+* Improve efficiency of `Node#replaceChild` and `Node#insert`. (#62)
 * Bug fix for `Node#normalize` which could cause deletion of empty
   `Comment` or `ProcessingInstruction` nodes. (#63)
 

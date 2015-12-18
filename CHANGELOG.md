@@ -6,6 +6,8 @@
 * Improve efficiency of `Node#replaceChild` and `Node#insert`. (#62)
 * Bug fix for `Node#normalize` which could cause deletion of empty
   `Comment` or `ProcessingInstruction` nodes. (#63)
+* Fix a number of minor bugs in rarely used code, discovered
+  during delinting. (#66)
 
 # domino 1.0.20 (20 Nov 2015)
 * CharacterData implements the NonDocumentTypeChildNode

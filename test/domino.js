@@ -524,3 +524,19 @@ exports.replaceChild = function() {
   root.replaceChild(df, b);
   root.outerHTML.should.equal('<root><c></c><d></d><f></f><a></a></root>');
 };
+
+exports.contains = function() {
+  // see https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
+  var document = domino.createWindow(html).document;
+  var h1 = document.getElementById('lorem');
+  h1.contains(null).should.equal(false);
+  h1.contains(h1).should.equal(true);
+  h1.childNodes[0].contains(h1).should.equal(false);
+  h1.contains(h1.childNodes[0]).should.equal(true);
+  document.body.contains(h1).should.equal(true);
+  var nodeList = document.querySelectorAll('p');
+  h1.contains(nodeList[0]).should.equal(false);
+  document.body.contains(nodeList[0]).should.equal(true);
+  nodeList[0].contains(nodeList[1]).should.equal(false);
+  nodeList[1].contains(nodeList[0]).should.equal(false);
+};

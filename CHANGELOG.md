@@ -9,6 +9,7 @@
 * Don't lowercase non-ASCII tag and attribute names. (#65)
 * Fix a number of minor bugs in rarely used code, discovered
   during delinting. (#66)
+* Implement `Node.contains`. (#67)
 
 # domino 1.0.20 (20 Nov 2015)
 * CharacterData implements the NonDocumentTypeChildNode

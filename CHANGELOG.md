@@ -1,3 +1,5 @@
+# domino x.x.x (not yet released)
+
 # domino 1.0.21 (23 Dec 2015)
 * Improve performance when adding nodes with duplicate IDs. (#60)
 * Be more careful about setting prototype to `null` when using

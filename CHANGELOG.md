@@ -6,6 +6,7 @@
 * Improve efficiency of `Node#replaceChild` and `Node#insert`. (#62)
 * Bug fix for `Node#normalize` which could cause deletion of empty
   `Comment` or `ProcessingInstruction` nodes. (#63)
+* Don't lowercase non-ASCII tag and attribute names. (#65)
 * Fix a number of minor bugs in rarely used code, discovered
   during delinting. (#66)
 

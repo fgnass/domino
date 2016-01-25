@@ -540,3 +540,11 @@ exports.contains = function() {
   nodeList[0].contains(nodeList[1]).should.equal(false);
   nodeList[1].contains(nodeList[0]).should.equal(false);
 };
+
+exports.parseImportant = function() {
+  var html = '<p style="font-family:sans-serif; text-decoration:none !important">foo</p>';
+  var doc = domino.createDocument(html);
+  var p = doc.querySelector('p');
+  p.style.fontFamily.should.equal('sans-serif');
+  p.style.textDecoration.should.equal('none');
+};

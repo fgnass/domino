@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Prevent TypeError due to undefined property when parsing styles. (#68)
 
 # domino 1.0.21 (23 Dec 2015)
 * Improve performance when adding nodes with duplicate IDs. (#60)

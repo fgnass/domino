@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.22 (27 Jan 2016)
 * Prevent TypeError due to undefined property when parsing styles. (#68)
 * Support legacy `Attr#nodeValue` and `Attr#textContent` aliases. (#70)
 

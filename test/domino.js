@@ -548,3 +548,23 @@ exports.parseImportant = function() {
   p.style.fontFamily.should.equal('sans-serif');
   p.style.textDecoration.should.equal('none');
 };
+
+exports.gh70 = function() {
+  var document = domino.createDocument('<h1 class="hello">Hello world</h1>');
+  var h1 = document.querySelector('h1');
+  var classAttr = h1.attributes.item(0);
+
+  classAttr.value.should.equal('hello');
+  classAttr.nodeValue.should.equal('hello');
+  classAttr.textContent.should.equal('hello');
+
+  classAttr.nodeValue = 'nodeValue';
+  classAttr.value.should.equal('nodeValue');
+  classAttr.nodeValue.should.equal('nodeValue');
+  classAttr.textContent.should.equal('nodeValue');
+
+  classAttr.textContent = 'textContent';
+  classAttr.value.should.equal('textContent');
+  classAttr.nodeValue.should.equal('textContent');
+  classAttr.textContent.should.equal('textContent');
+};

@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Fix `CSSStyleDeclaration#setProperty`. (#71)
 
 # domino 1.0.22 (27 Jan 2016)
 * Prevent TypeError due to undefined property when parsing styles. (#68)

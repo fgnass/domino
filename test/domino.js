@@ -568,3 +568,10 @@ exports.gh70 = function() {
   classAttr.nodeValue.should.equal('textContent');
   classAttr.textContent.should.equal('textContent');
 };
+
+exports.gh71 = function() {
+  var document = domino.createDocument('<h1 style="color:red !important">Hello world</h1>');
+  var h1 = document.querySelector('h1');
+  h1.style.display = 'none';
+  h1.outerHTML.should.equal('<h1 style="color: red !important; display: none;">Hello world</h1>');
+};

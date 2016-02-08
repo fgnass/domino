@@ -594,3 +594,9 @@ exports.gh72 = function() {
   window.setInterval.should.have.type('function');
   window.clearInterval.should.have.type('function');
 };
+
+exports.navigatorID = function() {
+  var window = domino.createWindow('<h1>Hello, world!</h1>');
+  window.navigator.appCodeName.should.equal("Mozilla");
+  window.navigator.taintEnabled().should.equal(false);
+};

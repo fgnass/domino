@@ -181,13 +181,24 @@ exports.attributes2 = function() {
   (div.attributes.onclick === undefined).should.be.true();
 }
 
-exports.jquery = function() {
+exports.jquery1_9 = function() {
   var window = domino.createWindow(html);
   var f = __dirname + '/fixture/jquery-1.9.1.js';
   window._run(fs.readFileSync(f, 'utf8'), f);
   window.$.should.be.ok();
   window.$('.foo').should.have.length(3);
-}
+};
+
+exports.jquery2_2 = function() {
+  var window = domino.createWindow(html);
+  window.$ = require(__dirname + '/fixture/jquery-2.2.0.js')(window);
+  window.$.should.be.ok();
+  window.$('.foo').should.have.length(3);
+  window.$.ajaxTransport("test", function() {
+	return { send: function() {}, abort: function() {} };
+  });
+  window.$.ajax({ url: 'test://', dataType: "test", timeout: 1, async: true });
+};
 
 exports.treeWalker = function() {
   var window = domino.createWindow(html);
@@ -574,4 +585,12 @@ exports.gh71 = function() {
   var h1 = document.querySelector('h1');
   h1.style.display = 'none';
   h1.outerHTML.should.equal('<h1 style="color: red !important; display: none;">Hello world</h1>');
+};
+
+exports.gh72 = function() {
+  var window = domino.createWindow('<h1>Hello, world!</h1>');
+  window.setTimeout.should.have.type('function');
+  window.clearTimeout.should.have.type('function');
+  window.setInterval.should.have.type('function');
+  window.clearInterval.should.have.type('function');
 };

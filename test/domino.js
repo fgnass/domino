@@ -660,3 +660,12 @@ exports.fosterParent3 = function() {
     templates[1].content.ownerDocument
   );
 };
+
+exports.mainTag = function() {
+  // <p> should be closed before <main>
+  var document = domino.createDocument('<div><p>x<main>y');
+  document.body.innerHTML.should.equal('<div><p>x</p><main>y</main></div>');
+  var main = document.querySelector('main');
+  main.should.be.instanceof(domino.impl.HTMLElement);
+  main.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+};

@@ -2,6 +2,7 @@
 * Implement WindowTimers interface on Window. (#72)
 * Factor out the NavigatorID interface and make more spec-compliant.
 * Implement `HTMLTemplateElement` and parse `<template>` tags.
+* Properly parse the `<main>` tag.
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

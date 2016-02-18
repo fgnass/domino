@@ -600,3 +600,63 @@ exports.navigatorID = function() {
   window.navigator.appCodeName.should.equal("Mozilla");
   window.navigator.taintEnabled().should.equal(false);
 };
+
+exports.template1 = function() {
+  var document = domino.createDocument("<table><tbody><template id=row><tr><td><td>");
+  document.body.innerHTML.should.equal('<table><tbody><template id="row"><tr><td></td><td></td></tr></template></tbody></table>');
+  var t = document.getElementById("row");
+  t.should.be.an.instanceof(domino.impl.HTMLTemplateElement);
+  t.childNodes.length.should.equal(0);
+  t.content.should.be.an.instanceof(domino.impl.DocumentFragment);
+  t.content.serialize().should.equal("<tr><td></td><td></td></tr>");
+  document.querySelectorAll("td").length.should.equal(0);
+  t.content.querySelectorAll("td").length.should.equal(2);
+  t.content.ownerDocument.should.not.equal(document);
+  t.content.querySelectorAll("*").map(function(el) {
+    el.ownerDocument.should.equal(t.content.ownerDocument);
+  });
+};
+
+exports.template2 = function() {
+  // Templates go in <head> by default.
+  var document = domino.createDocument("<template>x");
+  document.head.childNodes.length.should.equal(1);
+  document.head.children[0].tagName.should.equal("TEMPLATE");
+  var df = document.head.children[0].content;
+  df.should.be.an.instanceof(domino.impl.DocumentFragment);
+  df.ownerDocument.should.not.equal(document);
+};
+
+exports.fosterParent1 = function() {
+  var document = domino.createDocument('<table><tr>x<a>foo<td>y');
+  // In this case the "x<a>" gets foster-parented *before* the <tr>
+  document.body.innerHTML.should.equal("x<a>foo</a><table><tbody><tr><td>y</td></tr></tbody></table>");
+};
+
+exports.fosterParent2 = function() {
+  var document = domino.createDocument('foster test');
+  var thead = document.createElement("thead");
+  // exercise the "no table in open element stack" case in foster parenting
+  // algorithm.
+  thead.innerHTML = "<tr>x<a>foo<td>y";
+  // Note how "x" got placed *after* the <tr> in this case.
+  thead.outerHTML.should.equal('<thead><tr><td>y</td></tr>x<a>foo</a></thead>');
+};
+
+exports.fosterParent3 = function() {
+  var document = domino.createDocument('<body><template><table><tr>x</template><table><template><tr>y');
+  document.body.innerHTML.should.equal("<template>x<table><tbody><tr></tr></tbody></table></template><table><template><tr></tr>y</template></table>");
+  var templates = document.querySelectorAll("template");
+  templates.length.should.equal(2);
+  document.querySelectorAll("tr").length.should.equal(0);
+  Array.prototype.forEach.call(templates, function(t) {
+    t.ownerDocument.should.equal(document);
+    t.content.ownerDocument.should.not.equal(document);
+    t.content.querySelectorAll("*").map(function(el) {
+      el.ownerDocument.should.equal(t.content.ownerDocument);
+    });
+  });
+  templates[0].content.ownerDocument.should.equal(
+    templates[1].content.ownerDocument
+  );
+};

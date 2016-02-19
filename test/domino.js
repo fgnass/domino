@@ -671,6 +671,18 @@ exports.canvasTag = function() {
   canvas.height.should.equal(45);
 };
 
+exports.dialogTag = function() {
+  // <p> should be closed before <dialog>
+  var document = domino.createDocument('<div><p>x<dialog open returnvalue="foo">y');
+  document.body.innerHTML.should.equal('<div><p>x</p><dialog open="" returnvalue="foo">y</dialog></div>');
+  var dialog = document.querySelector('dialog');
+  dialog.should.be.instanceof(domino.impl.HTMLElement);
+  dialog.should.be.instanceof(domino.impl.HTMLDialogElement);
+  dialog.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  dialog.open.should.equal(true);
+  dialog.returnValue.should.equal("foo");
+};
+
 exports.mainTag = function() {
   // <p> should be closed before <main>
   var document = domino.createDocument('<div><p>x<main>y');

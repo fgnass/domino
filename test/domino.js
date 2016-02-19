@@ -692,6 +692,20 @@ exports.mainTag = function() {
   main.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
 };
 
+exports.menuItemTag = function() {
+  // <menuitem> should be special
+  var document = domino.createDocument('<menuitem type="checkbox" checked default>');
+  document.body.innerHTML.should.equal('<menuitem type="checkbox" checked="" default="">');
+  var menuitem = document.querySelector('menuitem');
+  menuitem.should.be.instanceof(domino.impl.HTMLElement);
+  menuitem.should.be.instanceof(domino.impl.HTMLMenuItemElement);
+  menuitem.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  menuitem.type.should.equal("checkbox");
+  menuitem.checked.should.equal(true);
+  menuitem.disabled.should.equal(false);
+  menuitem.default.should.equal(true);
+};
+
 exports.rubyTags = function() {
   var document = domino.createDocument(
     '<p><ruby id=a>base<rt>annotation</ruby>' +

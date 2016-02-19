@@ -8,6 +8,7 @@
 * Create `HTMLDialogElement` when parsing `<dialog>` tags.
 * Fix parsing of `<ruby>` tags, especially `<rb>` and `<rtc>`.
 * Create `HTMLMenuItemElement` when parsing `<menuitem>` tags.
+* Create `HTMLSourceElement` when parsing `<source>` tags.
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

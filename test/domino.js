@@ -721,3 +721,14 @@ exports.rubyTags = function() {
       el.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
     });
 };
+
+exports.sourceTag = function() {
+  var document = domino.createDocument('<video controls><source src="foo.webm" type="video/webm">Sorry, no HTML5 video.');
+  document.body.innerHTML.should.equal('<video controls=""><source src="foo.webm" type="video/webm">Sorry, no HTML5 video.</video>');
+  var source = document.querySelector('source');
+  source.should.be.instanceof(domino.impl.HTMLElement);
+  source.should.be.instanceof(domino.impl.HTMLSourceElement);
+  source.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  source.src.should.equal("foo.webm");
+  source.type.should.equal("video/webm");
+};

@@ -661,6 +661,16 @@ exports.fosterParent3 = function() {
   );
 };
 
+exports.canvasTag = function() {
+  var document = domino.createDocument('<canvas width=23 height=45>');
+  var canvas = document.querySelector('canvas');
+  canvas.should.be.instanceof(domino.impl.HTMLElement);
+  canvas.should.be.instanceof(domino.impl.HTMLCanvasElement);
+  canvas.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  canvas.width.should.equal(23);
+  canvas.height.should.equal(45);
+};
+
 exports.mainTag = function() {
   // <p> should be closed before <main>
   var document = domino.createDocument('<div><p>x<main>y');

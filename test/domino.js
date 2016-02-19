@@ -732,3 +732,15 @@ exports.sourceTag = function() {
   source.src.should.equal("foo.webm");
   source.type.should.equal("video/webm");
 };
+
+exports.trackTag = function() {
+  var document = domino.createDocument('<video poster="foo.jpg"><source src="foo.webm" type="video/webm"><track kind="captions" src="en-captions.vtt" srclang="en">');
+  document.body.innerHTML.should.equal('<video poster="foo.jpg"><source src="foo.webm" type="video/webm"><track kind="captions" src="en-captions.vtt" srclang="en"></video>');
+  var track = document.querySelector('track');
+  track.should.be.instanceof(domino.impl.HTMLElement);
+  track.should.be.instanceof(domino.impl.HTMLTrackElement);
+  track.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  track.kind.should.equal("captions");
+  track.src.should.equal("en-captions.vtt");
+  track.srclang.should.equal("en");
+};

@@ -691,3 +691,19 @@ exports.mainTag = function() {
   main.should.be.instanceof(domino.impl.HTMLElement);
   main.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
 };
+
+exports.rubyTags = function() {
+  var document = domino.createDocument(
+    '<p><ruby id=a>base<rt>annotation</ruby>' +
+    '<ruby id=b><rb>上<rb>手<rt>じよう<rt>ず<rtc><rt>jou<rt>zu'
+  );
+  document.body.innerHTML.should.equal(
+    '<p><ruby id="a">base<rt>annotation</rt></ruby>' +
+    '<ruby id="b"><rb>上</rb><rb>手</rb><rt>じよう</rt><rt>ず</rt><rtc><rt>jou</rt><rt>zu</rt></rtc></ruby></p>'
+  );
+  Array.prototype.forEach.call(
+    document.querySelectorAll('ruby,rb,rp,rt,rtc'), function(el) {
+      el.should.be.instanceof(domino.impl.HTMLElement);
+      el.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+    });
+};

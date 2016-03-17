@@ -619,12 +619,16 @@ exports.template1 = function() {
 
 exports.template2 = function() {
   // Templates go in <head> by default.
-  var document = domino.createDocument("<template>x");
+  var document = domino.createDocument("<template>x<!--hi");
   document.head.childNodes.length.should.equal(1);
   document.head.children[0].tagName.should.equal("TEMPLATE");
   var df = document.head.children[0].content;
   df.should.be.an.instanceof(domino.impl.DocumentFragment);
   df.ownerDocument.should.not.equal(document);
+  df.childNodes.length.should.equal(2);
+  df.childNodes[0].ownerDocument.should.equal(df.ownerDocument);
+  df.childNodes[1].ownerDocument.should.equal(df.ownerDocument);
+  document.head.innerHTML.should.equal('<template>x<!--hi--></template>');
 };
 
 exports.fosterParent1 = function() {

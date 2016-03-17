@@ -16,6 +16,7 @@
 * Update adoption agency algorithm to match latest HTML5 spec.
 * Add additional parameter to `domino.createDocument` to
   allow creating a document from an empty string if desired.
+* Add tree builder test cases from `html5lib-tests`.
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

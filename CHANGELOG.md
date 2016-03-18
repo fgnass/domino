@@ -10,6 +10,7 @@
 * Create `HTMLMenuItemElement` when parsing `<menuitem>` tags.
 * Create `HTMLSourceElement` when parsing `<source>` tags.
 * Create `HTMLTrackElement` when parsing `<track>` tags.
+* Improve parsing of `<svg>` elements.
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

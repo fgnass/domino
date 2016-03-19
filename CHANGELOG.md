@@ -13,6 +13,7 @@
 * Improve parsing of `<svg>` elements.
 * Fix parsing of `<isindex>` element in unusual contexts.
 * Serialize `<!DOCTYPE>` according to latest HTML5 spec.
+* Update adoption agency algorithm to match latest HTML5 spec.
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

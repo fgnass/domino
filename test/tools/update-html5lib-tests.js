@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var process = require('process');
+var domino = require('../../');
 
 /** Rebuild test/html5lib-tests.json based on the test specifications in
  * the html5lib-tests submodule.
@@ -203,6 +204,9 @@ var serialize_doc = function(filename, fragment, doc) {
       }
       result += ' ' + serializedName + '="' + escapeAttr(obj.value) + '"';
       stack_top().attrs.push(obj);
+      if (/[<"]/.test(serializedName)) {
+        props.attrWithFunnyChar = true;
+      }
       continue;
     }
     clear_add_attr();
@@ -210,6 +214,9 @@ var serialize_doc = function(filename, fragment, doc) {
       result += '<' + localname(tagname);
       can_add_attr = true;
       props.tags[tagname] = true;
+      if (/</.test(tagname)) {
+        props.tagWithLt = true;
+      }
       parent = stack_top();
       stack.push({
         tag: localname(tagname),
@@ -323,6 +330,13 @@ var twiddle_test = function(filename, tc) {
     expected = expected.replace(/(6869687=[^> ]+) (problem=[^> ]+)/g, '$2 $1');
   }
   tc.document.html = expected;
+  // Will this pass if parsed as a <body> fragment in no-quirks mode?
+  // This property is used by some third-party consumers of the parsed
+  // tests.
+  var dd = domino.createDocument();
+  dd.body.innerHTML = tc.data;
+  tc.document.noQuirksBodyHtml = dd.body.innerHTML;
+
   return tc;
 };
 

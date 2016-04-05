@@ -18,6 +18,7 @@
   allow creating a document from an empty string if desired.
 * Add tree builder test cases from `html5lib-tests`.
 * Implement `Document#location`. (#75)
+* Stub out additional properties of `HTMLIFrameElement`. (#76)
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

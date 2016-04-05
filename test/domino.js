@@ -647,6 +647,8 @@ exports.template3 = function() {
   t.content.querySelectorAll("*").map(function(el) {
     el.ownerDocument.should.equal(t.content.ownerDocument);
   });
+  // Non-standard (gh #73)
+  t.content.outerHTML.should.equal('<div>abc</div><p>def</p>');
 };
 
 exports.fosterParent1 = function() {

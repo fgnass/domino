@@ -631,6 +631,24 @@ exports.template2 = function() {
   document.head.innerHTML.should.equal('<template>x<!--hi--></template>');
 };
 
+// HTMLTemplateElement.innerHTML
+// see https://github.com/w3c/DOM-Parsing/issues/1
+exports.template3 = function() {
+  var document = domino.createDocument()
+  var t = document.createElement("template");
+  t.should.be.an.instanceof(domino.impl.HTMLTemplateElement);
+  t.childNodes.length.should.equal(0);
+  t.content.should.be.an.instanceof(domino.impl.DocumentFragment);
+  // This is the key line:
+  t.innerHTML = '<div>abc</div><p>def</p>';
+  t.innerHTML.should.equal('<div>abc</div><p>def</p>');
+  t.content.ownerDocument.should.not.equal(document);
+  t.content.childNodes.length.should.equal(2);
+  t.content.querySelectorAll("*").map(function(el) {
+    el.ownerDocument.should.equal(t.content.ownerDocument);
+  });
+};
+
 exports.fosterParent1 = function() {
   var document = domino.createDocument('<table><tr>x<a>foo<td>y');
   // In this case the "x<a>" gets foster-parented *before* the <tr>

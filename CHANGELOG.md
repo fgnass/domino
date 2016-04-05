@@ -17,6 +17,7 @@
 * Add additional parameter to `domino.createDocument` to
   allow creating a document from an empty string if desired.
 * Add tree builder test cases from `html5lib-tests`.
+* Implement `Document#location`. (#75)
 
 # domino 1.0.23 (30 Jan 2016)
 * Fix `CSSStyleDeclaration#setProperty`. (#71)

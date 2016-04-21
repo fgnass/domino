@@ -24,6 +24,8 @@ button.setAttribute('onclick', uncalled); // event handler listener is registere
 button.addEventListener('click', t.step_func(function () { assert_equals(++i, 3) }), false);
 button.onclick = t.step_func(function () { assert_equals(++i, 1); });
 button.addEventListener('click', t.step_func(function () { assert_equals(++i, 4) }), false);
+button.addEventListener('click', t.step_func(function (event) { event.stopImmediatePropagation() }), false);
+button.addEventListener('click', t.step_func(function (event) { ++i }), false);
 button.click()
 assert_equals(button.getAttribute("onclick"), uncalled)
 assert_equals(i, 4);

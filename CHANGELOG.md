@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Fix broken stopping of immediate propagation of Events. (#78)
 
 # domino 1.0.24 (05 Apr 2016)
 * Implement WindowTimers interface on Window. (#72)

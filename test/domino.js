@@ -768,3 +768,17 @@ exports.trackTag = function() {
   track.src.should.equal("en-captions.vtt");
   track.srclang.should.equal("en");
 };
+
+exports.gh79 = function() {
+  // CSS identifiers can only contain the characters [a-zA-Z0-9] and
+  // ISO 10646 characters U+00A0 and higher, plus the hyphen (-) and the
+  // underscore (_).  But they *can* have escaped characters.
+  var doc = '<div id="cite_note-13.3F_It_Can\'t_Be!-3"></div>';
+  var document = domino.createDocument(doc);
+  document.body.innerHTML.should.equal(doc);
+  (function() {
+    document.querySelector("#cite_note-13.3F_It_Can't_Be!-3");
+  }).should.throw({ name: 'SyntaxError' });
+  var div = document.querySelectorAll("#cite_note-13\\.3F_It_Can\\'t_Be\\!-3");
+  div.length.should.equal(1);
+};

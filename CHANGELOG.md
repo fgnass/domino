@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.25 (19 May 2016)
 * Fix broken stopping of immediate propagation of Events. (#78)
 * Properly set "scripting enabled" flag when parsing fragments.
 * Fix handling of escaped or invalid CSS identifiers in

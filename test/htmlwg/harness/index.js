@@ -35,13 +35,14 @@ module.exports = function(path) {
     scripts = [].slice.call(scripts);
 
     return function() {
-      window._run(`
+      function listenForFailures() {
         add_result_callback(function(result) {
           if (result.status === result.FAIL) {
             throw new Error(result.message);
           }
         });
-      `);
+      }
+      window._run("(" + listenForFailures.toString() + ")();");
 
       var concatenatedScripts = scripts.map(function(script) {
         return script.textContent;

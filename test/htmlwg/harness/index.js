@@ -32,14 +32,22 @@ module.exports = function(path) {
     var window = domino.createWindow(html);
     window._run(testharness);
     var scripts = window.document.getElementsByTagName('script');
-    if (scripts.length) {
-      var script = scripts[scripts.length-1];
-      var code = script.textContent;
-      if (/assert/.test(code)) {
-        return function() {
-          window._run(code);
-        };
-      }
-    }
+    scripts = [].slice.call(scripts);
+
+    return function() {
+      window._run(`
+        add_result_callback(function(result) {
+          if (result.status === result.FAIL) {
+            throw new Error(result.message);
+          }
+        });
+      `);
+
+      var concatenatedScripts = scripts.map(function(script) {
+        return script.textContent;
+      }).join("\n");
+
+      window._run(concatenatedScripts);
+    };
   });
 };

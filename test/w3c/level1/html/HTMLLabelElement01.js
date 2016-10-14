@@ -99,13 +99,6 @@ function HTMLLabelElement01() {
       doc = load(docRef, "doc", "label");
       nodeList = doc.getElementsByTagName("label");
       assertSize("Asize",2,nodeList);
-testNode = nodeList.item(0);
-      fNode = testNode.form;
-
-      vform = fNode.id;
-
-      assertEquals("formLink","form1",vform);
-       
 }
 
 

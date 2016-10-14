@@ -39,45 +39,48 @@ function list(dir, re, fn) {
 
 module.exports = function(path) {
 
-  function run(file) {
+  function run(ctx, file) {
     vm.runInContext(fs.readFileSync(file, 'utf8'), ctx, file);
     return ctx;
   }
 
-  var ctx = vm.createContext(); // create new independent context
-  Object.keys(globals).forEach(function(k) {
-    ctx[k] = globals[k]; // shallow clone
-  });
+  function makeContext() {
+    var ctx = vm.createContext(); // create new independent context
+    Object.keys(globals).forEach(function(k) {
+      ctx[k] = globals[k]; // shallow clone
+    });
 
-  ctx.createConfiguredBuilder = function() {
-    return {
-      contentType: 'text/html',
-      hasFeature: function(feature, version) {
-        return impl.hasFeature(feature, version);
-      },
-      getImplementation: function() {
-        return impl;
-      },
-      setImplementationAttribute: function(attr, value) {
-        // Ignore
-      },
-      preload: function(docRef, name, href) {
-        return 1;
-      },
-      load: function(docRef, name, href) {
-        var doc = Path.resolve(__dirname, '..', path, 'files', href) + '.html';
-        var html = fs.readFileSync(doc, 'utf8');
-        return domino.createDocument(html);
-      }
+    ctx.createConfiguredBuilder = function() {
+      return {
+        contentType: 'text/html',
+        hasFeature: function(feature, version) {
+          return impl.hasFeature(feature, version);
+        },
+        getImplementation: function() {
+          return impl;
+        },
+        setImplementationAttribute: function(attr, value) {
+          // Ignore
+        },
+        preload: function(docRef, name, href) {
+          return 1;
+        },
+        load: function(docRef, name, href) {
+          var doc = Path.resolve(__dirname, '..', path, 'files', href) + '.html';
+          var html = fs.readFileSync(doc, 'utf8');
+          return domino.createDocument(html);
+        }
+      };
     };
-  };
-
-  run(__dirname + '/DomTestCase.js');
+    run(ctx, __dirname + '/DomTestCase.js');
+    return ctx;
+  }
 
   var tests = {};
   list(path, /(.*?)\.js$/, function(file, basename) {
     tests[basename] =  function() {
-      run(file);
+      var ctx = makeContext();
+      run(ctx, file);
       ctx.setUpPage();
       ctx.runTest();
     };

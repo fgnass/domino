@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.
 * Minor spec-compliance fixes to Document#title and classList#contains.
 * Implement Element#closest(). (#84)

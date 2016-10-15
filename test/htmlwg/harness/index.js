@@ -18,7 +18,6 @@ var blacklist = [
   /dynamic-markup-insertion document\.writeln-0[12]/,
   /general interfaces/,
   /global-attributes dataset/,
-  /global-attributes document-dir/,
   /obsolete-features requirements-for-implementations other-elements-attributes-and-apis document-color-0[1234]/,
   /obsolete-features requirements-for-implementations other-elements-attributes-and-apis document\.all-0[12345]/,
   /obsolete-features requirements-for-implementations other-elements-attributes-and-apis heading-obsolete-attributes-01/,

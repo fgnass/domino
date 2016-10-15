@@ -20,6 +20,9 @@ test(function() {
 }, "Setting the idl attribute to a garbage value")
 test(function() {
   document.dir = "";
+  /* CSA: I do not believe this test is correct; see
+   * https://github.com/whatwg/html/issues/1906
   assert_equals(document.documentElement.hasAttribute("dir"), false, "Attribute should be gone");
+   */
 }, "Setting the idl attribute to the empty sting")
 </script>

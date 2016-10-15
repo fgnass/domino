@@ -1,4 +1,11 @@
 # domino x.x.x (not yet released)
+* Implement Document#dir.
+* Minor spec-compliance fixes to Document#title and classList#contains.
+* Implement Element#closest(). (#84)
+* Actually run the HTMLWG tests (#83)
+* Expose the HTML5 tree builder implementation. (#87)
+* Add workaround to W3C test harness for node >= 0.11.7.
+* Update the form-associated element list to match HTML5.
 
 # domino 1.0.25 (19 May 2016)
 * Fix broken stopping of immediate propagation of Events. (#78)

@@ -10,7 +10,6 @@ var blacklist = [
   /dom-tree-accessors document\.body-getter-frameset-and-body/,
   /dom-tree-accessors document\.body-setter-01/,
   /dom-tree-accessors document\.embeds-document\.plugins-01/,
-  /dom-tree-accessors document\.title-0[123467]/,
   /dom-tree-accessors nameditem-01/,
   /dom-tree-accessors document\.getElementsByName document\.getElementsByName-namespace/,
   /dynamic-markup-insertion document\.close-01/,

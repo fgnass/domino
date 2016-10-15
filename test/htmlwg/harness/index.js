@@ -7,14 +7,12 @@ var domino = require('../../../lib');
 // Some of these failures are bugs we ought to fix.
 var blacklist = [
   /apis-in-html-documents Element\.getElementsByTagName-foreign-02/,
-  /dom-tree-accessors Document\.getElementsByClassName-null-undef/,
-  /dom-tree-accessors Element\.getElementsByClassName-null-undef/,
   /dom-tree-accessors document\.body-getter-frameset-and-body/,
   /dom-tree-accessors document\.body-setter-01/,
   /dom-tree-accessors document\.embeds-document\.plugins-01/,
   /dom-tree-accessors document\.title-0[123467]/,
   /dom-tree-accessors nameditem-01/,
-  /dom-tree-accessors document\.getElementsByName document\.getElementsByName-(case|id|namespace|newelements|null-undef|param|same)/,
+  /dom-tree-accessors document\.getElementsByName document\.getElementsByName-namespace/,
   /dynamic-markup-insertion document\.close-01/,
   /dynamic-markup-insertion document\.open-0[12]/,
   /dynamic-markup-insertion document\.write-0[12]/,

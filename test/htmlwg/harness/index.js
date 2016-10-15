@@ -17,7 +17,6 @@ var blacklist = [
   /dynamic-markup-insertion document\.write-0[12]/,
   /dynamic-markup-insertion document\.writeln-0[12]/,
   /general interfaces/,
-  /global-attributes classlist-nonstring/,
   /global-attributes dataset/,
   /global-attributes document-dir/,
   /obsolete-features requirements-for-implementations other-elements-attributes-and-apis document-color-0[1234]/,

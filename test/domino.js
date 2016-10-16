@@ -782,3 +782,13 @@ exports.gh79 = function() {
   var div = document.querySelectorAll("#cite_note-13\\.3F_It_Can\\'t_Be\\!-3");
   div.length.should.equal(1);
 };
+
+exports.small_list = function() {
+  var doc = '<ul><li><small class=foo>x</li><li>y<ul><li>b</li><li>c</small></li></ul></li></ul>';
+  var document = domino.createDocument(doc);
+  var smalls = document.querySelectorAll('small');
+  smalls.length.should.equal(4);
+  for (var i=0; i<smalls.length; i++) {
+    smalls[i].classList.contains('foo').should.be.true();
+  }
+};

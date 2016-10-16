@@ -719,7 +719,7 @@ exports.mainTag = function() {
 exports.menuItemTag = function() {
   // <menuitem> should be special
   var document = domino.createDocument('<menuitem type="checkbox" checked default>');
-  document.body.innerHTML.should.equal('<menuitem type="checkbox" checked="" default="">');
+  document.body.innerHTML.should.equal('<menuitem type="checkbox" checked="" default=""></menuitem>');
   var menuitem = document.querySelector('menuitem');
   menuitem.should.be.instanceof(domino.impl.HTMLElement);
   menuitem.should.be.instanceof(domino.impl.HTMLMenuItemElement);

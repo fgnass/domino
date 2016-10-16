@@ -17,6 +17,8 @@ var NAMESPACE = {
   svg: 'http://www.w3.org/2000/svg',
   xlink: 'http://www.w3.org/1999/xlink'
 };
+// menuitem is no longer EMPTY, see https://github.com/whatwg/html/pull/907
+// This list comes from https://html.spec.whatwg.org/multipage/syntax.html#serialising-html-fragments
 var EMPTY = {
   area: true,
   base: true,
@@ -31,7 +33,6 @@ var EMPTY = {
   input: true,
   keygen: true,
   link: true,
-  menuitem: true,
   meta: true,
   param: true,
   source: true,
@@ -61,7 +62,7 @@ var namespace = function(namestring) {
 var ParseError = function ParseError(desc, filename, input) {
   Error.call(this);
   this.name = this.constructor.name;
-  this.message = desc + ' ['+basename+']: ' + JSON.stringify(input);
+  this.message = desc + ' ['+filename+']: ' + JSON.stringify(input);
 };
 ParseError.prototype = Object.create(Error.prototype);
 ParseError.prototype.constructor = ParseError;
@@ -86,22 +87,22 @@ var parse_test_file = function(filename) {
 };
 
 var parse_one_test = function(filename, testcase) {
-  var m = /^#data\n(?:([^]*?)\n)?#errors\n((?:[^\n]*\n)*?)(?:#document-fragment\n([^\n]*)\n)?(?:#script-(on|off)\n)?#document\n([^]*?)$/.exec(testcase+'\n');
+    var m = /^#data\n(?:([^]*?)\n)?(?:#script-(on|off)\n)?#errors\n((?:[^\n]*\n)*?)(?:#document-fragment\n([^\n]*)\n)?(?:#script-(on|off)\n)?#document\n([^]*?)$/.exec(testcase+'\n');
   if (!m) {
     throw new ParseError("Can't parse test case", filename, testcase);
   }
   // According to the README, there should always be at least two newlines
   // between #data and #errors, but some test cases have only one.
   // `data` will be null in that case.
-  var fragment = m[3] ? { name: localname(m[3]), ns:namespace(m[3]) } :
+  var fragment = m[4] ? { name: localname(m[4]), ns:namespace(m[4]) } :
       undefined;
   return {
     //file: filename,
     data: m[1] || '',
-    errors: m[2].split(/\n/g).slice(0,-1),
+    errors: m[3].split(/\n/g).slice(0,-1),
     fragment: fragment,
-    script: m[4],
-    document: serialize_doc(filename, fragment, m[5])
+    script: m[2] || m[5],
+    document: serialize_doc(filename, fragment, m[6])
   };
 };
 
@@ -123,7 +124,7 @@ var serialize_doc = function(filename, fragment, doc) {
     if (old.content !== true) {
       if (old.ns===namespace('html') && EMPTY[old.tag]) {
         if (old.children.length > 0) {
-          throw new ParseError("Empty elements can't have children",
+          throw new ParseError("Empty elements ("+old.tag+") can't have children",
                                filename, doc);
         }
       } else {
@@ -289,17 +290,16 @@ var serialize_doc = function(filename, fragment, doc) {
 
 var twiddle_test = function(filename, tc) {
   // Adjust the expected HTML serialization for some tests so that
-  // output attribute order always matches input attributes order and
-  // `name="isindex"` is always the first attribute in when `<isindex>`
-  // is involved.
+  // output attribute order always matches input attributes order.
   var expected = tc.document.html;
 
-  // Tweak the "expected" string if `<isindex>` is involved.
-  if (/<isindex/.test(tc.data) && /name="isindex"/.test(expected)) {
-    expected = expected.replace(/<input ([^>]+?) (name="isindex")>/g,
-                                '<input $2 $1>');
-  }
   // Tweak the order of attributes:
+  if (/^isindex$/.test(filename) &&
+      /<isindex name="A" action="B" prompt="C" foo="D"/.test(tc.data) &&
+      /<isindex action="B" foo="D" name="A" prompt="C"/.test(expected)) {
+      expected = expected.replace(/<(isindex) (action="B") (foo="D") (name="A") (prompt="C")/,
+                                '<$1 $4 $2 $5 $3');
+  }
   if (/^tests(9|10)$/.test(filename) &&
       /<(g|mi) xml:lang=en xlink:href=foo/.test(tc.data) &&
       /<(g|mi) xlink:href="foo" xml:lang="en"/.test(expected)) {

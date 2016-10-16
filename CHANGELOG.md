@@ -1,6 +1,7 @@
 # domino x.x.x (not yet released)
 * Fix bug in AFE list replacement over existing bookmark.
 * Update htmlwg test suite to latest w3c/web-platform-tests.
+* Update html5lib test suite to latest.
 
 # domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.

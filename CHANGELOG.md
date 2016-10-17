@@ -3,6 +3,8 @@
 * Update htmlwg test suite to latest w3c/web-platform-tests.
 * Update html5lib test suite to latest.
 * HTML5 spec update: <menuitem> is no longer an empty element.
+* HTML5 spec update: tweaked HTML entity parsing in attributes.
+* HTML5 spec update: dashes are allowed in HTML comments.
 
 # domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.

@@ -769,6 +769,27 @@ exports.trackTag = function() {
   track.srclang.should.equal("en");
 };
 
+exports.elementInterface = function() {
+  [
+    "acronym", "basefont", "big", "center", "nobr", "noembed", "noframes",
+    "plaintext", "rb", "rtc", "strike", "tt"
+  ].forEach(function(tag) {
+    var document = domino.createDocument('<'+tag+'>');
+    var elt = document.querySelector(tag);
+    elt.should.be.instanceof(domino.impl.HTMLElement);
+    elt.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  });
+  [
+    "listing", "xmp", "pre"
+  ].forEach(function(tag) {
+    var document = domino.createDocument('<'+tag+'>');
+    var elt = document.querySelector(tag);
+    elt.should.be.instanceof(domino.impl.HTMLElement);
+    elt.should.be.instanceof(domino.impl.HTMLPreElement);
+    elt.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
+  });
+};
+
 exports.gh79 = function() {
   // CSS identifiers can only contain the characters [a-zA-Z0-9] and
   // ISO 10646 characters U+00A0 and higher, plus the hyphen (-) and the

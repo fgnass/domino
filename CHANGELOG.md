@@ -6,6 +6,9 @@
 * HTML5 spec update: tweaked HTML entity parsing in attributes.
 * HTML5 spec update: dashes are allowed in HTML comments.
 * HTML5 spec update: remove special handling of <isindex>.
+* Improve handling of legacy elements: `<xmp>`, `<listing>`, `acronym`,
+  `basefont`, `big`, `center`, `nobr`, `noembed`, `noframes`, `plaintext`,
+  `rb`, `rtc`, `strike`, and `tt`.
 
 # domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.

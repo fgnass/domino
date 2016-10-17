@@ -5,6 +5,7 @@
 * HTML5 spec update: <menuitem> is no longer an empty element.
 * HTML5 spec update: tweaked HTML entity parsing in attributes.
 * HTML5 spec update: dashes are allowed in HTML comments.
+* HTML5 spec update: remove special handling of <isindex>.
 
 # domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.

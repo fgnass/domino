@@ -792,3 +792,13 @@ exports.small_list = function() {
     smalls[i].classList.contains('foo').should.be.true();
   }
 };
+
+exports.createSvgElements = function() {
+  var document = domino.createDocument();
+
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  document.body.appendChild(svg);
+  
+  svg.should.be.instanceOf(domino.impl.SVGSVGElement);
+  document.body.innerHTML.should.equal("<svg></svg>");
+}

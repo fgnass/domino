@@ -9,6 +9,8 @@
 * Improve handling of legacy elements: `<xmp>`, `<listing>`, `acronym`,
   `basefont`, `big`, `center`, `nobr`, `noembed`, `noframes`, `plaintext`,
   `rb`, `rtc`, `strike`, and `tt`.
+* HTML5 spec update: Remove extra newline in serialization of `<pre>`,
+  `<listing>`, `<textarea>`. (#88)
 
 # domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.

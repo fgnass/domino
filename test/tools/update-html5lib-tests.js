@@ -40,9 +40,11 @@ var EMPTY = {
   wbr: true
 };
 var EXTRA_NL = {
+  /* Removed in https://github.com/whatwg/html/issues/944
   pre: true,
   textarea: true,
   listing: true
+  */
 };
 var NO_ESCAPE = {
   style: true, script: true, xmp:true, iframe:true, noembed:true,

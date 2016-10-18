@@ -264,19 +264,23 @@ exports.innerHTML = function() {
     // no extraneous newline after element tag in this case
     div.innerHTML.should.equal('<'+elementName+'>a</'+elementName+'>');
     el.innerHTML = "\nb";
-    // first newline after element is swallowed.  needs two.
-    div.innerHTML.should.equal('<'+elementName+'>\n\nb</'+elementName+'>');
+    // Note that this doesn't roundtrip:
+    // see https://github.com/whatwg/html/issues/944
+    div.innerHTML.should.equal('<'+elementName+'>\nb</'+elementName+'>');
   });
 }
 
 exports.outerHTML = function() {
   var tests = [
-    '<body><pre>\n\na\n</pre></body>',
+    // This doesn't round trip:
+    // see https://github.com/whatwg/html/issues/944
+    //'<body><pre>\n\na\n</pre></body>',
     '<body bgcolor="white"><h1 style="color: red">\nOne\n2 &amp; 3</h1></body>',
     '<body data-test="<>&amp;&quot;\'"></body>'
   ];
   tests.forEach(function(html) {
     var d = domino.createDocument(html);
+    // Verify round-tripping.
     d.body.outerHTML.should.equal(html);
   });
 }

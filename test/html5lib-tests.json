@@ -15745,8 +15745,7 @@
             "body": true,
             "pre": true
           },
-          "doctype": true,
-          "extraNL": true
+          "doctype": true
         },
         "tree": [
           {
@@ -15765,8 +15764,7 @@
                     "tag": "pre",
                     "children": [
                       {
-                        "text": "\nA",
-                        "extraNL": true
+                        "text": "\nA"
                       }
                     ]
                   }
@@ -15775,8 +15773,8 @@
             ]
           }
         ],
-        "html": "<!DOCTYPE html><html><head></head><body><pre>\n\nA</pre></body></html>",
-        "noQuirksBodyHtml": "<pre>\n\nA</pre>"
+        "html": "<!DOCTYPE html><html><head></head><body><pre>\nA</pre></body></html>",
+        "noQuirksBodyHtml": "<pre>\nA</pre>"
       }
     },
     {
@@ -15790,8 +15788,7 @@
             "body": true,
             "pre": true
           },
-          "doctype": true,
-          "extraNL": true
+          "doctype": true
         },
         "tree": [
           {
@@ -15810,8 +15807,7 @@
                     "tag": "pre",
                     "children": [
                       {
-                        "text": "\nA",
-                        "extraNL": true
+                        "text": "\nA"
                       }
                     ]
                   }
@@ -15820,8 +15816,8 @@
             ]
           }
         ],
-        "html": "<!DOCTYPE html><html><head></head><body><pre>\n\nA</pre></body></html>",
-        "noQuirksBodyHtml": "<pre>\n\nA</pre>"
+        "html": "<!DOCTYPE html><html><head></head><body><pre>\nA</pre></body></html>",
+        "noQuirksBodyHtml": "<pre>\nA</pre>"
       }
     },
     {
@@ -66099,8 +66095,7 @@
             "body": true,
             "pre": true
           },
-          "doctype": true,
-          "extraNL": true
+          "doctype": true
         },
         "tree": [
           {
@@ -66119,8 +66114,7 @@
                     "tag": "pre",
                     "children": [
                       {
-                        "text": "\nfoo",
-                        "extraNL": true
+                        "text": "\nfoo"
                       }
                     ]
                   }
@@ -66129,8 +66123,8 @@
             ]
           }
         ],
-        "html": "<!DOCTYPE html><html><head></head><body><pre>\n\nfoo</pre></body></html>",
-        "noQuirksBodyHtml": "<pre>\n\nfoo</pre>"
+        "html": "<!DOCTYPE html><html><head></head><body><pre>\nfoo</pre></body></html>",
+        "noQuirksBodyHtml": "<pre>\nfoo</pre>"
       }
     },
     {
@@ -66336,8 +66330,7 @@
             "body": true,
             "pre": true
           },
-          "doctype": true,
-          "extraNL": true
+          "doctype": true
         },
         "tree": [
           {
@@ -66356,8 +66349,7 @@
                     "tag": "pre",
                     "children": [
                       {
-                        "text": "\nA",
-                        "extraNL": true
+                        "text": "\nA"
                       }
                     ]
                   }
@@ -66366,8 +66358,8 @@
             ]
           }
         ],
-        "html": "<!DOCTYPE html><html><head></head><body><pre>\n\nA</pre></body></html>",
-        "noQuirksBodyHtml": "<pre>\n\nA</pre>"
+        "html": "<!DOCTYPE html><html><head></head><body><pre>\nA</pre></body></html>",
+        "noQuirksBodyHtml": "<pre>\nA</pre>"
       }
     },
     {
@@ -66624,8 +66616,7 @@
             "body": true,
             "textarea": true
           },
-          "doctype": true,
-          "extraNL": true
+          "doctype": true
         },
         "tree": [
           {
@@ -66644,8 +66635,7 @@
                     "tag": "textarea",
                     "children": [
                       {
-                        "text": "\nfoo",
-                        "extraNL": true
+                        "text": "\nfoo"
                       }
                     ]
                   }
@@ -66654,8 +66644,8 @@
             ]
           }
         ],
-        "html": "<!DOCTYPE html><html><head></head><body><textarea>\n\nfoo</textarea></body></html>",
-        "noQuirksBodyHtml": "<textarea>\n\nfoo</textarea>"
+        "html": "<!DOCTYPE html><html><head></head><body><textarea>\nfoo</textarea></body></html>",
+        "noQuirksBodyHtml": "<textarea>\nfoo</textarea>"
       }
     },
     {

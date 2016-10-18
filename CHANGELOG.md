@@ -12,6 +12,7 @@
 * HTML5 spec update: Remove extra newline in serialization of `<pre>`,
   `<listing>`, `<textarea>`. (#88)
 * HTML5 spec update: Remove case normalization for defunct SVG attributes.
+* Implement HTMLMenuItemElement#label.
 
 # domino 1.0.26 (15 Oct 2016)
 * Implement Document#dir.

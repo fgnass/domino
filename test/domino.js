@@ -817,3 +817,28 @@ exports.small_list = function() {
     smalls[i].classList.contains('foo').should.be.true();
   }
 };
+
+exports.menuitem = function() {
+  var doc = '<menuitem id=a label=" b "><menuitem id=c> d <b> e ';
+  var document = domino.createDocument(doc);
+  document.body.innerHTML.should.equal('<menuitem id="a" label=" b "></menuitem><menuitem id="c"> d <b> e </b></menuitem>');
+  var itema = document.getElementById('a');
+  (itema != null).should.be.true();
+  itema.should.be.an.instanceof(domino.impl.HTMLMenuItemElement);
+  itema.label.should.equal(' b ');
+  itema.label = ' x ';
+  itema.label.should.equal(' x ');
+  itema.hasAttribute('label').should.be.true();
+  itema.getAttribute('label').should.equal(' x ');
+  itema.outerHTML.should.equal('<menuitem id="a" label=" x "></menuitem>');
+
+  var itemb = document.getElementById('c');
+  (itemb != null).should.be.true();
+  itemb.should.be.an.instanceof(domino.impl.HTMLMenuItemElement);
+  itemb.label.should.equal('d e');
+  itemb.label = ' y ';
+  itemb.label.should.equal(' y ');
+  itemb.hasAttribute('label').should.be.true();
+  itemb.getAttribute('label').should.equal(' y ');
+  itemb.outerHTML.should.equal('<menuitem id="c" label=" y "> d <b> e </b></menuitem>');
+};

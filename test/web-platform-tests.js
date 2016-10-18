@@ -29,84 +29,18 @@ var blacklist = [
   'documents resource-metadata-management document-lastModified-01',
   'documents resource-metadata-management document-lastModified',
   'dynamic-markup-insertion closing-the-input-stream document.close-01',
-  'dynamic-markup-insertion document-write 001',
-  'dynamic-markup-insertion document-write 002',
-  'dynamic-markup-insertion document-write 003',
-  'dynamic-markup-insertion document-write 004',
-  'dynamic-markup-insertion document-write 005',
-  'dynamic-markup-insertion document-write 006',
-  'dynamic-markup-insertion document-write 007',
-  'dynamic-markup-insertion document-write 008',
-  'dynamic-markup-insertion document-write 009',
-  'dynamic-markup-insertion document-write 010',
-  'dynamic-markup-insertion document-write 011',
-  'dynamic-markup-insertion document-write 012',
-  'dynamic-markup-insertion document-write 013',
-  'dynamic-markup-insertion document-write 014',
-  'dynamic-markup-insertion document-write 015',
-  'dynamic-markup-insertion document-write 016',
-  'dynamic-markup-insertion document-write 017',
-  'dynamic-markup-insertion document-write 018',
-  'dynamic-markup-insertion document-write 019',
-  'dynamic-markup-insertion document-write 020',
-  'dynamic-markup-insertion document-write 021',
-  'dynamic-markup-insertion document-write 022',
-  'dynamic-markup-insertion document-write 023',
-  'dynamic-markup-insertion document-write 024',
-  'dynamic-markup-insertion document-write 025',
-  'dynamic-markup-insertion document-write 026',
-  'dynamic-markup-insertion document-write 027',
-  'dynamic-markup-insertion document-write 028',
-  'dynamic-markup-insertion document-write 029',
-  'dynamic-markup-insertion document-write 030',
-  'dynamic-markup-insertion document-write 031',
-  'dynamic-markup-insertion document-write 032',
-  'dynamic-markup-insertion document-write 033',
-  'dynamic-markup-insertion document-write 034',
-  'dynamic-markup-insertion document-write 035',
-  'dynamic-markup-insertion document-write 036',
-  'dynamic-markup-insertion document-write 037',
-  'dynamic-markup-insertion document-write 038',
-  'dynamic-markup-insertion document-write 039',
-  'dynamic-markup-insertion document-write 040',
-  'dynamic-markup-insertion document-write 041',
-  'dynamic-markup-insertion document-write 042',
-  'dynamic-markup-insertion document-write 043',
-  'dynamic-markup-insertion document-write 044',
-  'dynamic-markup-insertion document-write 045',
-  'dynamic-markup-insertion document-write 046',
-  'dynamic-markup-insertion document-write 049',
-  'dynamic-markup-insertion document-write 050',
-  'dynamic-markup-insertion document-write document.write-01',
-  'dynamic-markup-insertion document-write document.write-02',
-  'dynamic-markup-insertion document-write iframe_001',
-  'dynamic-markup-insertion document-write iframe_002',
-  'dynamic-markup-insertion document-write iframe_003',
-  'dynamic-markup-insertion document-write iframe_004',
-  'dynamic-markup-insertion document-write iframe_006',
-  'dynamic-markup-insertion document-write iframe_007',
-  'dynamic-markup-insertion document-write iframe_008',
-  'dynamic-markup-insertion document-write iframe_009',
-  'dynamic-markup-insertion document-write script_002',
-  'dynamic-markup-insertion document-write script_004',
-  'dynamic-markup-insertion document-write script_005',
-  'dynamic-markup-insertion document-write script_006',
-  'dynamic-markup-insertion document-write script_007',
-  'dynamic-markup-insertion document-write script_008',
-  'dynamic-markup-insertion document-write script_009',
-  'dynamic-markup-insertion document-write script_010',
-  'dynamic-markup-insertion document-write script_011',
-  'dynamic-markup-insertion document-write script_012',
-  'dynamic-markup-insertion document-write script_013',
-  'dynamic-markup-insertion document-writeln document.writeln-01',
-  'dynamic-markup-insertion document-writeln document.writeln-02',
-  'dynamic-markup-insertion document-writeln document.writeln-03',
-  'dynamic-markup-insertion opening-the-input-stream 011-1',
-  'dynamic-markup-insertion opening-the-input-stream 012-1',
-  'dynamic-markup-insertion opening-the-input-stream 013-1',
-  'dynamic-markup-insertion opening-the-input-stream 014-1',
+  /dynamic-markup-insertion document-write [0-9]+/,
+  /dynamic-markup-insertion document-write document.write-0[12]/,
+  /dynamic-markup-insertion document-write iframe_00[0-9]/,
+  /dynamic-markup-insertion document-write script_00[2456789]/,
+  /dynamic-markup-insertion document-write script_01[0123]/,
+  /dynamic-markup-insertion document-writeln document.writeln-0[123]/,
+  /dynamic-markup-insertion opening-the-input-stream 00[1789]/,
+  'dynamic-markup-insertion opening-the-input-stream 010-2',
+  /dynamic-markup-insertion opening-the-input-stream 01[123456]-1/,
   'dynamic-markup-insertion opening-the-input-stream document.open-01',
   'dynamic-markup-insertion opening-the-input-stream document.open-02',
+  'dynamic-markup-insertion opening-the-input-stream document.open-03-frame',
   'elements global-attributes custom-attrs',
   'elements global-attributes data_unicode_attr',
   'elements global-attributes dataset-delete',
@@ -183,28 +117,47 @@ var harness = function(path) {
     scripts = [].slice.call(scripts);
 
     return function() {
-      function listenForFailures() {
-        add_result_callback(function(result) {
-          if (result.status === result.FAIL) {
-            throw new Error(result.message);
+      var listen = onBlacklist(name) ? function listenForSuccess() {
+        add_completion_callback(function(tests, status) {
+          var failed = tests.filter(function(t) {
+            return t.status === t.FAIL || t.status === t.TIMEOUT;
+          });
+          if (failed.length===0) {
+            throw new Error("Expected blacklisted test to fail");
           }
         });
-      }
-      window._run("(" + listenForFailures.toString() + ")();");
+      } : function listenForFailures() {
+        add_completion_callback(function(tests, status) {
+          var failed = tests.filter(function(t) {
+            return t.status === t.FAIL || t.status === t.TIMEOUT;
+          });
+          if (failed.length) {
+            throw new Error(failed[0].name+": "+failed[0].message);
+          }
+        });
+      };
+      window._run("(" + listen.toString() + ")();");
 
       var concatenatedScripts = scripts.map(function(script) {
-        return script.textContent;
+        if (/^text\/plain$/.test(script.getAttribute('type')||'')) {
+          return '';
+        }
+        return script.textContent + '\n';
       }).join("\n");
       // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
       concatenatedScripts = 'var x;\n' + concatenatedScripts;
+      concatenatedScripts += '\nwindow.dispatchEvent(new Event("load"));';
 
       var go = function() {
         window._run(concatenatedScripts);
       };
-      if (onBlacklist(name)) {
-        assert.throws(go, 'Expected test to fail.');
-      } else {
+      try {
         go();
+      } catch (e) {
+        if ((!onBlacklist(name)) ||
+            /^Expected blacklisted test to fail/.test(e.message||'')) {
+          throw e;
+        }
       }
     };
   });

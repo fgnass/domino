@@ -862,3 +862,19 @@ exports.gh95 = function() {
     }).should.throw({ name: 'SyntaxError' });
     document.querySelectorAll("a[href=foo\\'s]").length.should.equal(1);
 };
+
+exports.propertyWritability = function () { // gh #89
+  var window = domino.createWindow('');
+  var document = domino.createDocument();
+
+  function assertWritable(object, property) {
+    var replacement = function () { };
+    object[property] = replacement;
+    object[property].should.equal(replacement, property + " should be writable");
+  }
+
+  assertWritable(window, 'HTMLElement');
+  assertWritable(document, 'importNode');
+  assertWritable(document, 'createElement');
+  assertWritable(document, 'createElementNS');
+}

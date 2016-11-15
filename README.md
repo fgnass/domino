@@ -38,6 +38,14 @@ var h1 = document.querySelector('h1');
 console.log(h1.innerHTML);
 ```
 
+By default many domino methods will be stored in writable properties, to
+allow polyfills (as browsers do).  You can lock down the implementation
+if desired as follows:
+```javascript
+global.__domino_frozen__ = true; // Must precede any `require('domino')`
+var domino = require('domino');
+```
+
 ## Tests
 
 Domino includes test from the [W3C DOM Conformance Suites](http://www.w3.org/DOM/Test/)

@@ -881,3 +881,39 @@ exports.propertyWritability = function () { // gh #89
   assertWritable(document, 'createElement');
   assertWritable(document, 'createElementNS');
 };
+
+exports.gh90 = function() {
+  var doc = '<input type="checkbox">';
+  var document = domino.createDocument(doc);
+  document.body.innerHTML.should.equal(doc);
+
+  var input = document.querySelector('input');
+  input.checked.should.equal(false);
+
+  input.checked = true;
+  input.checked.should.equal(true);
+  input.outerHTML.should.equal('<input type="checkbox" checked="">');
+
+  input.checked = false;
+  input.checked.should.equal(false);
+  input.outerHTML.should.equal(doc);
+
+  // Now test again, using hasAttribute/hasAttributeNS directly.
+  input.hasAttribute('checked').should.equal(false);
+  input.hasAttributeNS(null, 'checked').should.equal(false);
+  input.hasAttributeNS('foo', 'checked').should.equal(false);
+
+  input.setAttribute('checked', 'bar');
+  input.setAttributeNS('foo', 'checked', 'bat');
+
+  input.hasAttribute('checked').should.equal(true);
+  input.hasAttributeNS(null, 'checked').should.equal(true);
+  input.hasAttributeNS('foo', 'checked').should.equal(true);
+
+  input.removeAttribute('checked');
+  input.removeAttributeNS('foo', 'checked');
+
+  input.hasAttribute('checked').should.equal(false);
+  input.hasAttributeNS(null, 'checked').should.equal(false);
+  input.hasAttributeNS('foo', 'checked').should.equal(false);
+};

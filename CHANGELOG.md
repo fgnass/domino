@@ -3,6 +3,8 @@
 * Disable nonstandard "ignore case" version of attribute matching.
 * Add `dom/nodes` tests from w3c/web-platform-tests. (#92, @pimterry)
 * Make selected API methods writable to support polyfills. (#89, @pimterry)
+* Fix `Element#hasAttribute`/`Element#hasAttributeNS` after
+  `Element#removeAttribute`/`Element#removeAttributeNS`. (#90, @clint-tseng)
 
 # domino 1.0.27 (17 Oct 2016)
 * Fix bug in AFE list replacement over existing bookmark.

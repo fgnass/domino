@@ -852,3 +852,19 @@ exports.createSvgElements = function() {
   svg.should.be.instanceOf(domino.impl.SVGSVGElement);
   document.body.innerHTML.should.equal("<svg></svg>");
 }
+
+exports.propertyWritability = function () {
+  var window = domino.createWindow('');
+  var document = domino.createDocument();
+
+  function assertWritable(object, property) {
+    var replacement = function () { };
+    object[property] = replacement;
+    object[property].should.equal(replacement, property + " should be writable");
+  }
+
+  assertWritable(window, 'HTMLElement');
+  assertWritable(document, 'importNode');
+  assertWritable(document, 'createElement');
+  assertWritable(document, 'createElementNS');
+}

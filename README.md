@@ -28,14 +28,33 @@ Domino provides support for `querySelector()`, `querySelectorAll()`, and `matche
 
 ## Usage
 
+Domino supports the DOM level 4 API, and thus API documentation can be
+found on standard reference sites.  For example, you could start from
+MDN's documentation for
+[Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) and
+[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node).
+
+The only exception is the initial creation of a document:
 ```javascript
 var domino = require('domino');
+var Element = domino.impl.Element; // etc
 
 var window = domino.createWindow('<h1>Hello world</h1>');
 var document = window.document;
 
+// alternatively: document = domino.createDocument(htmlString, true)
+
 var h1 = document.querySelector('h1');
 console.log(h1.innerHTML);
+console.log(h1 instanceof Element);
+```
+
+If you want a more standards-compliant way to create a `Document`, you can
+also use [DOMImplementation](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation):
+```javascript
+var domino = require('domino');
+var domimpl = domino.createDOMImplementation();
+var doc = domimpl.createHTMLDocument();
 ```
 
 By default many domino methods will be stored in writable properties, to

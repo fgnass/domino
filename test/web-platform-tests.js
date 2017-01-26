@@ -145,7 +145,7 @@ var harness = function(path) {
         return script.textContent + '\n';
       }).join("\n");
       // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
-      concatenatedScripts = 'var x;\n' + concatenatedScripts;
+      concatenatedScripts = 'var x, doc;\n' + concatenatedScripts;
       concatenatedScripts += '\nwindow.dispatchEvent(new Event("load"));';
 
       var go = function() {

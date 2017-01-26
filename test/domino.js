@@ -852,3 +852,13 @@ exports.createSvgElements = function() {
   svg.should.be.instanceOf(domino.impl.SVGSVGElement);
   document.body.innerHTML.should.equal("<svg></svg>");
 }
+
+exports.gh95 = function() {
+    var document = domino.createDocument(
+        '<body><a href="foo\'s">bar</a></body>'
+    );
+    (function() {
+        document.querySelectorAll("a[href=foo's]");
+    }).should.throw({ name: 'SyntaxError' });
+    document.querySelectorAll("a[href=foo\\'s]").length.should.equal(1);
+};

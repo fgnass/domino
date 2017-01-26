@@ -1,4 +1,6 @@
 # domino x.x.x (not yet released)
+* Fix unescape mechanism in attribute values. (#95)
+* Disable nonstandard "ignore case" version of attribute matching.
 
 # domino 1.0.27 (17 Oct 2016)
 * Fix bug in AFE list replacement over existing bookmark.

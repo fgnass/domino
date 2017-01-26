@@ -89,7 +89,6 @@ var blacklist = [
   'DOMImplementation-createHTMLDocument',
   'DOMImplementation-hasFeature',
   'Document-URL.sub',
-  'Document-adoptNode',
   'Document-characterSet-normalization',
   'Document-constructor',
   /Document-contentType/,

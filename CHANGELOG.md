@@ -6,6 +6,7 @@
 * Fix `Element#hasAttribute`/`Element#hasAttributeNS` after
   `Element#removeAttribute`/`Element#removeAttributeNS`. (#90, @clint-tseng)
 * Fix deep `Document#importNode`. (#93)
+* Ensure that `Node#parentNode` is `null` (not `undefined`) when removed.
 
 # domino 1.0.27 (17 Oct 2016)
 * Fix bug in AFE list replacement over existing bookmark.

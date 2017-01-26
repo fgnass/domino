@@ -5,6 +5,7 @@
 * Make selected API methods writable to support polyfills. (#89, @pimterry)
 * Fix `Element#hasAttribute`/`Element#hasAttributeNS` after
   `Element#removeAttribute`/`Element#removeAttributeNS`. (#90, @clint-tseng)
+* Fix deep `Document#importNode`. (#93)
 
 # domino 1.0.27 (17 Oct 2016)
 * Fix bug in AFE list replacement over existing bookmark.

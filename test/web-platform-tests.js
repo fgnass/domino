@@ -106,7 +106,6 @@ var blacklist = [
   'Document-getElementsByTagName',
   'Document-getElementsByTagName-xhtml',
   'Document-getElementsByTagNameNS',
-  'Document-importNode',
   'DocumentType-remove',
   'Element-childElement-null-xhtml',
   'Element-childElementCount-dynamic-add-xhtml',

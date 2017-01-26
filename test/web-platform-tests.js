@@ -1,5 +1,6 @@
+/* globals add_completion_callback */
+'use strict';
 var fs = require('fs');
-var assert = require('assert');
 var Path = require('path');
 var domino = require('../lib');
 
@@ -69,7 +70,7 @@ var blacklist = [
   'elements global-attributes the-translate-attribute-010',
   'elements global-attributes the-translate-attribute-011',
   'elements global-attributes the-translate-attribute-012',
-  
+
   // web-platform-tests/dom/nodes
   'CharacterData-appendChild',
   'CharacterData-appendData',

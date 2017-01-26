@@ -1,3 +1,4 @@
+'use strict';
 var domino = require('../');
 var html5lib_tests = require('./html5lib-tests.json');
 
@@ -33,11 +34,11 @@ function cases(filename, tc) {
     r[trimmed] = makeOneTest(fragment, input, expected);
     return r;
   }, {});
-};
+}
 
 function makeOneTest(fragment, input, expected) {
   return function() {
-    var doc;
+    var doc, context;
     if (fragment) {
       doc = domino.createDocument();
       context = (fragment==='body') ? doc.body : doc.createElement(fragment);
@@ -48,7 +49,7 @@ function makeOneTest(fragment, input, expected) {
       doc.outerHTML.should.equal(expected);
     }
   };
-};
+}
 
 exports.parseAlgorithm = Object.keys(html5lib_tests).reduce(function(r, file) {
   r[file] = cases(file, html5lib_tests[file]);

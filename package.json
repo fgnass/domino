@@ -10,7 +10,7 @@
     "url": "https://github.com/fgnass/domino.git"
   },
   "scripts": {
-    "lint": "jshint lib",
+    "lint": "jshint lib test/*.js",
     "mocha": "./node_modules/.bin/mocha",
     "mocha-spec": "./node_modules/.bin/mocha -R spec",
     "test": "npm run lint && npm run mocha",

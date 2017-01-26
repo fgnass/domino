@@ -1,3 +1,4 @@
+'use strict';
 var domino = require('../lib');
 var fs = require('fs');
 var html = fs.readFileSync(__dirname + '/fixture/doc.html', 'utf8');
@@ -27,7 +28,7 @@ exports.querySelectorAll = function() {
   nodeList.should.have.length(2);
   nodeList = d.querySelectorAll('tt:not(.bar)');
   nodeList.should.have.length(1);
-}
+};
 
 exports.qsaOrder = function() {
   var window = domino.createDocument('<h2></h2><h3></h3><h3></h3><h2></h2><h3></h3>');
@@ -35,7 +36,7 @@ exports.qsaOrder = function() {
     return el.tagName;
   })
   .should.eql(['H2', 'H3', 'H3', 'H2', 'H3']);
-}
+};
 
 exports.orphanQSA = function() {
   var document = domino.createDocument('<h1>foo</h1>');
@@ -92,6 +93,7 @@ exports.gh38 = function() {
 
 exports.evilHandler = function() {
   var window = domino.createDocument('<a id="a" onclick="alert(\'breakin&#39;-stuff\')">');
+  window = window; // avoid defined-but-not-used lint error
 };
 
 exports.title = function() {
@@ -133,7 +135,7 @@ exports.children = function() {
   d.body.appendChild(d.createElement('p'));
   a = Array.prototype.slice.call(c);
   a.should.have.length(5);
-}
+};
 
 
 exports.attributes1 = function() {
@@ -149,7 +151,7 @@ exports.attributes1 = function() {
   el.setAttribute('baz', 'baz');
   el.attributes.should.have.length(2);
   el.attributes.item(1).value.should.equal('baz');
-}
+};
 
 exports.classList = function() {
   var d = domino.createDocument();
@@ -169,7 +171,7 @@ exports.classList = function() {
   cl.should.have.length(3);
   el.className.should.not.match(/foo/);
   cl[0].should.not.equal('foo');
-}
+};
 
 exports.attributes2 = function() {
   var d = domino.createDocument();
@@ -179,7 +181,7 @@ exports.attributes2 = function() {
   div.attributes.onclick.should.have.property('value', 't');
   div.removeAttribute('onclick');
   (div.attributes.onclick === undefined).should.be.true();
-}
+};
 
 exports.jquery1_9 = function() {
   var window = domino.createWindow(html);
@@ -195,7 +197,7 @@ exports.jquery2_2 = function() {
   window.$.should.be.ok();
   window.$('.foo').should.have.length(3);
   window.$.ajaxTransport("test", function() {
-	return { send: function() {}, abort: function() {} };
+    return { send: function() {}, abort: function() {} };
   });
   window.$.ajax({ url: 'test://', dataType: "test", timeout: 1, async: true });
 };
@@ -225,7 +227,7 @@ exports.treeWalker = function() {
     root.lastChild.firstChild,
     root.lastChild.lastChild.firstChild
   ]);
-}
+};
 
 exports.nodeIterator = function() {
   var window = domino.createWindow(html);
@@ -240,9 +242,9 @@ exports.nodeIterator = function() {
   ni.whatToShow.should.equal(0x4);
   ni.filter.constructor.should.equal(window.NodeFilter.constructor);
 
-  var actual = [], n;
+  var actual = [];
   for (var n = ni.nextNode(); n ; n = ni.nextNode()) {
-	actual.push(n);
+    actual.push(n);
   }
 
   actual.length.should.equal(4);
@@ -252,12 +254,12 @@ exports.nodeIterator = function() {
     root.lastChild.firstChild,
     root.lastChild.lastChild.firstChild
   ]);
-}
+};
 
 exports.innerHTML = function() {
   var d = domino.createDocument();
   ['pre','textarea','listing'].forEach(function(elementName) {
-    var div = d.createElement('div')
+    var div = d.createElement('div');
     var el = d.createElement(elementName);
     el.innerHTML = "a";
     div.appendChild(el);
@@ -268,7 +270,7 @@ exports.innerHTML = function() {
     // see https://github.com/whatwg/html/issues/944
     div.innerHTML.should.equal('<'+elementName+'>\nb</'+elementName+'>');
   });
-}
+};
 
 exports.outerHTML = function() {
   var tests = [
@@ -283,7 +285,7 @@ exports.outerHTML = function() {
     // Verify round-tripping.
     d.body.outerHTML.should.equal(html);
   });
-}
+};
 
 exports.largeAttribute = function() {
   var size = 400000;
@@ -356,7 +358,7 @@ exports.crHandling = function() {
   var html = '<div\rid=a data-test=1\rfoo="\r"\rbar=\'\r\'\rbat=\r>\r</div\r>';
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  (div != null).should.be.true();
+  (div != null).should.be.true(); // jshint ignore:line
   // all \r should be converted to \n
   div.outerHTML.should.equal('<div id="a" data-test="1" foo="\n" bar="\n" bat="">\n</div>');
 };
@@ -365,7 +367,7 @@ exports.eqAttr = function() {
   var html = "<div id=a ==x><a=B></A=b></div>";
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  (div != null).should.be.true();
+  (div != null).should.be.true(); // jshint ignore:line
   div.attributes.length.should.equal(2);
   div.attributes.item(1).name.should.equal('=');
   div.children.length.should.equal(1);
@@ -386,7 +388,7 @@ exports.fastAttributes = function() {
   var html = "<div id=a b=\"x &quot;y\" c='a \rb'><\np></div>";
   var doc = domino.createDocument(html);
   var div = doc.querySelector('#a');
-  (div != null).should.be.true();
+  (div != null).should.be.true(); // jshint ignore:line
   div.attributes.length.should.equal(3);
   div.attributes.item(1).value.should.equal('x "y');
   div.attributes.item(2).value.should.equal('a \nb');
@@ -397,7 +399,7 @@ exports.anchorElement = function() {
   var html = "<a href='http://user:pass@example.com:1234/foo/bar?bat#baz'>!</a>";
   var doc = domino.createDocument(html);
   var a = doc.querySelector('a');
-  (a != null).should.be.true();
+  (a != null).should.be.true(); // jshint ignore:line
   a.href.should.equal('http://user:pass@example.com:1234/foo/bar?bat#baz');
   a.protocol.should.equal('http:');
   a.host.should.equal('example.com:1234');
@@ -533,6 +535,7 @@ exports.replaceChild = function() {
   var f = doc.createElement('f');
   df.replaceChild(f, e);
   df.serialize().should.equal('<d></d><f></f>');
+  d = d; // avoid defined-but-not-used warning
 
   // Replace rooted node with document fragment
   root.appendChild(a);
@@ -638,7 +641,7 @@ exports.template2 = function() {
 // HTMLTemplateElement.innerHTML
 // see https://github.com/w3c/DOM-Parsing/issues/1
 exports.template3 = function() {
-  var document = domino.createDocument()
+  var document = domino.createDocument();
   var t = document.createElement("template");
   t.should.be.an.instanceof(domino.impl.HTMLTemplateElement);
   t.childNodes.length.should.equal(0);
@@ -823,7 +826,7 @@ exports.menuitem = function() {
   var document = domino.createDocument(doc);
   document.body.innerHTML.should.equal('<menuitem id="a" label=" b "></menuitem><menuitem id="c"> d <b> e </b></menuitem>');
   var itema = document.getElementById('a');
-  (itema != null).should.be.true();
+  (itema != null).should.be.true(); // jshint ignore:line
   itema.should.be.an.instanceof(domino.impl.HTMLMenuItemElement);
   itema.label.should.equal(' b ');
   itema.label = ' x ';
@@ -833,7 +836,7 @@ exports.menuitem = function() {
   itema.outerHTML.should.equal('<menuitem id="a" label=" x "></menuitem>');
 
   var itemb = document.getElementById('c');
-  (itemb != null).should.be.true();
+  (itemb != null).should.be.true(); // jshint ignore:line
   itemb.should.be.an.instanceof(domino.impl.HTMLMenuItemElement);
   itemb.label.should.equal('d e');
   itemb.label = ' y ';
@@ -851,7 +854,7 @@ exports.createSvgElements = function() {
 
   svg.should.be.instanceOf(domino.impl.SVGSVGElement);
   document.body.innerHTML.should.equal("<svg></svg>");
-}
+};
 
 exports.gh95 = function() {
     var document = domino.createDocument(
@@ -867,14 +870,14 @@ exports.propertyWritability = function () { // gh #89
   var window = domino.createWindow('');
   var document = domino.createDocument();
 
-  function assertWritable(object, property) {
+  var assertWritable = function(object, property) {
     var replacement = function () { };
     object[property] = replacement;
     object[property].should.equal(replacement, property + " should be writable");
-  }
+  };
 
   assertWritable(window, 'HTMLElement');
   assertWritable(document, 'importNode');
   assertWritable(document, 'createElement');
   assertWritable(document, 'createElementNS');
-}
+};

@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.28 (27 Jan 2017)
 * Fix unescape mechanism in attribute values. (#95)
 * Disable nonstandard "ignore case" version of attribute matching.
 * Add `dom/nodes` tests from w3c/web-platform-tests. (#92, @pimterry)

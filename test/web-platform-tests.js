@@ -129,8 +129,6 @@ var blacklist = [
   'Element-matches',
   'Element-nextElementSibling-xhtml',
   'Element-previousElementSibling-xhtml',
-  'Element-remove',
-  'Element-removeAttributeNS',
   'Element-siblingElement-null-xhtml',
   'Element-tagName',
   'MutationObserver-attributes',
@@ -155,8 +153,6 @@ var blacklist = [
   'Node-lookupNamespaceURI',
   'Node-nodeName-xhtml',
   'Node-nodeValue',
-  'Node-parentNode-iframe',
-  'Node-parentNode',
   'Node-properties',
   'Node-removeChild',
   'Node-replaceChild',
@@ -261,12 +257,15 @@ var harness = function() {
           }
           return script.textContent + '\n';
         }).join("\n");
+        concatenatedScripts =
+          concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
+                                      '.attributes.item($1)');
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
         concatenatedScripts =
           'var x, doc, ReflectionTests;\n' +
           '"String|Boolean|Number".split("|").forEach(function(x){' +
             'window[x] = global[x];})\n' +
-          'delete window.setup;\n' +
+          'window.setup = function(f) { f(); };\n' +
           concatenatedScripts +
           '\nwindow.dispatchEvent(new Event("load"));';
 

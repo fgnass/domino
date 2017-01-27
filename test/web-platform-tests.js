@@ -11,6 +11,7 @@ var blacklist = [
   'interfaces',
   'reflection-obsolete',
   'documents dom-tree-accessors Document.body',
+  'documents dom-tree-accessors Document.currentScript',
   'documents dom-tree-accessors Document.currentScript.sub',
   'documents dom-tree-accessors document.embeds-document.plugins-01',
   'documents dom-tree-accessors document.forms',

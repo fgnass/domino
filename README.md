@@ -39,7 +39,7 @@ The only exception is the initial creation of a document:
 var domino = require('domino');
 var Element = domino.impl.Element; // etc
 
-var window = domino.createWindow('<h1>Hello world</h1>');
+var window = domino.createWindow('<h1>Hello world</h1>', 'http://example.com');
 var document = window.document;
 
 // alternatively: document = domino.createDocument(htmlString, true)

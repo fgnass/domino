@@ -68,7 +68,9 @@ module.exports = function(path) {
         load: function(docRef, name, href) {
           var doc = Path.resolve(__dirname, '..', path, 'files', href) + '.html';
           var html = fs.readFileSync(doc, 'utf8');
-          return domino.createDocument(html);
+          var url = 'http://example.com/'+Path.join(path,'files',href)+'.html';
+          var win = domino.createWindow(html, url);
+          return win.document;
         }
       };
     };

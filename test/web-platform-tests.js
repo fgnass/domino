@@ -220,7 +220,7 @@ var harness = function() {
   return paths.map(function (path) {
     return list(path, '', function(name, file) {
       var html = read(file);
-      var window = domino.createWindow(html);
+      var window = domino.createWindow(html, 'http://example.com/');
       window._run(testharness);
       var scripts = window.document.getElementsByTagName('script');
       scripts = [].slice.call(scripts);

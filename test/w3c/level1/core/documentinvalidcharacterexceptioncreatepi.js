@@ -101,7 +101,7 @@ function documentinvalidcharacterexceptioncreatepi() {
       
 	if(
 	
-	(builder.contentType == "text/html")
+	(builder.contentType == "text/html" && false /*CSA: allowed in DOM 4*/)
 
 	) {
 	

@@ -9,6 +9,8 @@
 * Ensure that `Node#parentNode` is `null` (not `undefined`) when removed.
 * Add an optional second argument to `domino.createWindow` to specify
   the document's address.
+* Tweak JavaScript properties which are DOM reflections of element
+  attributes in order to more closely match the DOM 4 spec.
 
 # domino 1.0.27 (17 Oct 2016)
 * Fix bug in AFE list replacement over existing bookmark.

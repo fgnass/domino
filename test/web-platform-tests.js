@@ -9,6 +9,7 @@ var domino = require('../lib');
 var blacklist = [
   // web-platform-tests/html/dom
   'interfaces',
+  'reflection-obsolete',
   'documents dom-tree-accessors Document.body',
   'documents dom-tree-accessors Document.currentScript.sub',
   'documents dom-tree-accessors document.embeds-document.plugins-01',
@@ -99,7 +100,6 @@ var blacklist = [
   'Document-createElementNS',
   'Document-createEvent',
   'Document-createProcessingInstruction',
-  'Document-createTextNode',
   'Document-createTreeWalker',
   'Document-getElementById',
   'Document-getElementsByTagName',
@@ -145,7 +145,6 @@ var blacklist = [
   'Node-cloneNode',
   'Node-compareDocumentPosition',
   'Node-constants',
-  'Node-contains',
   'Node-insertBefore',
   'Node-isConnected',
   'Node-isEqualNode',
@@ -219,6 +218,10 @@ var harness = function() {
   var paths = [].slice.call(arguments);
   return paths.map(function (path) {
     return list(path, '', function(name, file) {
+      if (/\/html\/dom\/reflection-original.html$/.test(file)) {
+        // This is a compilation file & not a test suite.
+        return; // skip
+      }
       var html = read(file);
       var window = domino.createWindow(html, 'http://example.com/');
       window._run(testharness);
@@ -251,11 +254,20 @@ var harness = function() {
           if (/^text\/plain$/.test(script.getAttribute('type')||'')) {
             return '';
           }
+          if (/^(\w+|..)/.test(script.getAttribute('src')||'')) {
+            var f = Path.resolve(path, script.getAttribute('src'));
+            if (fs.existsSync(f)) { return read(f); }
+          }
           return script.textContent + '\n';
         }).join("\n");
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
-        concatenatedScripts = 'var x, doc;\n' + concatenatedScripts;
-        concatenatedScripts += '\nwindow.dispatchEvent(new Event("load"));';
+        concatenatedScripts =
+          'var x, doc, ReflectionTests;\n' +
+          '"String|Boolean|Number".split("|").forEach(function(x){' +
+            'window[x] = global[x];})\n' +
+          'delete window.setup;\n' +
+          concatenatedScripts +
+          '\nwindow.dispatchEvent(new Event("load"));';
 
         var go = function() {
           window._run(concatenatedScripts);

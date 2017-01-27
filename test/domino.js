@@ -754,25 +754,25 @@ exports.rubyTags = function() {
 };
 
 exports.sourceTag = function() {
-  var document = domino.createDocument('<video controls><source src="foo.webm" type="video/webm">Sorry, no HTML5 video.');
+  var document = domino.createDocument('<base href=http://example.com><video controls><source src="foo.webm" type="video/webm">Sorry, no HTML5 video.');
   document.body.innerHTML.should.equal('<video controls=""><source src="foo.webm" type="video/webm">Sorry, no HTML5 video.</video>');
   var source = document.querySelector('source');
   source.should.be.instanceof(domino.impl.HTMLElement);
   source.should.be.instanceof(domino.impl.HTMLSourceElement);
   source.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
-  source.src.should.equal("foo.webm");
+  source.src.should.equal("http://example.com/foo.webm");
   source.type.should.equal("video/webm");
 };
 
 exports.trackTag = function() {
-  var document = domino.createDocument('<video poster="foo.jpg"><source src="foo.webm" type="video/webm"><track kind="captions" src="en-captions.vtt" srclang="en">');
+  var document = domino.createDocument('<base href=http://example.com><video poster="foo.jpg"><source src="foo.webm" type="video/webm"><track kind="captions" src="en-captions.vtt" srclang="en">');
   document.body.innerHTML.should.equal('<video poster="foo.jpg"><source src="foo.webm" type="video/webm"><track kind="captions" src="en-captions.vtt" srclang="en"></video>');
   var track = document.querySelector('track');
   track.should.be.instanceof(domino.impl.HTMLElement);
   track.should.be.instanceof(domino.impl.HTMLTrackElement);
   track.should.not.be.instanceof(domino.impl.HTMLUnknownElement);
   track.kind.should.equal("captions");
-  track.src.should.equal("en-captions.vtt");
+  track.src.should.equal("http://example.com/en-captions.vtt");
   track.srclang.should.equal("en");
 };
 

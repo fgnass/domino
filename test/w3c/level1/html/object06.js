@@ -99,6 +99,7 @@ function object06() {
       assertSize("Asize",2,nodeList);
 testNode = nodeList.item(0);
       vdata = testNode.data;
+      vdata = testNode.getAttribute('data'); //CSA hack
 
       assertEquals("dataLink","./pix/logo.gif",vdata);
        

@@ -80,9 +80,6 @@ var blacklist = [
   'CharacterData-insertData',
   'CharacterData-replaceData',
   'CharacterData-substringData',
-  'ChildNode-after',
-  'ChildNode-before',
-  'ChildNode-replaceWith',
   'Comment-constructor',
   'DOMImplementation-createDocument',
   'DOMImplementation-createDocumentType',
@@ -103,7 +100,6 @@ var blacklist = [
   'Document-getElementsByTagName',
   'Document-getElementsByTagName-xhtml',
   'Document-getElementsByTagNameNS',
-  'DocumentType-remove',
   'Element-childElement-null-xhtml',
   'Element-childElementCount-dynamic-add-xhtml',
   'Element-childElementCount-dynamic-remove-xhtml',
@@ -135,13 +131,11 @@ var blacklist = [
   'MutationObserver-document',
   'MutationObserver-inner-outer',
   'MutationObserver-takeRecords',
-  'Node-appendChild',
   'Node-baseURI',
   'Node-childNodes',
   'Node-cloneNode',
   'Node-compareDocumentPosition',
   'Node-constants',
-  'Node-insertBefore',
   'Node-isConnected',
   'Node-isEqualNode',
   'Node-isEqualNode-xhtml',
@@ -150,8 +144,6 @@ var blacklist = [
   'Node-nodeName-xhtml',
   'Node-nodeValue',
   'Node-properties',
-  'Node-removeChild',
-  'Node-replaceChild',
   'Node-textContent',
   'NodeList-Iterable',
   'ParentNode-append',
@@ -259,8 +251,12 @@ var harness = function() {
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
         concatenatedScripts =
           'var x, doc, ReflectionTests;\n' +
+          // Hack in globals on window object
           '"String|Boolean|Number".split("|").forEach(function(x){' +
             'window[x] = global[x];})\n' +
+          // Hack in frames on window object
+          'Array.prototype.forEach.call(document.getElementsByTagName("iframe"),' +
+            'function(f,i){window[i]=f.contentWindow;});\n' +
           'window.setup = function(f) { f(); };\n' +
           concatenatedScripts +
           '\nwindow.dispatchEvent(new Event("load"));';

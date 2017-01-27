@@ -143,5 +143,6 @@ function hc_nodeinsertbeforenewchilddiffdocument() {
 
 
 function runTest() {
+   return; // CSA: disabled; latest DOM spec adopts rather than throws.
    hc_nodeinsertbeforenewchilddiffdocument();
 }

@@ -140,5 +140,6 @@ function hc_nodeappendchildnewchilddiffdocument() {
 
 
 function runTest() {
+   return; // CSA: disabled; latest DOM spec adopts rather than throws.
    hc_nodeappendchildnewchilddiffdocument();
 }

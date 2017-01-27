@@ -11,6 +11,8 @@
   the document's address.
 * Tweak JavaScript properties which are DOM reflections of element
   attributes in order to more closely match the DOM 4 spec.
+* Implement `ChildNode#before()`, `ChildNode#after()`, and
+  `ChildNode#replaceWith()`.
 
 # domino 1.0.27 (17 Oct 2016)
 * Fix bug in AFE list replacement over existing bookmark.

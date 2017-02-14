@@ -240,17 +240,23 @@ var harness = function() {
             return '';
           }
           if (/^(\w+|..)/.test(script.getAttribute('src')||'')) {
-            var f = Path.resolve(path, script.getAttribute('src'));
-            if (fs.existsSync(f)) { return read(f); }
+            // this is fix for loading helpers to specs
+            var f = Path.resolve(Path.dirname(file), script.getAttribute('src'));
+            if (fs.existsSync(f)) {
+              return read(f);
+            }
           }
           return script.textContent + '\n';
         }).join("\n");
         concatenatedScripts =
           concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
                                       '.attributes.item($1)');
+
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
         concatenatedScripts =
           'var x, doc, ReflectionTests;\n' +
+          // Hack for frames on window object
+          'Object.defineProperty(window, "iframe", { get: function() {return document.querySelector("#iframe")}});\n' +
           // Hack in globals on window object
           '"String|Boolean|Number".split("|").forEach(function(x){' +
             'window[x] = global[x];})\n' +
@@ -277,5 +283,8 @@ var harness = function() {
   });
 };
 
-module.exports = harness(__dirname + '/web-platform-tests/html/dom',
-                         __dirname + '/web-platform-tests/dom/nodes');
+module.exports = harness(
+    __dirname + '/web-platform-tests/custom-elements',
+    __dirname + '/web-platform-tests/html/dom',
+    __dirname + '/web-platform-tests/dom/nodes'
+);

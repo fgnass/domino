@@ -1,5 +1,5 @@
 {
-        "predef": [ "describe", "specify", "it" ],
+        "predef": [ "describe", "specify", "it" , "Promise", "Symbol"],
         "node": true,
         "bitwise": true,
         "eqeqeq": true,
@@ -14,5 +14,6 @@
         "proto": true,
         "strict": true,
         "undef": true,
-        "unused": "vars"
+        "unused": "vars",
+        "esversion": 6
 }

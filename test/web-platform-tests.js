@@ -215,6 +215,8 @@ var harness = function() {
           path),
         name
       );
+      // normalize path
+      suite = suite.replace(/\\/g, '/');
 
       var html = read(file);
       var window = domino.createWindow(html, 'http://example.com/');
@@ -259,7 +261,7 @@ var harness = function() {
               message += failed.map(function(i) {return i.name+": "+i.message;}).join("\n");
               // it is good to show where error occurs
               // and this format support ide (like webstorm or idea or code), for link the error with real file
-              message += "\n\tat (test\\web-platform-tests\\" + suite + ":0)";
+              message += "\n\tat (test/web-platform-tests/" + suite + ":0)";
               throw new Error(message);
             }
           });
@@ -325,7 +327,7 @@ var harness = function() {
 };
 
 module.exports = harness(
-  __dirname + '/web-platform-tests/custom-elements',
-  __dirname + '/web-platform-tests/html/dom',
-  __dirname + '/web-platform-tests/dom/nodes'
+  __dirname + '/web-platform-tests/custom-elements'
+  // __dirname + '/web-platform-tests/html/dom',
+  // __dirname + '/web-platform-tests/dom/nodes'
 );

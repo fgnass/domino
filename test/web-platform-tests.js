@@ -244,7 +244,7 @@ var harness = function() {
                 if (typeof testsBlacklist === 'string' || testsBlacklist[name]) {
                   return true;
                 } else {
-                  return Object.keys(testsBlacklist).find(function (key) {return name.indexOf(key) > -1})
+                  return Object.keys(testsBlacklist).find(function (key) {return name.indexOf(key) > -1;});
                 }
             }
 
@@ -256,7 +256,7 @@ var harness = function() {
             if (failed.length) {
               var message = "";
               // beacause of multiple tests in one suite we will show all messages
-              message += failed.map(function(i) {return i.name+": "+i.message}).join("\n");
+              message += failed.map(function(i) {return i.name+": "+i.message;}).join("\n");
               // it is good to show where error occurs
               // and this format support ide (like webstorm or idea or code), for link the error with real file
               message += "\n\tat (test\\web-platform-tests\\" + suite + ":0)";

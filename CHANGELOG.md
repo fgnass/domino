@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 1.0.29 ( 7 Aug 2017)
 * Fix "#id" optimization in querySelectorAll() when 0 or 2 matches for
   `id`. (#99)
 * Correct return value of CSSStyleDeclaration#getPropertyValue() when

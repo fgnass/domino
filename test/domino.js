@@ -918,6 +918,13 @@ exports.gh90 = function() {
   input.hasAttributeNS('foo', 'checked').should.equal(false);
 };
 
+exports.gh98 = function() {
+  var doc = '<a href="/"></a>';
+  var document = domino.createDocument(doc);
+  var a = document.querySelector('a');
+  (a.style.getPropertyValue('background') === '').should.be.true();
+};
+
 exports.gh99 = function() {
   // test '#foo' optimization in querySelectorAll
   var window = domino.createWindow(

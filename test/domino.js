@@ -917,3 +917,27 @@ exports.gh90 = function() {
   input.hasAttributeNS(null, 'checked').should.equal(false);
   input.hasAttributeNS('foo', 'checked').should.equal(false);
 };
+
+exports.gh99 = function() {
+  // test '#foo' optimization in querySelectorAll
+  var window = domino.createWindow(
+    '<!DOCTYPE html><html><body></body></html>'
+  );
+  var doc = window.document;
+  var match = doc.querySelectorAll('#coordinates');
+  match.length.should.equal(0);
+  if (Array.from) {
+    Array.from(match).length.should.equal(0);
+  }
+  (match[0] === undefined).should.be.true();
+
+  // continue test, now w/ multiple elements sharing same id.
+  doc.body.innerHTML = '<p id=a>x</p><p id=a>y</p>';
+  match = doc.querySelectorAll('#a');
+  match.length.should.equal(2);
+  if (Array.from) {
+    Array.from(match).length.should.equal(2);
+  }
+  match[0].textContent.should.equal('x');
+  match[1].textContent.should.equal('y');
+};

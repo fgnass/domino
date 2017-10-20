@@ -26,6 +26,17 @@ further discussion.
 
 Domino provides support for `querySelector()`, `querySelectorAll()`, and `matches()` backed by the [Zest](https://github.com/chjj/zest) selector engine.
 
+## Optimization
+
+Domino represents the DOM tree structure in the same way Webkit and
+other browser-based implementations do: as a linked list of children
+which is converted to an array-based representation iff the
+`Node#childNodes` accessor is used.  You will get the best performance
+from tree modification code (inserting and removing children) if you
+avoid the use of `Node#childNodes` and traverse the tree using
+`Node#firstChild`/`Node#nextSibling` (or
+`Node#lastChild`/`Node#previousSibling`) or `querySelector()`/etc.
+
 ## Usage
 
 Domino supports the DOM level 4 API, and thus API documentation can be

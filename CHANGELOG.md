@@ -3,6 +3,15 @@
 * `mocha` dependency has been updated to 4.0.x.  As a result, we are
   no longer testing on node pre-v4.0.0; see:
     https://boneskull.com/mocha-v4-nears-release/
+* Domino now uses a linked list representation for children of Node,
+  unless/until the Node#childNodes accessor is used (which requires
+  an indexed array to be built).  Inserting a removing nodes can be
+  much quicker using the linked list representation if care is
+  taken not to deoptimize the tree by using the #childNodes accessor.
+  This implementation strategy matches the one used by webkit and
+  other browser-based implementations, and thus ought to match
+  performance expectations of folks used to writing browser-based
+  DOM manipulation code.
 
 # domino 1.0.30 (24 Oct 2017)
 * Fix regexp capitalization in URLUtils (#101)

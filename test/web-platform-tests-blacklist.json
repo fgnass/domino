@@ -1,0 +1,52 @@
+{
+  "custom-elements/parser/parser-uses-registry-of-owner-documen.html" : "Not implemented",
+  "custom-elements/parser/parser-constructs-custom-element-in-document-write.html": "Not implemented",
+  "custom-elements/parser/parser-constructs-custom-element-synchronously.html": "Not implemented",
+  "custom-elements/parser/parser-constructs-custom-elements.html": "Not implemented",
+  "custom-elements/parser/parser-sets-attributes-and-children.html" : {
+    "HTML parser must set the attributes or append children before calling constructor": "Not yest implemented"
+  },
+  "custom-elements/parser/parser-uses-constructed-element.html" : "Not implemented",
+  "custom-elements/reactions/Attr.html" : "Strange. (element.attributes)[name] works fine but element.attributes[name] not",
+  "custom-elements/reactions/CSSStyleDeclaration.html" :
+    "1. Bug in domino. The css serialize is returning style without semicolon. 2. No support of prefixed properties",
+  "custom-elements/reactions/DOMStringMap.html" :
+    "Dataset is not implemented in domino",
+  "custom-elements/reactions/DOMTokenList.html" : {
+    "add on DOMTokenList must enqueue exactly one attributeChanged reaction when adding multiple values to an attribute" :
+      "domino DOMTokenList.add not support multiple values",
+    "remove on DOMTokenList must enqueue exactly one attributeChanged reaction when removing multiple values to an attribute":
+      "domino DOMTokenList.remove not support multiple values",
+    "remove on DOMTokenList must enqueue an attributeChanged reaction even when removing a non-existent value from an attribute":
+      "Not implemented (strange requirement)",
+    "replace on DOMTokenList":
+      "domino DOMTokenList.replace is not implemented",
+    "the stringifier of DOMTokenList" :
+      "domino DOMTokenList stringifier is not implemented"
+  },
+  "custom-elements/reactions/Element.html" : {
+    "setAttributeNode": "setAttributeNode not implemented in domino",
+    "setAttributeNodeNS": "setAttributeNodeNS not implemented in domino",
+    "removeAttributeNode": "removeAttributeNode not implemented in domino",
+    "insertAdjacentElement": "insertAdjacentElement not implemented in domino",
+    "outerHTML": "outerHTML not implemented in domino",
+    "insertAdjacentHTML": "insertAdjacentHTML not implemented in domino"
+  },
+  "custom-elements/reactions/HTMLElement.html" : {
+    "innerText": "innerText is not implemented in domino"
+  },
+  "custom-elements/reactions/NamedNodeMap.html" : "NamedNodeMap is  supported on domino",
+  "custom-elements/reactions/Node.html" : {
+    "nodeValue": "getAttributeNode is implemented in domino",
+    "textContent": "getAttributeNode is implemented in domino",
+    "cloneNode": "Not implemented"
+  },
+  "custom-elements/reactions/Range.html" : "Range is implemented in domino",
+  "custom-elements/reactions/Selection.html" : "Selection is implemented in domino",
+  "custom-elements/reactions/ParentNode.html" : "prepend and append is implemented in domino",
+  "custom-elements/HTMLElement-constructor.html": "Not implemented yet",
+  "custom-elements/attribute-changed-callback.html": {
+    "setAttributeNode": "setAttributeNode and removeAttributeNode not implemented in domino"
+  },
+  "custom-elements/upgrading/upgrading-parser-created-element.html": "Not implemented yet"
+}

@@ -3,6 +3,7 @@
 var fs = require('fs');
 var Path = require('path');
 var domino = require('../lib');
+var testsBlacklist = require('./web-platform-tests-blacklist');
 
 // These are the tests we currently fail.
 // Some of these failures are bugs we ought to fix.
@@ -207,6 +208,16 @@ var harness = function() {
         // This is a compilation file & not a test suite.
         return; // skip
       }
+
+      var suite = Path.join(
+        Path.relative(
+          Path.join(__dirname, "web-platform-tests"),
+          path),
+        name
+      );
+      // normalize path
+      suite = suite.replace(/\\/g, '/');
+
       var html = read(file);
       var window = domino.createWindow(html, 'http://example.com/');
       window._run(testharness);
@@ -225,14 +236,45 @@ var harness = function() {
           });
         } : function listenForFailures() {
           add_completion_callback(function(tests, status) {
+
+            // because web-platform-tests files (suite) contains more then one test
+            // much better is blacklist test by test with providing reason of blacklisting the test
+            // on full blacklisted suite there is still to suppress errors on full suite
+            // please look at web-platform-tests-blacklist.json
+            // the structure is {<spec file:string>: {<test name (prefix):string> : <reason:string>} | <reason:string>}
+            function isBlacklisted(name) {
+                if (typeof testsBlacklist === 'string' || testsBlacklist[name]) {
+                  return true;
+                } else {
+                  return Object.keys(testsBlacklist).find(function (key) {return name.indexOf(key) > -1;});
+                }
+            }
+
             var failed = tests.filter(function(t) {
-              return t.status === t.FAIL || t.status === t.TIMEOUT;
+              if (t.status === t.FAIL || t.status === t.TIMEOUT) {
+                return !isBlacklisted(t.name);
+              }
             });
             if (failed.length) {
-              throw new Error(failed[0].name+": "+failed[0].message);
+              var message = "";
+              // beacause of multiple tests in one suite we will show all messages
+              message += failed.map(function(i) {return i.name+": "+i.message;}).join("\n");
+              // it is good to show where error occurs
+              // and this format support ide (like webstorm or idea or code), for link the error with real file
+              message += "\n\tat (test/web-platform-tests/" + suite + ":0)";
+              throw new Error(message);
             }
           });
         };
+
+        // for error message we expose the name of current spec
+        window._run("window.suite = " + JSON.stringify(suite) +";\n");
+        // and blaclisted tests for current suite
+        if (JSON.stringify(testsBlacklist[suite])) {
+          window._run("window.testsBlacklist = " + JSON.stringify(testsBlacklist[suite]) +";\n");
+        } else {
+          window._run("window.testsBlacklist = {};\n");
+        }
         window._run("(" + listen.toString() + ")();");
 
         var concatenatedScripts = scripts.map(function(script) {
@@ -240,24 +282,31 @@ var harness = function() {
             return '';
           }
           if (/^(\w+|..)/.test(script.getAttribute('src')||'')) {
-            var f = Path.resolve(path, script.getAttribute('src'));
-            if (fs.existsSync(f)) { return read(f); }
+            // this is fix for loading helpers to specs
+            var f = Path.resolve(Path.dirname(file), script.getAttribute('src'));
+            if (fs.existsSync(f)) {
+              return read(f);
+            }
           }
           return script.textContent + '\n';
         }).join("\n");
         concatenatedScripts =
           concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
                                       '.attributes.item($1)');
+
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
         concatenatedScripts =
           'var x, doc, ReflectionTests;\n' +
+          // Hack for frames on window object
+          'Object.defineProperty(window, "iframe", { get: function() {return document.querySelector("#iframe")}});\n' +
           // Hack in globals on window object
           '"String|Boolean|Number".split("|").forEach(function(x){' +
             'window[x] = global[x];})\n' +
           // Hack in frames on window object
           'Array.prototype.forEach.call(document.getElementsByTagName("iframe"),' +
             'function(f,i){window[i]=f.contentWindow;});\n' +
-          'window.setup = function(f) { f(); };\n' +
+          // this cause some errors, f is not always a function
+          // 'window.setup = function(f) { f(); };\n' +
           concatenatedScripts +
           '\nwindow.dispatchEvent(new Event("load"));';
 
@@ -277,5 +326,8 @@ var harness = function() {
   });
 };
 
-module.exports = harness(__dirname + '/web-platform-tests/html/dom',
-                         __dirname + '/web-platform-tests/dom/nodes');
+module.exports = harness(
+  __dirname + '/web-platform-tests/dom/nodes',
+  __dirname + '/web-platform-tests/html/dom',
+  __dirname + '/web-platform-tests/custom-elements'
+);

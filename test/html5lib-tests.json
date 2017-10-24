@@ -36879,7 +36879,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head></head><body><svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg></body></html>",
-        "noQuirksBodyHtml": "<svg contentScriptType=\"\" contentStyleType=\"\" externalResourcesRequired=\"\" filterres=\"\"></svg>"
+        "noQuirksBodyHtml": "<svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg>"
       }
     },
     {
@@ -36936,7 +36936,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head></head><body><svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg></body></html>",
-        "noQuirksBodyHtml": "<svg contentScriptType=\"\" contentStyleType=\"\" externalResourcesRequired=\"\" filterres=\"\"></svg>"
+        "noQuirksBodyHtml": "<svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg>"
       }
     },
     {
@@ -36993,7 +36993,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head></head><body><svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg></body></html>",
-        "noQuirksBodyHtml": "<svg contentScriptType=\"\" contentStyleType=\"\" externalResourcesRequired=\"\" filterres=\"\"></svg>"
+        "noQuirksBodyHtml": "<svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg>"
       }
     },
     {

@@ -1,3 +1,5 @@
+# domino x.x.x (not yet released)
+
 # domino 1.0.30 (24 Oct 2017)
 * Fix regexp capitalization in URLUtils (#101)
 * Fix O(N^2) slowdown in initial tree traversal using nextSibling/prevSibling

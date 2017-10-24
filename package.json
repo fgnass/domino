@@ -15,7 +15,9 @@
     "mocha-spec": "./node_modules/.bin/mocha -R spec",
     "test": "npm run lint && npm run mocha",
     "test-spec": "npm run lint && npm run mocha-spec",
-    "regen-html5lib-tests": "node test/tools/update-html5lib-tests.js test/html5lib-tests.json"
+    "regen-html5lib-tests": "node test/tools/update-html5lib-tests.js test/html5lib-tests.json",
+    "bump-version": "npm version patch -m 'Release domino %s.' && tools/bump-version.js && npm run version && git add package.json && git commit -m 'Bump version after release.'",
+    "version": "tools/update-changelog.js && git add CHANGELOG.md"
   },
   "devDependencies": {
     "jshint": "^2.9.1",

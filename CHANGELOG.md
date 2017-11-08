@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Fix potential O(N^2) slowdown in FilteredElementList#item.
 
 # domino 1.0.30 (24 Oct 2017)
 * Fix regexp capitalization in URLUtils (#101)

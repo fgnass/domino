@@ -3,5 +3,4 @@
 --require should
 --slow 20
 --timeout 15000
---growl
 --check-leaks

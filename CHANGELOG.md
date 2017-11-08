@@ -1,10 +1,13 @@
 # domino x.x.x (not yet released)
 * Fix potential O(N^2) slowdown in FilteredElementList#item.
+* `mocha` dependency has been updated to 4.0.x.  As a result, we are
+  no longer testing on node pre-v4.0.0; see:
+    https://boneskull.com/mocha-v4-nears-release/
 
 # domino 1.0.30 (24 Oct 2017)
 * Fix regexp capitalization in URLUtils (#101)
 * Fix O(N^2) slowdown in initial tree traversal using nextSibling/prevSibling
-* Update `mocha` dependency to 4.0.x and `should` to 13.1.x.
+* Update `mocha` dependency to 3.5.x and `should` to 13.1.x.
 
 # domino 1.0.29 ( 7 Aug 2017)
 * Fix "#id" optimization in querySelectorAll() when 0 or 2 matches for

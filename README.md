@@ -87,7 +87,15 @@ The tests can be run via `npm test` or directly though the [Mocha](http://vision
 
 ## License and Credits
 
-The majority of the code was written by [Andreas Gal](https://github.com/andreasgal/) and [David Flanagan](https://github.com/davidflanagan) as part of the [dom.js](https://github.com/andreasgal/dom.js) project. Please refer to the included LICENSE file for the original copyright notice and disclaimer.
+The majority of the code was originally written by [Andreas Gal](https://github.com/andreasgal/) and [David Flanagan](https://github.com/davidflanagan) as part of the [dom.js](https://github.com/andreasgal/dom.js) project. Please refer to the included LICENSE file for the original copyright notice and disclaimer.
+
+[Felix Gnass](https://github.com/fgnass/) extracted the code and turned
+it into a stand-alone npm package.
+
+The code has been maintained since 2013 by [C. Scott Ananian](https://github.com/cscott/) on behalf of the Wikimedia Foundation, which uses it in its
+[Parsoid](https://www.mediawiki.org/wiki/Parsoid) project.  A large number
+of improvements have been made, mostly focusing on correctness,
+performance, and (to a lesser extent) completeness of the implementation.
 
 [1]: https://travis-ci.org/fgnass/domino.png
 [2]: https://travis-ci.org/fgnass/domino

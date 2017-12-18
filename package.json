@@ -20,6 +20,7 @@
     "bump-version": "npm version patch -m 'Release domino %s.' && tools/bump-version.js && npm run version && git add package.json && git commit -m 'Bump version after release.'",
     "version": "tools/update-changelog.js && git add CHANGELOG.md"
   },
+  "types": "lib/index.d.ts",
   "devDependencies": {
     "jshint": "^2.9.1",
     "mocha": "^4.0.1",

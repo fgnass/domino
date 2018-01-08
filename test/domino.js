@@ -965,3 +965,16 @@ exports.gh112 = function() {
   b.namespaceURI.should.equal('http://www.w3.org/1999/xhtml');
   test.namespaceURI.should.equal('http://www.w3.org/1999/xhtml');
 };
+
+exports.gh109 = function() {
+  var document = domino.createDocument();
+  var div = document.createElement('div');
+  div.classList.add('one', 'two');
+  div.classList.length.should.equal(2);
+  div.classList.contains('one').should.be.true();
+  div.classList.contains('two').should.be.true();
+  div.classList.remove('one', 'two');
+  div.classList.length.should.equal(0);
+  div.classList.contains('one').should.be.false();
+  div.classList.contains('two').should.be.false();
+};

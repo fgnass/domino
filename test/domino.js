@@ -948,3 +948,20 @@ exports.gh99 = function() {
   match[0].textContent.should.equal('x');
   match[1].textContent.should.equal('y');
 };
+
+exports.gh112 = function() {
+  // attributes named 'xmlns' are fine. (gh #112)
+  var window = domino.createWindow(
+    '<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><b></b></html>'
+  );
+  var document = window.document;
+  document.documentElement.setAttribute('xmlns', 'test');
+  var b = document.querySelector('b');
+  b.innerHTML = '<test></test>';
+  var test = document.querySelector('test');
+  // Note that this seems contrary to what is implied by
+  // https://lists.w3.org/Archives/Public/www-dom/2011JulSep/0153.html
+  // but matches what modern browsers do.
+  b.namespaceURI.should.equal('http://www.w3.org/1999/xhtml');
+  test.namespaceURI.should.equal('http://www.w3.org/1999/xhtml');
+};

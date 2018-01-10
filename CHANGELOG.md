@@ -1,6 +1,6 @@
 # domino x.x.x (not yet released)
 
-# domino x.x.x (not yet released)
+# domino 2.0.0 ( 8 Nov 2017)
 * Fix potential O(N^2) slowdown in FilteredElementList#item.
 * `mocha` dependency has been updated to 4.0.x.  As a result, we are
   no longer testing on node pre-v4.0.0; see:

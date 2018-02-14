@@ -1,6 +1,7 @@
 # domino x.x.x (not yet released)
 * Allow attributes named 'xmlns' (#112)
 * Make DOMTokenList add/remove variadic (#109)
+* Make `Array.from` and for-of loops work on `Node#attributes`.
 
 # domino 2.0.0 ( 8 Nov 2017)
 * Fix potential O(N^2) slowdown in FilteredElementList#item.

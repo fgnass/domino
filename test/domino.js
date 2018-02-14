@@ -978,3 +978,19 @@ exports.gh109 = function() {
   div.classList.contains('one').should.be.false();
   div.classList.contains('two').should.be.false();
 };
+
+exports.arrayfrom = function() {
+    // If your version of node supports Array.from, it should support
+    // Array.from(node.attributes) ... even though we don't use proxies.
+    if (typeof(Array.from) !== 'function') { return; }
+    var d = domino.createDocument('');
+    var e = d.createElement('span');
+    e.setAttribute('a','1');
+    e.setAttribute('b','2');
+    var a = Array.from(e.attributes);
+    a.should.have.length(2);
+    a[0].should.have.property('name','a');
+    a[0].should.have.property('value','1');
+    a[1].should.have.property('name','b');
+    a[1].should.have.property('value','2');
+};

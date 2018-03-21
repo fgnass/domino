@@ -994,3 +994,25 @@ exports.arrayfrom = function() {
     a[1].should.have.property('name','b');
     a[1].should.have.property('value','2');
 };
+
+exports.gh119 = function() {
+  var document = domino.createDocument('<div></div>');
+  var div = document.querySelector('div');
+  div.style.flex = '1 1 0px';
+  div.outerHTML.should.equal('<div style="flex: 1 1 0px;"></div>');
+
+  document = domino.createDocument('<div></div>');
+  div = document.querySelector('div');
+  div.style.flexFlow = 'row wrap';
+  div.outerHTML.should.equal('<div style="flex-flow: row wrap;"></div>');
+
+  document = domino.createDocument('<div></div>');
+  div = document.querySelector('div');
+  div.style.flexBasis = '0px';
+  div.style.flexGrow = 1;
+  div.style.flexShrink = 1;
+  div.style.flexDirection = 'column';
+  div.style.flexWrap = 'wrap';
+  
+  div.outerHTML.should.equal('<div style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; flex-direction: column; flex-wrap: wrap;"></div>');
+};

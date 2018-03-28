@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 2.0.2 (28 Mar 2018)
 * Add TypeScript definitions (#103)
 * Add `flex` CSS styles (#119, #120)
 * Fix Element#matches with ~= selectors (#121)

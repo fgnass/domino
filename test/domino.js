@@ -1013,6 +1013,17 @@ exports.gh119 = function() {
   div.style.flexShrink = 1;
   div.style.flexDirection = 'column';
   div.style.flexWrap = 'wrap';
-  
+
   div.outerHTML.should.equal('<div style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; flex-direction: column; flex-wrap: wrap;"></div>');
+};
+
+exports.gh121 = function() {
+  var document = domino.createDocument('<div></div>');
+  var div = document.querySelector('div');
+  div.className = 'ab a';
+  div.matches('.a').should.be.true();
+  div.matches('[class~=a]').should.be.true();
+  div.className = 'a ab';
+  div.matches('.a').should.be.true();
+  div.matches('[class~=a]').should.be.true();
 };

@@ -81,7 +81,7 @@ var domino = require('domino');
 Domino includes test from the [W3C DOM Conformance Suites](http://www.w3.org/DOM/Test/)
 as well as tests from [HTML Working Group](http://www.w3.org/html/wg/wiki/Testing).
 
-The tests can be run via `npm test` or directly though the [Mocha](http://visionmedia.github.com/mocha/) command line:
+The tests can be run via `npm test` or directly though the [Mocha](http://mochajs.org/) command line:
 
 ![Screenshot](http://fgnass.github.com/images/domino.png)
 

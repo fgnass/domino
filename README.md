@@ -97,9 +97,9 @@ The code has been maintained since 2013 by [C. Scott Ananian](https://github.com
 of improvements have been made, mostly focusing on correctness,
 performance, and (to a lesser extent) completeness of the implementation.
 
-[1]: https://travis-ci.org/fgnass/domino.png
+[1]: https://travis-ci.org/fgnass/domino.svg
 [2]: https://travis-ci.org/fgnass/domino
-[3]: https://david-dm.org/fgnass/domino.png
+[3]: https://david-dm.org/fgnass/domino.svg
 [4]: https://david-dm.org/fgnass/domino
-[5]: https://david-dm.org/fgnass/domino/dev-status.png
+[5]: https://david-dm.org/fgnass/domino/dev-status.svg
 [6]: https://david-dm.org/fgnass/domino#info=devDependencies

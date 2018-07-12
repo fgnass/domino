@@ -979,6 +979,40 @@ exports.gh109 = function() {
   div.classList.contains('two').should.be.false();
 };
 
+exports.gh111 = function() {
+  var document = domino.createDocument();
+  var div = document.createElement('div');
+  div.classList.toggle('a');
+  div.classList.toggle('b', true);
+  div.classList.length.should.equal(2);
+  div.classList.value.should.equal('a b');
+  div.classList.toggle('a');
+  div.classList.toggle('b', true);
+  div.classList.length.should.equal(1);
+  div.classList.value.should.equal('b');
+  div.classList.toggle('b', false);
+  div.classList.length.should.equal(0);
+  div.classList.value.should.equal('');
+
+  div.classList.value = ' foo\rbat \n baz a\nb\f\t';
+  div.classList.value.should.equal(' foo\rbat \n baz a\nb\f\t');
+  div.classList.length.should.equal(5);
+  div.classList.contains('').should.be.false();
+  div.classList.contains(' ').should.be.false();
+  div.classList.contains('\n').should.be.false();
+  div.classList.contains('\f').should.be.false();
+  div.classList[0].should.equal('foo');
+  div.classList[1].should.equal('bat');
+  div.classList.item(2).should.equal('baz');
+  div.classList.contains('a').should.be.true();
+  div.classList.contains('b').should.be.true();
+  div.classList.replace('bat', 'ball');
+  div.classList.value.should.equal('foo ball baz a b');
+  div.classList.length.should.equal(5);
+  div.classList.contains('ball').should.be.true();
+  div.classList[1].should.equal('ball');
+};
+
 exports.gh126 = function() {
   var document = domino.createDocument();
   var div = document.createElement('div');

@@ -4,6 +4,8 @@
 * Fix `HTMLAnchorElement#hash` when `href` attribute contains bare
   fragment (#127)
 * Implement case-insensitive CSS attribute matching (#128)
+* Implement DOMTokenList#replace()`, `DOMTokenList#toggle(token, force)`,
+  and `DOMTokenList#value`. Fix handling of non-space whitespace. (#111)
 
 # domino 2.0.2 (28 Mar 2018)
 * Add TypeScript definitions (#103)

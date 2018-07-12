@@ -1050,3 +1050,12 @@ exports.gh121 = function() {
   div.matches('.a').should.be.true();
   div.matches('[class~=a]').should.be.true();
 };
+
+exports.gh127 = function() {
+  var document = domino.createDocument('<a href="#foo"></a><a href="http://#foo"></a>');
+  var aEls = document.querySelectorAll('a');
+  aEls.length.should.equal(2);
+  for (var i=0; i < aEls.length; i++) {
+    aEls[i].hash.should.equal('#foo');
+  }
+};

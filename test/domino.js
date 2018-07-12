@@ -979,6 +979,29 @@ exports.gh109 = function() {
   div.classList.contains('two').should.be.false();
 };
 
+exports.gh126 = function() {
+  var document = domino.createDocument();
+  var div = document.createElement('div');
+  div.classList.length.should.equal(0);
+  div.classList.add();
+  div.classList.length.should.equal(0);
+  div.classList.add(undefined);
+  div.classList.add(null);
+  div.classList.length.should.equal(2);
+  div.classList.remove();
+  div.classList.length.should.equal(2);
+  div.classList.contains(undefined).should.be.true();
+  div.classList.contains('undefined').should.be.true();
+  div.classList.contains(null).should.be.true();
+  div.classList.contains('null').should.be.true();
+  div.classList.remove(undefined, null);
+  div.classList.length.should.equal(0);
+  div.classList.contains(undefined).should.be.false();
+  div.classList.contains('undefined').should.be.false();
+  div.classList.contains(null).should.be.false();
+  div.classList.contains('null').should.be.false();
+};
+
 exports.arrayfrom = function() {
     // If your version of node supports Array.from, it should support
     // Array.from(node.attributes) ... even though we don't use proxies.

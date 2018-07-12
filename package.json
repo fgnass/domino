@@ -22,8 +22,8 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "jshint": "^2.9.1",
-    "mocha": "^4.0.1",
-    "should": "^13.1.2"
+    "jshint": "^2.9.5",
+    "mocha": "^4.1.0",
+    "should": "^13.2.1"
   }
 }

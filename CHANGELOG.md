@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)
 
 # domino 2.0.2 (28 Mar 2018)
 * Add TypeScript definitions (#103)

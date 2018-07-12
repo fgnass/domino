@@ -1059,3 +1059,30 @@ exports.gh127 = function() {
     aEls[i].hash.should.equal('#foo');
   }
 };
+
+exports.gh128 = function() {
+  var document = domino.createDocument('<a target="xInSeNsItIvEx"></a><a target="xYx"></a>');
+  var expected = document.querySelectorAll('a')[0];
+
+  [
+    { sel: '[target*="insensitive" i]' },
+    { sel: "[target='XinsensitiveX'i]" },
+    { sel: '[target=XINSENSITIVEX i]' },
+    { sel: '[target=XINSENSITIVEXi]', expectFail: true },
+    { sel: '[target^=XI i]' },
+    { sel: '[target^=XIi]', expectFail: true },
+    { sel: '[target^=XI]', expectFail: true },
+    { sel: '[target$=EX i]' },
+    { sel: '[target$="ex"i]' },
+    { sel: '[target~="xinsensitivex"i]' },
+    { sel: '[target|="xinsensitivex"  i]' },
+  ].forEach(function(oneCase) {
+    var a = document.querySelectorAll('*'+oneCase.sel);
+    if (oneCase.expectFail) {
+      a.length.should.equal(0);
+    } else {
+      a.length.should.equal(1);
+      a[0].should.be.exactly(expected);
+    }
+  });
+};

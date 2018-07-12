@@ -3,6 +3,7 @@
 * Stringify argument tokens for DOMTokenList methods (#126)
 * Fix `HTMLAnchorElement#hash` when `href` attribute contains bare
   fragment (#127)
+* Implement case-insensitive CSS attribute matching (#128)
 
 # domino 2.0.2 (28 Mar 2018)
 * Add TypeScript definitions (#103)

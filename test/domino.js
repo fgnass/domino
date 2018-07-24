@@ -1120,3 +1120,13 @@ exports.gh128 = function() {
     }
   });
 };
+
+exports.gh129 = function() {
+  var window = domino.createWindow();
+  var document = window.document;
+  var div = document.body.appendChild(document.createElement('div'));
+  div.innerHTML = '<p></p><span></span>';
+  var span = div.firstChild.nextSibling;
+  div.textContent = '';
+  (span.parentNode === null).should.equal(true);
+};

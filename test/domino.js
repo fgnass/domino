@@ -1135,3 +1135,46 @@ exports.gh129 = function() {
   div.textContent = '';
   (span.parentNode === null).should.equal(true);
 };
+
+// Examples from
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML
+exports.outerHTML1 = function() {
+    var document = domino.createDocument(
+        '<div id="d"><p>Content</p><p>Further Elaborated</p></div>'
+    );
+    var d = document.getElementById('d');
+    d.outerHTML.should.equal(
+        '<div id="d"><p>Content</p><p>Further Elaborated</p></div>'
+    );
+};
+
+exports.outerHTML2 = function() {
+    var document = domino.createDocument(
+        '<div id="container"><div id="d">This is a div.</div></div>'
+    );
+    var container = document.getElementById('container');
+    var d = document.getElementById('d');
+    container.firstChild.nodeName.should.equal('DIV');
+
+    d.outerHTML = "<p>This paragraph replaced the original div.</p>";
+    container.firstChild.nodeName.should.equal('P');
+
+    (d.parentNode === null).should.be.true();
+};
+
+exports.outerHTML3 = function() {
+    var document = domino.createDocument();
+    var div = document.createElement("div");
+    div.outerHTML = "<div class=\"test\">test</div>";
+    // "Many browsers will also throw an exception"
+    div.outerHTML.should.equal('<div></div>');
+};
+
+exports.outerHTML4 = function() {
+    var document = domino.createDocument("<p>hello there</p>");
+    var p = document.getElementsByTagName("p")[0];
+    p.nodeName.should.equal("P");
+    p.outerHTML = "<div>This div replaced a paragraph.</div>";
+    p.nodeName.should.equal("P");
+    (p.parentNode === null).should.be.true();
+};

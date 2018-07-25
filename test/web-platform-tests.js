@@ -96,7 +96,6 @@ var blacklist = [
   'Document-createElementNS',
   'Document-createEvent',
   'Document-createTreeWalker',
-  'Document-getElementById',
   'Document-getElementsByTagName',
   'Document-getElementsByTagName-xhtml',
   'Document-getElementsByTagNameNS',

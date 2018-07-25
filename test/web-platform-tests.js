@@ -243,6 +243,10 @@ var harness = function() {
         concatenatedScripts =
           concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
                                       '.attributes.item($1)');
+        // Some tests use [...foo] syntax for `Array.from(foo)`
+        concatenatedScripts =
+          concatenatedScripts.replace(/\[\.\.\.(\w+)\]/g,
+                                      'Array.from($1)');
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
         concatenatedScripts =
           'var x, doc, ReflectionTests;\n' +

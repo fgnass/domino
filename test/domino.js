@@ -966,6 +966,11 @@ exports.gh112 = function() {
   test.namespaceURI.should.equal('http://www.w3.org/1999/xhtml');
 };
 
+exports.gh107 = function() {
+    var document = domino.createDocument();
+    document.scrollingElement.should.equal(document.documentElement);
+};
+
 exports.gh109 = function() {
   var document = domino.createDocument();
   var div = document.createElement('div');

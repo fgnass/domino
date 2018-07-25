@@ -1,5 +1,6 @@
 # domino x.x.x (not yet released)
 * Fix `ContainerNode#removeChildren()` when there is more than one child (#129)
+* Implement `Document#scrollingElement` (#107)
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

@@ -2,6 +2,7 @@
 * Fix `ContainerNode#removeChildren()` when there is more than one child (#129)
 * Implement `Document#scrollingElement` (#107)
 * Implement setter for `Element#outerHTML`
+* Handle null/undefined in setter for `Node#textContent`
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

@@ -74,12 +74,6 @@ var blacklist = [
   'elements global-attributes the-translate-attribute-012',
 
   // web-platform-tests/dom/nodes
-  'CharacterData-appendData',
-  'CharacterData-data',
-  'CharacterData-deleteData',
-  'CharacterData-insertData',
-  'CharacterData-replaceData',
-  'CharacterData-substringData',
   'DOMImplementation-createDocument',
   'DOMImplementation-createDocumentType',
   'DOMImplementation-createHTMLDocument',

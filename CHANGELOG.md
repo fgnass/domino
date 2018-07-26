@@ -3,6 +3,7 @@
 * Implement `Document#scrollingElement` (#107)
 * Implement setter for `Element#outerHTML`
 * Handle null/undefined in setter for `Node#textContent`
+* Handle null/undefined/negative values in `CharacterData` interface methods
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

@@ -127,5 +127,6 @@ function hc_characterdataindexsizeerrreplacedatacountnegative() {
 
 
 function runTest() {
+   return; // CSA: latest DOM spec doesn't throw for negative count
    hc_characterdataindexsizeerrreplacedatacountnegative();
 }

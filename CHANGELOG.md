@@ -4,6 +4,7 @@
 * Implement setter for `Element#outerHTML`
 * Handle null/undefined in setter for `Node#textContent`
 * Handle null/undefined/negative values in `CharacterData` interface methods
+* More spec-correctness fixes for `DOMTokenList`
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)
@@ -11,7 +12,7 @@
 * Fix `HTMLAnchorElement#hash` when `href` attribute contains bare
   fragment (#127)
 * Implement case-insensitive CSS attribute matching (#128)
-* Implement DOMTokenList#replace()`, `DOMTokenList#toggle(token, force)`,
+* Implement `DOMTokenList#replace()`, `DOMTokenList#toggle(token, force)`,
   and `DOMTokenList#value`. Fix handling of non-space whitespace. (#111)
 
 # domino 2.0.2 (28 Mar 2018)

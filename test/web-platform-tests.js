@@ -27,8 +27,6 @@ var blacklist = [
   'documents dom-tree-accessors nameditem-05',
   'documents dom-tree-accessors nameditem-06',
   'documents dom-tree-accessors document.getElementsByName document.getElementsByName-interface',
-  'documents dom-tree-accessors document.getElementsByName document.getElementsByName-namespace-xhtml',
-  'documents dom-tree-accessors document.getElementsByName document.getElementsByName-namespace',
   'documents resource-metadata-management document-compatmode-06',
   'documents resource-metadata-management document-cookie',
   'documents resource-metadata-management document-lastModified-01',

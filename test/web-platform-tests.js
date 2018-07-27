@@ -108,7 +108,6 @@ var blacklist = [
   'Element-getElementsByTagName-change-document-HTMLNess',
   'Element-getElementsByTagName',
   'Element-getElementsByTagNameNS',
-  'Element-hasAttributes',
   'Element-insertAdjacentElement',
   'Element-insertAdjacentText',
   'Element-lastElementChild-xhtml',

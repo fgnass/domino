@@ -6,6 +6,8 @@
 * Handle null/undefined/negative values in `CharacterData` interface methods
 * More spec-correctness fixes for `DOMTokenList`
 * Fix `[src=...]` selectors
+* Spec-correctness fixes for `Document#createElement()` and
+  `Document#createElementNS()`
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

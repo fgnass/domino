@@ -9,24 +9,38 @@ var Window = require('../lib/Window');
 // Some of these failures are bugs we ought to fix.
 var blacklist = [
   // web-platform-tests/html/dom
+  'historical',
   'interfaces',
+  'interfaces.https',
+  'reflection-embedded',
+  'reflection-forms',
+  'reflection-metadata',
+  'reflection-misc',
   'reflection-obsolete',
+  'reflection-tabular',
+  'self-origin.sub',
+  'usvstring-reflection',
   'documents dom-tree-accessors Document.body',
   'documents dom-tree-accessors Document.currentScript',
   'documents dom-tree-accessors Document.currentScript.sub',
   'documents dom-tree-accessors document.embeds-document.plugins-01',
   'documents dom-tree-accessors document.forms',
+  'documents dom-tree-accessors document.head-01',
   'documents dom-tree-accessors document.images',
+  'documents dom-tree-accessors document.links',
+  'documents dom-tree-accessors document.scripts',
   'documents dom-tree-accessors document.title-05',
   'documents dom-tree-accessors document.title-07',
   'documents dom-tree-accessors document.title-09',
   'documents dom-tree-accessors nameditem-01',
   'documents dom-tree-accessors nameditem-02',
-  'documents dom-tree-accessors nameditem-03',
   'documents dom-tree-accessors nameditem-04',
   'documents dom-tree-accessors nameditem-05',
   'documents dom-tree-accessors nameditem-06',
+  'documents dom-tree-accessors nameditem-07',
+  'documents dom-tree-accessors nameditem-08',
   'documents dom-tree-accessors document.getElementsByName document.getElementsByName-interface',
+  'documents dom-tree-accessors document.getElementsByName document.getElementsByName-liveness',
   'documents resource-metadata-management document-compatmode-06',
   'documents resource-metadata-management document-cookie',
   'documents resource-metadata-management document-lastModified-01',
@@ -71,6 +85,7 @@ var blacklist = [
   'elements global-attributes the-translate-attribute-010',
   'elements global-attributes the-translate-attribute-011',
   'elements global-attributes the-translate-attribute-012',
+  'elements the-innertext-idl-attribute dynamic-getter',
 
   // web-platform-tests/dom/nodes
   'DOMImplementation-createDocument',
@@ -84,12 +99,10 @@ var blacklist = [
   'Document-createAttribute',
   'Document-createComment',
   'Document-createElement-namespace',
-  'Document-createElement',
-  'Document-createElementNS',
   'Document-createEvent',
   'Document-createTreeWalker',
+  'Document-getElementsByClassName',
   'Document-getElementsByTagName',
-  'Document-getElementsByTagName-xhtml',
   'Document-getElementsByTagNameNS',
   'Element-childElement-null-xhtml',
   'Element-childElementCount-dynamic-add-xhtml',
@@ -122,8 +135,6 @@ var blacklist = [
   'MutationObserver-inner-outer',
   'MutationObserver-takeRecords',
   'Node-baseURI',
-  'Node-childNodes',
-  'Node-cloneNode',
   'Node-compareDocumentPosition',
   'Node-isConnected',
   'Node-isEqualNode',
@@ -131,9 +142,11 @@ var blacklist = [
   'Node-lookupPrefix',
   'Node-lookupNamespaceURI',
   'Node-nodeName-xhtml',
+  'Node-normalize',
   'Node-properties',
   'NodeList-Iterable',
   'ParentNode-append',
+  'ParentNode-children',
   'ParentNode-prepend',
   'ParentNode-querySelector-All-content',
   'ParentNode-querySelector-All',
@@ -145,6 +158,16 @@ var blacklist = [
   'prepend-on-Document',
   'remove-unscopable',
   'rootNode',
+  'query-target-in-load-event.part',
+
+  // Waiting for patches to the test suite to be merged upstream:
+  // https://github.com/web-platform-tests/wpt/pull/12202
+  'Document-createElement',
+  'Document-createElementNS',
+  // https://github.com/web-platform-tests/wpt/pull/12213
+  'Comment-constructor',
+  'Node-textContent',
+  'Text-constructor',
 ].map(function(s) {
   // Convert strings to equivalent regular expression matchers.
   if (typeof s === 'string') {
@@ -161,6 +184,45 @@ var onBlacklist = function(name) {
   }
   return false;
 };
+
+// Test suite requires Array.includes(); polyfill from
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+/* jshint bitwise: false */
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, 'includes', {
+    value: function(searchElement, fromIndex) {
+      if (this === null || this === undefined) {
+        throw new TypeError('"this" is null or not defined');
+      }
+      var o = Object(this);
+      var len = o.length >>> 0;
+      if (len === 0) {
+        return false;
+      }
+      var n = fromIndex | 0;
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+      }
+
+      while (k < len) {
+        if (sameValueZero(o[k], searchElement)) {
+          return true;
+        }
+        k++;
+      }
+      return false;
+    }
+  });
+}
+// Test suite requires Array.values() as well
+if (global.Symbol && global.Symbol.iterator && !Array.prototype.values) {
+  Object.defineProperty(
+    Array.prototype, 'values',
+    Object.getOwnPropertyDescriptor(Array.prototype, global.Symbol.iterator)
+  );
+}
 
 function read(file) {
   return fs.readFileSync(Path.resolve(__dirname, '..', file), 'utf8');
@@ -200,6 +262,7 @@ var harness = function() {
           var dummyXmlDoc = domino.createDOMImplementation().createDocument(
             'http://www.w3.org/1999/xhtml', 'html', null
           );
+          dummyXmlDoc._contentType = 'application/xml';
           iframe._contentWindow = new Window(dummyXmlDoc);
           var foo = dummyXmlDoc.createElement('foo');
           foo.textContent = 'Dummy XML document';
@@ -215,6 +278,7 @@ var harness = function() {
           var dummyXhtmlDoc = domino.createDOMImplementation().createDocument(
             'http://www.w3.org/1999/xhtml', 'html', null
           );
+          dummyXhtmlDoc._contentType = 'application/xhtml+xml';
           dummyXhtmlDoc.insertBefore(
             dummyXhtmlDoc.adoptNode(dummyXhtmlAsHtml.doctype),
             dummyXhtmlDoc.documentElement
@@ -262,7 +326,14 @@ var harness = function() {
             var f = Path.resolve(path, script.getAttribute('src'));
             if (fs.existsSync(f)) { return read(f); }
           }
-          return script.textContent + '\n';
+          var textContent = script.textContent;
+          if (/\.xhtml$/.test(file)) {
+            // hacky way to expand entities
+            var txt = window.document.createElement('textarea');
+            txt.innerHTML = textContent;
+            textContent = txt.value;
+          }
+          return textContent + '\n';
         }).join("\n");
         concatenatedScripts =
           concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
@@ -273,6 +344,7 @@ var harness = function() {
                                       'Array.from($1)');
         // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
         concatenatedScripts =
+          '"use strict";\n' +
           'var x, doc, ReflectionTests;\n' +
           // Hack in globals on window object
           '"String|Boolean|Number".split("|").forEach(function(x){' +

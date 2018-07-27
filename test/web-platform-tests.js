@@ -3,6 +3,7 @@
 var fs = require('fs');
 var Path = require('path');
 var domino = require('../lib');
+var Window = require('../lib/Window');
 
 // These are the tests we currently fail.
 // Some of these failures are bugs we ought to fix.
@@ -198,6 +199,39 @@ var harness = function() {
       }
       var html = read(file);
       var window = domino.createWindow(html, 'http://example.com/');
+      Array.from(window.document.getElementsByTagName('iframe')).forEach(function(iframe) {
+        if (iframe.src === 'http://example.com/common/dummy.xml') {
+          var dummyXmlDoc = domino.createDOMImplementation().createDocument(
+            'http://www.w3.org/1999/xhtml', 'html', null
+          );
+          iframe._contentWindow = new Window(dummyXmlDoc);
+          var foo = dummyXmlDoc.createElement('foo');
+          foo.textContent = 'Dummy XML document';
+          dummyXmlDoc.documentElement.appendChild(foo);
+        }
+        if (iframe.src === 'http://example.com/common/dummy.xhtml') {
+          var dummyXhtml = read('test/web-platform-tests/common/dummy.xhtml');
+          var dummyXhtmlAsHtml = domino.createDocument(dummyXhtml);
+          // Tweak this a tiny bit, since we actually used an HTML parser not
+          // an XML parser.
+          dummyXhtmlAsHtml.body.textContent = '';
+          // Create a proper XML document, and copy the HTML contents into it
+          var dummyXhtmlDoc = domino.createDOMImplementation().createDocument(
+            'http://www.w3.org/1999/xhtml', 'html', null
+          );
+          dummyXhtmlDoc.insertBefore(
+            dummyXhtmlDoc.adoptNode(dummyXhtmlAsHtml.doctype),
+            dummyXhtmlDoc.documentElement
+          );
+          dummyXhtmlDoc.documentElement.appendChild(
+            dummyXhtmlDoc.adoptNode(dummyXhtmlAsHtml.head)
+          );
+          dummyXhtmlDoc.documentElement.appendChild(
+            dummyXhtmlDoc.adoptNode(dummyXhtmlAsHtml.body)
+          );
+          iframe._contentWindow = new Window(dummyXhtmlDoc);
+        }
+      });
       window._run(testharness);
       var scripts = window.document.getElementsByTagName('script');
       scripts = [].slice.call(scripts);

@@ -1178,3 +1178,16 @@ exports.outerHTML4 = function() {
     p.nodeName.should.equal("P");
     (p.parentNode === null).should.be.true();
 };
+
+// Test case taken from
+// https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText
+exports.wholeText = function() {
+  var document = domino.createDocument(
+    '<p>Thru-hiking is great! <strong>No insipid election coverage!</strong>' +
+    ' However, <a href="http://en.wikipedia.org/wiki/Absentee_ballot">casting' +
+    ' a ballot</a> is tricky.</p>'
+  );
+  var para = document.querySelector('p');
+  para.removeChild(para.childNodes[1]);
+  para.firstChild.wholeText.should.equal("Thru-hiking is great!  However, ");
+};

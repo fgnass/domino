@@ -125,7 +125,6 @@ var blacklist = [
   'Node-childNodes',
   'Node-cloneNode',
   'Node-compareDocumentPosition',
-  'Node-constants',
   'Node-isConnected',
   'Node-isEqualNode',
   'Node-isEqualNode-xhtml',

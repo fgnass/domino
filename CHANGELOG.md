@@ -8,6 +8,7 @@
 * Fix `[src=...]` selectors
 * Spec-correctness fixes for `Document#createElement()` and
   `Document#createElementNS()`
+* Implement `Attr#cloneNode()`
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

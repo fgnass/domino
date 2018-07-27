@@ -12,6 +12,7 @@
 * Implement `Element#getAttributeNode()`, `Element#getAttributeNodeNS()`, and
   `Element#hasAttributes()`
 * Implement `Text#wholeText`
+* Implement `Document#cloneNode()` and `DocumentType#cloneNode()`
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

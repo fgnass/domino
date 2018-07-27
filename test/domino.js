@@ -1191,3 +1191,17 @@ exports.wholeText = function() {
   para.removeChild(para.childNodes[1]);
   para.firstChild.wholeText.should.equal("Thru-hiking is great!  However, ");
 };
+
+exports.documentClone = function() {
+  var document = domino.createDocument('throw away');
+  var html = document.implementation.createHTMLDocument('my title');
+  html.body.innerHTML = '<p>Inside <b>body';
+  var copy = html.cloneNode(true); // deep copy!
+  (html === copy).should.be.false();
+  html.nodeType.should.equal(copy.nodeType);
+  html.nodeName.should.equal(copy.nodeName);
+  html.title.should.equal(copy.title);
+  html.body.outerHTML.should.equal(copy.body.outerHTML);
+  copy.head.ownerDocument.should.equal(copy);
+  copy.body.ownerDocument.should.equal(copy);
+};

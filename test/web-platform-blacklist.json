@@ -4809,8 +4809,6 @@
     "Toggling element with inline style should make inline style disappear",
     "When qualifiedName does not match the QName production, an INVALID_CHARACTER_ERR exception is to be thrown.",
     "Setting the same attribute with another prefix should not change the prefix",
-    "Non-HTML element with upper-case attribute",
-    "Attribute loses its owner when removed",
     "Basic functionality of setAttributeNode",
     "setAttributeNode should distinguish attributes with same local name and different namespaces",
     "setAttributeNode doesn't have case-insensitivity even with an HTMLElement",

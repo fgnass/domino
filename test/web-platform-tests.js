@@ -139,8 +139,6 @@ var blacklist = [
   'Node-isConnected',
   'Node-isEqualNode',
   'Node-isEqualNode-xhtml',
-  'Node-lookupPrefix',
-  'Node-lookupNamespaceURI',
   'Node-nodeName-xhtml',
   'Node-normalize',
   'Node-properties',

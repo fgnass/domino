@@ -13,6 +13,8 @@
   `Element#hasAttributes()`
 * Implement `Text#wholeText`
 * Implement `Document#cloneNode()` and `DocumentType#cloneNode()`
+* Spec-correctness fixes for `Node#lookupPrefix()`,
+  `Node#lookupNamespaceURI()`, and `Node#isDefaultNamespace`.
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

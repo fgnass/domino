@@ -202,6 +202,17 @@ exports.jquery2_2 = function() {
   window.$.ajax({ url: 'test://', dataType: "test", timeout: 1, async: true });
 };
 
+exports.jquery3 = function() {
+  var window = domino.createWindow(html);
+  window.$ = require(__dirname + '/../node_modules/jquery/dist/jquery.js')(window);
+  window.$.should.be.ok();
+  window.$('.foo').should.have.length(3);
+  window.$.ajaxTransport("test", function() {
+    return { send: function() {}, abort: function() {} };
+  });
+  window.$.ajax({ url: 'test://', dataType: "test", timeout: 1, async: true });
+};
+
 exports.treeWalker = function() {
   var window = domino.createWindow(html);
   var d = window.document;

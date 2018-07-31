@@ -484,7 +484,7 @@ exports.normalize = function() {
 };
 
 exports.replaceChild = function() {
-  var impl = new domino.impl.DOMImplementation();
+  var impl = domino.createDOMImplementation();
   var doc = impl.createDocument();
   var root = doc.appendChild(doc.createElement('root'));
   root.outerHTML.should.equal('<root></root>');

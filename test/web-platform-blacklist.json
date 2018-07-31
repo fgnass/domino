@@ -4797,18 +4797,7 @@
     "Document.append() with two elements as the argument, on a Document having no child."
   ],
   "attributes.html": [
-    "When qualifiedName does not match the Name production, an INVALID_CHARACTER_ERR exception is to be thrown. (toggleAttribute)",
-    "When qualifiedName does not match the Name production, an INVALID_CHARACTER_ERR exception is to be thrown, even if the attribute is already present. (toggleAttribute)",
-    "toggleAttribute should lowercase its name argument (upper case attribute)",
-    "toggleAttribute should lowercase its name argument (mixed case attribute)",
-    "toggleAttribute should not throw even when qualifiedName starts with 'xmlns'",
-    "Basic functionality should be intact. (toggleAttribute)",
-    "toggleAttribute should not change the order of previously set attributes.",
-    "toggleAttribute should set the first attribute with the given name",
-    "toggleAttribute should set the attribute with the given qualified name",
     "Toggling element with inline style should make inline style disappear",
-    "When qualifiedName does not match the QName production, an INVALID_CHARACTER_ERR exception is to be thrown.",
-    "Setting the same attribute with another prefix should not change the prefix",
     "Basic functionality of setAttributeNode",
     "setAttributeNode should distinguish attributes with same local name and different namespaces",
     "setAttributeNode doesn't have case-insensitivity even with an HTMLElement",

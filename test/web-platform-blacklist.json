@@ -4,7 +4,6 @@
     "document.all cannot find applet",
     "applet is not styled"
   ],
-  "interfaces.https.html": "Unexpected token [",
   "reflection-embedded.html": [
     "img.decoding: typeof IDL attribute",
     "img.decoding: IDL get with DOM attribute unset",
@@ -2226,8 +2225,30 @@
     "th.headers: IDL set to object \"test-toString\"",
     "th.headers: IDL set to object \"test-valueOf\""
   ],
-  "self-origin.sub.html": "testData[0].postMessage is not a function",
-  "usvstring-reflection.html": "Unexpected token =",
+  "self-origin.sub.html": [
+    "Assigning blob url",
+    "We should have the right origin for our page"
+  ],
+  "usvstring-reflection.html": [
+    "location.hash : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "location.href : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "window.open : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "document.open : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "anchor : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "area : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "base : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "EventSource : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "frame : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "iframe : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "link : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "source : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "storage event : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "websocket url : unpaired surrogate codepoint should be replaced with U+FFFD",
+    "sendBeacon URL: unpaired surrogate codepoint should not make any exceptions.",
+    "RegisterPtotocolHandler URL: unpaired surrogate codepoint should not make any exceptions.",
+    "Document URLs: unpaired surrogate codepoint should be replaced with U+FFFD",
+    "RTCDataChannel.send: unpaired surrogate codepoint should be replaced with U+FFFD."
+  ],
   "documents/dom-tree-accessors/Document.body.html": [
     "Frameset followed by body inside the html element",
     "Frameset inside an x element followed by a frameset",
@@ -2242,7 +2263,9 @@
     "Setting document.body to a frameset will replace the first existing body/frameset.",
     "Setting document.body to a new body element when the root element is a test element."
   ],
-  "documents/dom-tree-accessors/Document.currentScript.html": "f is not a function",
+  "documents/dom-tree-accessors/Document.currentScript.html": [
+    "Uncaught: XMLHttpRequest is not defined"
+  ],
   "documents/dom-tree-accessors/document.embeds-document.plugins-01.html": [
     "No plugins",
     "One plugin",
@@ -2261,36 +2284,29 @@
   "documents/dom-tree-accessors/document.head-01.html": [
     "document.head"
   ],
-  "documents/dom-tree-accessors/document.images.html": "NotYetImplemented",
+  "documents/dom-tree-accessors/document.images.html": [
+    "document.images should contain all HTML img elements",
+    "img with id",
+    "img with name",
+    "img with id and name",
+    "Two img elements with the same id",
+    "Two img elements with the same name",
+    "Unknown name should not be in the collection",
+    "Foreign element should not be in the collection",
+    "Input elements should not be in the collection",
+    "The empty string should not be in the collections",
+    "Document.images should be a live collection"
+  ],
   "documents/dom-tree-accessors/document.links.html": [
     "Document.links should be a live collection"
   ],
   "documents/dom-tree-accessors/document.scripts.html": [
     "Document.scripts should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.title-05.html": [
-    "Removing whitespace in document.title: U+b",
-    "Removing whitespace in document.title: U+a0",
-    "Removing whitespace in document.title: U+1680",
-    "Removing whitespace in document.title: U+180e",
-    "Removing whitespace in document.title: U+2000",
-    "Removing whitespace in document.title: U+2001",
-    "Removing whitespace in document.title: U+2002",
-    "Removing whitespace in document.title: U+2003",
-    "Removing whitespace in document.title: U+2004",
-    "Removing whitespace in document.title: U+2005",
-    "Removing whitespace in document.title: U+2006",
-    "Removing whitespace in document.title: U+2007",
-    "Removing whitespace in document.title: U+2008",
-    "Removing whitespace in document.title: U+2009",
-    "Removing whitespace in document.title: U+200a",
-    "Removing whitespace in document.title: U+2028",
-    "Removing whitespace in document.title: U+2029",
-    "Removing whitespace in document.title: U+202f",
-    "Removing whitespace in document.title: U+205f",
-    "Removing whitespace in document.title: U+3000"
+  "documents/dom-tree-accessors/document.title-07.html": [
+    "createHTMLDocument test 2: undefined,undefined,\"\"",
+    "Missing title argument"
   ],
-  "documents/dom-tree-accessors/document.title-07.html": "createHTMLDocuments is not defined",
   "documents/dom-tree-accessors/document.title-09.html": [
     "No title element in SVG document",
     "Title element not child of SVG root",
@@ -2350,11 +2366,16 @@
   "documents/dom-tree-accessors/document.getElementsByName/document.getElementsByName-liveness.html": [
     "Document.getElementsByName() should be a live collection"
   ],
+  "documents/resource-metadata-management/document-compatmode-06.xhtml": [
+    "document.compatMode: Standards"
+  ],
   "documents/resource-metadata-management/document-cookie.html": [
     "document has no cookie",
     "getting cookie for a cookie-averse document returns empty string, setting does nothing"
   ],
-  "documents/resource-metadata-management/document-lastModified-01.html": "NotYetImplemented",
+  "documents/resource-metadata-management/document-lastModified-01.html": [
+    "Uncaught: NotYetImplemented"
+  ],
   "documents/resource-metadata-management/document-lastModified.html": [
     "lastModified should return the last modified date and time"
   ],
@@ -2416,8 +2437,12 @@
     "Should return 'undefined' after removing an attribute",
     "SVG elements should have a .dataset"
   ],
-  "elements/global-attributes/dir_auto-contained-script-L-ref.html": "Unexpected token &",
-  "elements/global-attributes/dir_auto-contained-script-L.html": "Unexpected token &",
+  "elements/global-attributes/dir_auto-contained-script-L-ref.html": [
+    "Uncaught: Unexpected token &"
+  ],
+  "elements/global-attributes/dir_auto-contained-script-L.html": [
+    "Uncaught: Unexpected token &"
+  ],
   "elements/global-attributes/id-attribute.html": [
     "User agents must associate the element with an id value for purposes of CSS.",
     "Association for CSS is exact and therefore case-sensitive.",
@@ -2482,6 +2507,179 @@
     "insert node into sub-tree (\"<div id='target'>abc\")",
     "remove node from sub-tree (\"<div id='target'>abc<div id='remove'>def\")",
     "insert whole sub-tree (\"<div id='target'>\")"
+  ],
+  "elements/the-innertext-idl-attribute/getter.html": [
+    "Simplest possible test (\"<div>abc\")",
+    "Leading whitespace removed (\"<div> abc\")",
+    "Trailing whitespace removed (\"<div>abc \")",
+    "Internal whitespace compressed (\"<div>abc  def\")",
+    "\\n converted to space (\"<div>abc\\ndef\")",
+    "\\r converted to space (\"<div>abc\\rdef\")",
+    "\\t converted to space (\"<div>abc\\tdef\")",
+    "Trailing whitespace before hard line break removed (\"<div>abc <br>def\")",
+    "Leading whitespace preserved (\"<pre> abc\")",
+    "Trailing whitespace preserved (\"<pre>abc \")",
+    "Internal whitespace preserved (\"<pre>abc  def\")",
+    "\\n preserved (\"<pre>abc\\ndef\")",
+    "\\r converted to newline (\"<pre>abc\\rdef\")",
+    "\\t preserved (\"<pre>abc\\tdef\")",
+    "Two <pre> siblings (\"<div><pre>abc</pre><pre>def</pre>\")",
+    "Leading whitespace preserved (\"<div style='white-space:pre'> abc\")",
+    "Trailing whitespace preserved (\"<div style='white-space:pre'>abc \")",
+    "Internal whitespace preserved (\"<div style='white-space:pre'>abc  def\")",
+    "\\n preserved (\"<div style='white-space:pre'>abc\\ndef\")",
+    "\\r converted to newline (\"<div style='white-space:pre'>abc\\rdef\")",
+    "\\t preserved (\"<div style='white-space:pre'>abc\\tdef\")",
+    "Leading whitespace preserved (\"<span style='white-space:pre'> abc\")",
+    "Trailing whitespace preserved (\"<span style='white-space:pre'>abc \")",
+    "Internal whitespace preserved (\"<span style='white-space:pre'>abc  def\")",
+    "\\n preserved (\"<span style='white-space:pre'>abc\\ndef\")",
+    "\\r converted to newline (\"<span style='white-space:pre'>abc\\rdef\")",
+    "\\t preserved (\"<span style='white-space:pre'>abc\\tdef\")",
+    "Leading whitespace removed (\"<div style='white-space:pre-line'> abc\")",
+    "Trailing whitespace removed (\"<div style='white-space:pre-line'>abc \")",
+    "Internal whitespace collapsed (\"<div style='white-space:pre-line'>abc  def\")",
+    "\\n preserved (\"<div style='white-space:pre-line'>abc\\ndef\")",
+    "\\r converted to newline (\"<div style='white-space:pre-line'>abc\\rdef\")",
+    "\\t converted to space (\"<div style='white-space:pre-line'>abc\\tdef\")",
+    "Whitespace collapses across element boundaries (\"<div><span>abc </span> def\")",
+    "Whitespace collapses across element boundaries (\"<div><span>abc </span><span></span> def\")",
+    "Whitespace collapses across element boundaries (\"<div><span>abc </span><span style='white-space:pre'></span> def\")",
+    "Soft line breaks ignored (\"<div style='width:0'>abc def\")",
+    "Whitespace text node preserved (\"<div style='width:0'><span>abc</span> <span>def</span>\")",
+    "::first-line styles applied (\"<div class='first-line-uppercase' style='width:0'>abc def\")",
+    "::first-letter styles applied (\"<div class='first-letter-uppercase' style='width:0'>abc def\")",
+    "::first-letter float ignored (\"<div class='first-letter-float' style='width:0'>abc def\")",
+    "&nbsp; preserved (\"<div>&nbsp;\")",
+    "display:none container (\"<div style='display:none'>abc\")",
+    "No whitespace compression in display:none container (\"<div style='display:none'>abc  def\")",
+    "No removal of leading/trailing whitespace in display:none container (\"<div style='display:none'> abc def \")",
+    "display:none child not rendered (\"<div>123<span style='display:none'>abc\")",
+    "display:none container with non-display-none target child (\"<div style='display:none'><span id='target'>abc\")",
+    "non-display-none child of svg (\"<div id='target'>abc\")",
+    "display:none child of svg (\"<div style='display:none' id='target'>abc\")",
+    "child of display:none child of svg (\"<div style='display:none'><div id='target'>abc\")",
+    "Uncaught: CSS is not defined"
+  ],
+  "elements/the-innertext-idl-attribute/setter.html": [
+    "Simplest possible test",
+    "Simplest possible test, detached",
+    "Newlines convert to <br> in non-white-space:pre elements",
+    "Newlines convert to <br> in non-white-space:pre elements, detached",
+    "Newlines convert to <br> in <pre> element",
+    "Newlines convert to <br> in <pre> element, detached",
+    "Newlines convert to <br> in <textarea> element",
+    "Newlines convert to <br> in <textarea> element, detached",
+    "Newlines convert to <br> in white-space:pre element",
+    "Newlines convert to <br> in white-space:pre element, detached",
+    "CRs convert to <br> in non-white-space:pre elements",
+    "CRs convert to <br> in non-white-space:pre elements, detached",
+    "CRs convert to <br> in <pre> element",
+    "CRs convert to <br> in <pre> element, detached",
+    "Newline/CR pair converts to <br> in non-white-space:pre element",
+    "Newline/CR pair converts to <br> in non-white-space:pre element, detached",
+    "Newline/newline pair converts to two <br>s in non-white-space:pre element",
+    "Newline/newline pair converts to two <br>s in non-white-space:pre element, detached",
+    "CR/CR pair converts to two <br>s in non-white-space:pre element",
+    "CR/CR pair converts to two <br>s in non-white-space:pre element, detached",
+    "CRs convert to <br> in white-space:pre element",
+    "CRs convert to <br> in white-space:pre element, detached",
+    "< preserved",
+    "< preserved, detached",
+    "> preserved",
+    "> preserved, detached",
+    "& preserved",
+    "& preserved, detached",
+    "\" preserved",
+    "\" preserved, detached",
+    "' preserved",
+    "' preserved, detached",
+    "Null characters preserved",
+    "Null characters preserved, detached",
+    "Tabs preserved",
+    "Tabs preserved, detached",
+    "Leading whitespace preserved",
+    "Leading whitespace preserved, detached",
+    "Trailing whitespace preserved",
+    "Trailing whitespace preserved, detached",
+    "Whitespace not compressed",
+    "Whitespace not compressed, detached",
+    "Existing text deleted",
+    "Existing text deleted, detached",
+    "Existing <br> deleted",
+    "Existing <br> deleted, detached",
+    "Assigning undefined",
+    "Assigning undefined, detached",
+    "Start with CR",
+    "Start with CR, detached",
+    "Start with LF",
+    "Start with LF, detached",
+    "Start with CRLF",
+    "Start with CRLF, detached",
+    "End with CR",
+    "End with CR, detached",
+    "End with LF",
+    "End with LF, detached",
+    "End with CRLF",
+    "End with CRLF, detached",
+    "innerText on <area> element",
+    "innerText on <area> element, detached",
+    "innerText on <base> element",
+    "innerText on <base> element, detached",
+    "innerText on <basefont> element",
+    "innerText on <basefont> element, detached",
+    "innerText on <bgsound> element",
+    "innerText on <bgsound> element, detached",
+    "innerText on <br> element",
+    "innerText on <br> element, detached",
+    "innerText on <col> element",
+    "innerText on <col> element, detached",
+    "innerText on <embed> element",
+    "innerText on <embed> element, detached",
+    "innerText on <frame> element",
+    "innerText on <frame> element, detached",
+    "innerText on <hr> element",
+    "innerText on <hr> element, detached",
+    "innerText on <image> element",
+    "innerText on <image> element, detached",
+    "innerText on <img> element",
+    "innerText on <img> element, detached",
+    "innerText on <input> element",
+    "innerText on <input> element, detached",
+    "innerText on <keygen> element",
+    "innerText on <keygen> element, detached",
+    "innerText on <link> element",
+    "innerText on <link> element, detached",
+    "innerText on <menuitem> element",
+    "innerText on <menuitem> element, detached",
+    "innerText on <meta> element",
+    "innerText on <meta> element, detached",
+    "innerText on <param> element",
+    "innerText on <param> element, detached",
+    "innerText on <source> element",
+    "innerText on <source> element, detached",
+    "innerText on <track> element",
+    "innerText on <track> element, detached",
+    "innerText on <wbr> element",
+    "innerText on <wbr> element, detached",
+    "innerText on <colgroup> element",
+    "innerText on <colgroup> element, detached",
+    "innerText on <frameset> element",
+    "innerText on <frameset> element, detached",
+    "innerText on <head> element",
+    "innerText on <head> element, detached",
+    "innerText on <html> element",
+    "innerText on <html> element, detached",
+    "innerText on <table> element",
+    "innerText on <table> element, detached",
+    "innerText on <tbody> element",
+    "innerText on <tbody> element, detached",
+    "innerText on <tfoot> element",
+    "innerText on <tfoot> element, detached",
+    "innerText on <thead> element",
+    "innerText on <thead> element, detached",
+    "innerText on <tr> element",
+    "innerText on <tr> element, detached"
   ],
 
   "-- web-platform-tests/dom/nodes --": "-------------------------------------",
@@ -2845,6 +3043,9 @@
     "hasFeature(\"org.w3c.dom.svg\", \"1.1\")",
     "hasFeature(\"http://www.w3.org/TR/SVG11/feature#Script\", \"7.5\")"
   ],
+  "Document-URL.sub.html": [
+    "Document.URL with redirect"
+  ],
   "Document-constructor.html": [
     "new Document(): interfaces",
     "new Document(): metadata",
@@ -2877,6 +3078,57 @@
   "Document-createComment.html": [
     "createComment(null)",
     "createComment(undefined)"
+  ],
+  "Document-createElement-namespace.html": [
+    "Created element's namespace in current document",
+    "Created element's namespace in created HTML document",
+    "Created element's namespace in created XHTML document",
+    "Created element's namespace in created SVG document",
+    "Created element's namespace in created HTML document by DOMParser ('text/html')",
+    "Created element's namespace in created XML document by DOMParser ('text/xml')",
+    "Created element's namespace in created XML document by DOMParser ('application/xml')",
+    "Created element's namespace in created XHTML document by DOMParser ('application/xhtml+xml')",
+    "Created element's namespace in created SVG document by DOMParser ('image/svg+xml')",
+    "Created element's namespace in empty.html",
+    "Created element's namespace in empty.xhtml",
+    "Created element's namespace in empty.xml",
+    "Created element's namespace in empty.svg",
+    "Created element's namespace in minimal_html.html",
+    "Created element's namespace in minimal_html.xhtml",
+    "Created element's namespace in minimal_html.xml",
+    "Created element's namespace in minimal_html.svg",
+    "Created element's namespace in xhtml.html",
+    "Created element's namespace in xhtml.xhtml",
+    "Created element's namespace in xhtml.xml",
+    "Created element's namespace in xhtml.svg",
+    "Created element's namespace in svg.html",
+    "Created element's namespace in svg.xhtml",
+    "Created element's namespace in svg.xml",
+    "Created element's namespace in svg.svg",
+    "Created element's namespace in mathml.html",
+    "Created element's namespace in mathml.xhtml",
+    "Created element's namespace in mathml.xml",
+    "Created element's namespace in mathml.svg",
+    "Created element's namespace in bare_xhtml.html",
+    "Created element's namespace in bare_xhtml.xhtml",
+    "Created element's namespace in bare_xhtml.xml",
+    "Created element's namespace in bare_xhtml.svg",
+    "Created element's namespace in bare_svg.html",
+    "Created element's namespace in bare_svg.xhtml",
+    "Created element's namespace in bare_svg.xml",
+    "Created element's namespace in bare_svg.svg",
+    "Created element's namespace in bare_mathml.html",
+    "Created element's namespace in bare_mathml.xhtml",
+    "Created element's namespace in bare_mathml.xml",
+    "Created element's namespace in bare_mathml.svg",
+    "Created element's namespace in xhtml_ns_removed.html",
+    "Created element's namespace in xhtml_ns_removed.xhtml",
+    "Created element's namespace in xhtml_ns_removed.xml",
+    "Created element's namespace in xhtml_ns_removed.svg",
+    "Created element's namespace in xhtml_ns_changed.html",
+    "Created element's namespace in xhtml_ns_changed.xhtml",
+    "Created element's namespace in xhtml_ns_changed.xml",
+    "Created element's namespace in xhtml_ns_changed.svg"
   ],
   "Document-createEvent.html": [
     "BeforeUnloadEvent should be an alias for BeforeUnloadEvent.",
@@ -2992,6 +3244,14 @@
   "Document-getElementsByClassName.html": [
     "getElementsByClassName() should be a live collection"
   ],
+  "Document-getElementsByTagName-xhtml.xhtml": [
+    "HTML element with uppercase tag name matches in XHTML documents",
+    "Element in non-HTML namespace, prefix, lowercase name",
+    "Element in non-HTML namespace, prefix, uppercase name",
+    "Element in HTML namespace, no prefix, non-ascii characters in name",
+    "Element in HTML namespace, prefix, non-ascii characters in name",
+    "Element in non-HTML namespace, prefix, non-ascii characters in name"
+  ],
   "Document-getElementsByTagName.html": [
     "Interfaces",
     "Shouldn't be able to set unsigned properties on a HTMLCollection (non-strict mode)",
@@ -3009,6 +3269,21 @@
     "Document.getElementsByTagNameNS",
     "Empty string namespace",
     "getElementsByTagNameNS() should be a live collection"
+  ],
+  "Element-childElement-null-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-childElementCount-dynamic-add-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-childElementCount-dynamic-remove-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-childElementCount-nochild-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-childElementCount-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
   ],
   "Element-children.html": [
     "HTMLCollection edge cases",
@@ -3042,11 +3317,19 @@
     "Element.closest with context node 'test4' and selector 'select > :scope'",
     "Element.closest with context node 'test4' and selector ':has(> :scope)'"
   ],
+  "Element-firstElementChild-entity-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-firstElementChild-namespace-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-firstElementChild-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
   "Element-getElementsByClassName.html": [
     "Interface should be correct.",
     "getElementsByClassName() should be a live collection"
   ],
-  "Element-getElementsByTagName-change-document-HTMLNess.html": "assert_array_equals: New list with same root and argument should not be lowercasing now property 0, expected Element node <A>xhtml:A</A> but got Element node <a>xhtml:a</a>",
   "Element-getElementsByTagName.html": [
     "Interfaces",
     "Shouldn't be able to set unsigned properties on a HTMLCollection (non-strict mode)",
@@ -3081,9 +3364,27 @@
     "Inserted text node should be target element's next sibling for 'afterend' case",
     "Adding more than one child to document should cause a HierarchyRequestError exception"
   ],
+  "Element-lastElementChild-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-matches.html": [
+    "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
+  ],
+  "Element-nextElementSibling-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-previousElementSibling-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "Element-siblingElement-null-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
   "Element-tagName.html": [
     "tagName should be updated when changing ownerDocument (createDocument without prefix)",
     "tagName should be updated when changing ownerDocument (createDocument with prefix)"
+  ],
+  "Element-webkitMatchesSelector.html": [
+    "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
   ],
   "MutationObserver-attributes.html": [
     "attributes Element.id: update, no oldValue, mutation",
@@ -4413,6 +4714,19 @@
   "Node-isEqualNode.html": [
     "documents should not be compared based on properties"
   ],
+  "Node-lookupPrefix.xhtml": [
+    "Node.lookupPrefix",
+    "Node.lookupPrefix 5",
+    "Node.lookupPrefix 6",
+    "Node.lookupPrefix 7",
+    "Node.lookupPrefix 8",
+    "Node.lookupPrefix 9",
+    "Node.lookupPrefix 10",
+    "Uncaught: Cannot read property 'removeChild' of null"
+  ],
+  "Node-nodeName-xhtml.xhtml": [
+    "For Element nodes, nodeName should return the same as tagName."
+  ],
   "Node-normalize.html": [
     "Non-text nodes with empty textContent values."
   ],
@@ -4465,6 +4779,15 @@
     "DocumentFrgment.prepend() with only one element as an argument, on a parent having no child.",
     "DocumentFrgment.prepend() with null as an argument, on a parent having a child.",
     "DocumentFrgment.prepend() with one element and text as argument, on a parent having a child."
+  ],
+  "ProcessingInstruction-escapes-1.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "ProcessingInstruction-literal-1.xhtml": [
+    "<?xml?> is not a ProcessingInstruction"
+  ],
+  "ProcessingInstruction-literal-2.xhtml": [
+    "ProcessingInstruction literals"
   ],
   "append-on-Document.html": [
     "Document.append() without any argument, on a Document having no child.",
@@ -4536,7 +4859,9 @@
     "Document.prepend() with text as an argument, on a Document having no child.",
     "Document.prepend() with two elements as the argument, on a Document having no child."
   ],
-  "query-target-in-load-event.part.html": "window.location is not supported.",
+  "query-target-in-load-event.part.html": [
+    "Uncaught: window.location is not supported."
+  ],
   "remove-unscopable.html": [
     "before() should be unscopable",
     "after() should be unscopable",
@@ -4551,6 +4876,36 @@
     "getRootNode() must return the document when a node is in document",
     "getRootNode() must return a document fragment when a node is in the fragment"
   ],
+  "Document-contentType/contentType/contenttype_bmp.html": [
+    "BMP document.contentType === 'image/bmp'"
+  ],
+  "Document-contentType/contentType/contenttype_css.html": [
+    "CSS document.contentType === 'text/css'"
+  ],
+  "Document-contentType/contentType/contenttype_gif.html": [
+    "GIF document.contentType === 'image/gif'"
+  ],
+  "Document-contentType/contentType/contenttype_html.html": [
+    "HTM document.contentType === 'text/html'"
+  ],
+  "Document-contentType/contentType/contenttype_javascripturi.html": [
+    "Javascript URI document.contentType === 'text/html'"
+  ],
+  "Document-contentType/contentType/contenttype_jpg.html": [
+    "JPG document.contentType === 'image/jpeg'"
+  ],
+  "Document-contentType/contentType/contenttype_mimeheader_01.html": [
+    "Custom document.contentType === 'text/xml' when explicitly set to this value"
+  ],
+  "Document-contentType/contentType/contenttype_mimeheader_02.html": [
+    "Custom document.contentType === 'text/html' when explicitly set to this value and an attempt is made to override this value in an HTML meta header"
+  ],
+  "Document-contentType/contentType/contenttype_png.html": [
+    "PNG document.contentType === 'image/png'"
+  ],
+  "Document-contentType/contentType/contenttype_txt.html": [
+    "TXT document.contentType === 'text/plain'"
+  ],
   "Document-contentType/contentType/createDocument.html": [
     "document.implementation.createDocument: document.contentType === 'application/xhtml+xml'"
   ],
@@ -4560,7 +4915,6 @@
   "Document-contentType/contentType/xhr_responseType_document.html": [
     "XHR - retrieve HTML document: document.contentType === 'application/xml'"
   ],
-
 
   "-- Waiting for patches to the test suite to be merged upstream --": "----",
   "https://github.com/web-platform-tests/wpt/pull/12202": "---",
@@ -4584,7 +4938,13 @@
     "createElementNS test in XHTML document: \"http://example.com/\",\"ெ:a\",\"INVALID_CHARACTER_ERR\""
   ],
   "https://github.com/web-platform-tests/wpt/pull/12213": "---",
-  "Comment-constructor.html": "Unexpected eval or arguments in strict mode",
-  "Node-textContent.html": "Unexpected eval or arguments in strict mode",
-  "Text-constructor.html": "Unexpected eval or arguments in strict mode"
+  "Comment-constructor.html": [
+    "Uncaught: Unexpected eval or arguments in strict mode"
+  ],
+  "Node-textContent.html": [
+    "Uncaught: Unexpected eval or arguments in strict mode"
+  ],
+  "Text-constructor.html": [
+    "Uncaught: Unexpected eval or arguments in strict mode"
+  ]
 }

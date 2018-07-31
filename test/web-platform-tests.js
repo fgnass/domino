@@ -1,4 +1,3 @@
-/* globals add_completion_callback */
 'use strict';
 var fs = require('fs');
 var Path = require('path');
@@ -33,10 +32,10 @@ var escapeRegExp = function(s) {
 };
 
 var onBlacklist = function(name) {
-  if (WRITE_BLACKLIST) { return 0; }
-  if (!Array.isArray(blacklist[name])) { return 0; }
+  if (WRITE_BLACKLIST) { return null; }
+  if (!Array.isArray(blacklist[name])) { return null; }
   // convert strings to huge regexp
-  return '^(' + blacklist[name].map(escapeRegExp).join('|') + ')$';
+  return new RegExp('^(' + blacklist[name].map(escapeRegExp).join('|') + ')$');
 };
 
 // Test suite requires Array.includes(); polyfill from
@@ -101,12 +100,37 @@ function list(base, dir, fn) {
   return result;
 }
 
+var badTestFiles = new RegExp('(' + [
+  '/html/dom/interfaces.https.html', // Uses ES6, missing .../WebIDLParser.js
+  '/dom/nodes/Document-characterSet-normalization.html',
+  '/dom/nodes/Document-contentType/contentType/contenttype_datauri_02.html',
+  '/dom/nodes/Element-getElementsByTagName-change-document-HTMLNess.html',
+  '/dom/nodes/ParentNode-querySelector-All.html',
+  '/dom/nodes/query-target-in-load-event.html',
+].map(escapeRegExp).join('|') + ')$');
+
+var forceSyncTestFiles = new RegExp('(' + [
+  '/dom/nodes/Node-parentNode.html',
+  '/html/dom/documents/dom-tree-accessors/Document.currentScript.html',
+  '/html/dom/self-origin.sub.html',
+  '/dom/nodes/Node-isEqualNode-xhtml.xhtml',
+].map(escapeRegExp).join('|') + ')$');
+
 var harness = function() {
-  var paths = [].slice.call(arguments);
-  return paths.map(function (path) {
-    return list(path, '', function(name, file) {
+  var paths = Array.from(arguments);
+  var harnessResult = {
+    // Could add 'before' or 'after' hooks here.
+  };
+  paths.forEach(function(path) {
+    var shortName = path.replace(/^.*?\/web-platform-tests\//, '');
+    harnessResult[shortName] = list(path, '', function(name, file) {
       if (/\/html\/dom\/reflection-original.html$/.test(file)) {
         // This is a compilation file & not a test suite.
+        return; // skip
+      }
+      if (badTestFiles.test(file)) {
+        // Misc problems w/ test file, usually resulting in async done() method
+        // never getting invoked and a time-wasting timeout.
         return; // skip
       }
       var html = read(file);
@@ -147,109 +171,174 @@ var harness = function() {
         }
       });
       window._run(testharness);
+      window._run('window.setup({explicit_timeout:true})');
+      if (forceSyncTestFiles.test(file)) {
+        window._run(
+          'async_test = function(){return {'+
+            'step: function() {},' +
+            'step_func_done: function() {},'+
+            'done: function() {},'+
+          '}};'
+        );
+      }
       var scripts = window.document.getElementsByTagName('script');
-      scripts = [].slice.call(scripts);
+      scripts = Array.from(scripts);
+      var sawTestHarness = false;
+      var concatenatedScripts = scripts.map(function(script) {
+        if (/\/resources\/testharness(report)?\.js$/.test(script.getAttribute('src')||'')) {
+          // We've already included the test harnesses.
+          sawTestHarness = true;
+          return '';
+        }
+        if (/\/webrtc\/RTCPeerConnection-helper.js$/.test(script.getAttribute('src')||'')) {
+          // Bad script: we don't support webrtc and furthermore it contains
+          // ES6 syntax which causes older versions of node to choke.
+          return '';
+        }
+        if (/^text\/plain$/.test(script.getAttribute('type')||'')) {
+          return '';
+        }
+        if (/^(\w+|..|\/)/.test(script.getAttribute('src')||'')) {
+          var f = script.getAttribute('src');
+          if (/^\//.test(f)) {
+            f = Path.resolve(__dirname, 'web-platform-tests' + f);
+          } else {
+            //console.log('??', {path:path, name:name, file:file});
+            f = Path.resolve(Path.dirname(file), f);
+          }
+          if (fs.existsSync(f)) {
+            return read(f);
+          } else {
+            // console.warn('SKIPPING SCRIPT', script.outerHTML);
+          }
+        }
+        var textContent = script.textContent;
+        if (/\.xhtml$/.test(file)) {
+          // hacky way to expand entities
+          var txt = window.document.createElementNS('http://www.w3.org/1999/xhtml', 'textarea');
+          txt.innerHTML = textContent;
+          textContent = txt.textContent;
+        }
+        return textContent + '\n';
+      }).join("\n");
+      concatenatedScripts =
+        concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
+                                    '.attributes.item($1)');
+      // Some tests use [...foo] syntax for `Array.from(foo)`
+      concatenatedScripts =
+        concatenatedScripts.replace(/\[\.\.\.(\w+)\]/g,
+                                    'Array.from($1)');
+      // usvstring-reflection.html uses () => { ... } syntax (unnecessarily)
+      concatenatedScripts =
+        concatenatedScripts.replace(/(\b\w+|\(\w*\))\s*=>\s*\{/g, function(_,a){
+          if (a.slice(0,1)!=='(') { a = '(' + a + ')'; }
+          return 'function '+a+' {';
+        });
+      // It also contains `([channel1, channel2]) => {` in a test case which is
+      // bound to fail anyway (it exercises WebRTC)
+      concatenatedScripts =
+        concatenatedScripts.replace(
+            /\(\[channel1, channel2\]\) => \{/,
+            'function(channel1, channel2){' // not right, but not a syntax error
+        );
+      // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
+      concatenatedScripts =
+        '"use strict";\n' +
+        'var x, doc, ReflectionTests;\n' +
+        // Hack in globals on window object
+        '"String|Boolean|Number".split("|").forEach(function(x){' +
+        'window[x] = global[x];})\n' +
+        // Hack in frames on window object
+        'Array.from(document.getElementsByTagName("iframe")).forEach(' +
+        'function(f,i){window[i]=f.contentWindow;});\n' +
+        //'window.setup = function(f) { console.log("setup",f); f(); };\n' +
+        concatenatedScripts;
+      // Fire load events
+      var closeDocument =
+        'document.close();\n' +
+        'Array.from(document.getElementsByTagName("iframe")).forEach(' +
+        'function(f){f.dispatchEvent(new Event("load"));});';
 
-      return function() {
-        var listen = function listen(expectedFailures) {
-          add_completion_callback(function(tests, status) {
-            var failed = tests.filter(function(t) {
-              if (t.status === t.TIMEOUT) { return true; /* never ok */ }
-              var expectFail =
-                  (typeof expectedFailures === 'string') ?
-                  new RegExp(expectedFailures).test(t.name) : false;
-              var actualFail = (t.status === t.FAIL);
-              return expectFail !== actualFail;
+      var expectedFailures = onBlacklist(name);
+
+      return function(done) {
+        var haveTests = false, isComplete = false, sawError = [];
+        var calledOnce = false;
+        var withResults = function(results) {
+          if (calledOnce) {
+            console.warn('DONE CALLED TWICE', name, (new Error()).stack);
+            return;
+          }
+          else { calledOnce = true; }
+          if (!WRITE_BLACKLIST) {
+            var str = results.map(function(item) {
+              var s = item.name;
+              if (item.message) s += ': ' + item.message;
+              if (item.status) s += ' ['+item.status+']';
+              return s;
             });
-            if (failed.length) {
-              var report = failed.map(function(t) {
-                var item = { name: t.name, message: t.message };
-                if (t.status===t.TIMEOUT) { item.status = 'TIMEOUT'; }
-                else if (t.status!==t.FAIL) { item.status = 'EXPECT FAIL'; }
-                return item;
-              });
-              var e = new Error("Unexpected results");
-              e.report = report;
-              throw e;
+            sawError.forEach(function(err) {
+              if (!(expectedFailures && expectedFailures.test('Uncaught: '+err.message))) {
+                str.push('Uncaught: '+err.message);
+              }
+            });
+            if (sawError.length === 1 && str.length === 1) {
+              done(sawError[0]); // for nicer stack trace
+            } else {
+              done(str.length ? new Error(str.join('\n\n')) : null);
             }
-          });
-        };
-        window._run("(" + listen.toString() + ")("+JSON.stringify(onBlacklist(name))+");");
-
-        var concatenatedScripts = scripts.map(function(script) {
-          if (/^text\/plain$/.test(script.getAttribute('type')||'')) {
-            return '';
-          }
-          if (/^(\w+|..)/.test(script.getAttribute('src')||'')) {
-            var f = Path.resolve(path, script.getAttribute('src'));
-            if (fs.existsSync(f)) { return read(f); }
-          }
-          var textContent = script.textContent;
-          if (/\.xhtml$/.test(file)) {
-            // hacky way to expand entities
-            var txt = window.document.createElement('textarea');
-            txt.innerHTML = textContent;
-            textContent = txt.value;
-          }
-          return textContent + '\n';
-        }).join("\n");
-        concatenatedScripts =
-          concatenatedScripts.replace(/\.attributes\[(\w+)\]/g,
-                                      '.attributes.item($1)');
-        // Some tests use [...foo] syntax for `Array.from(foo)`
-        concatenatedScripts =
-          concatenatedScripts.replace(/\[\.\.\.(\w+)\]/g,
-                                      'Array.from($1)');
-        // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
-        concatenatedScripts =
-          '"use strict";\n' +
-          'var x, doc, ReflectionTests;\n' +
-          // Hack in globals on window object
-          '"String|Boolean|Number".split("|").forEach(function(x){' +
-            'window[x] = global[x];})\n' +
-          // Hack in frames on window object
-          'Array.prototype.forEach.call(document.getElementsByTagName("iframe"),' +
-            'function(f,i){window[i]=f.contentWindow;});\n' +
-          'window.setup = function(f) { f(); };\n' +
-          concatenatedScripts +
-          '\nwindow.dispatchEvent(new Event("load"));';
-
-        var go = function() {
-          window._run(concatenatedScripts);
-        };
-        try {
-          go();
-        } catch (e) {
-          if (WRITE_BLACKLIST) {
+          } else {
             var bl = {};
             try {
               bl = JSON.parse(fs.readFileSync(BLACKLIST_PATH, 'utf-8'));
             } catch (e) { /* ignore */ }
-            if (e.message === 'Unexpected results') {
-              bl[name] = e.report.map(function(item) { return item.name; });
-            } else {
-              bl[name] = e.message;
-            }
+            bl[name] = results.map(function(item) { return item.name; });
+            sawError.forEach(function(err) {
+              bl[name].push('Uncaught: ' + err.message);
+            });
+            if (!bl[name].length) { bl[name] = undefined; }
             fs.writeFileSync(
               BLACKLIST_PATH, JSON.stringify(bl, null, 2), 'utf-8'
             );
-          } else {
-            if (e.message === 'Unexpected results') {
-              var str = e.report.map(function(item) {
-                var s = item.name;
-                if (item.message) s += ': ' + item.message;
-                if (item.status) s += ' ['+item.status+']';
-                return s;
-              }).join('\n\n');
-              throw new Error(str);
-            } else if (e.message !== blacklist[name]) {
-              throw e;
-            }
+            done();
           }
+        };
+        window.add_start_callback(function() {
+          haveTests = true;
+        });
+        window.add_completion_callback(function(tests, status) {
+          isComplete = true;
+          var failed = tests.filter(function(t) {
+            if (t.status === t.TIMEOUT) { return true; /* never ok */ }
+            var expectFail =
+                expectedFailures ? expectedFailures.test(t.name) : false;
+            var actualFail = (t.status === t.FAIL);
+            return expectFail !== actualFail;
+          });
+          var report = failed.map(function(t) {
+            var item = { name: t.name, message: t.message };
+            if (t.status===t.TIMEOUT) { item.status = 'TIMEOUT'; }
+            else if (t.status!==t.FAIL) { item.status = 'EXPECT FAIL'; }
+            return item;
+          });
+          withResults(report);
+        });
+        try {
+          window._run(concatenatedScripts);
+        } catch (e) {
+          sawError.push(e);
         }
+        try {
+          window._run(closeDocument);
+        } catch (e) {
+          sawError.push(e);
+        }
+        if (!sawTestHarness) { withResults([]); }
+        else if (sawError.length && !haveTests) { withResults([]); }
       };
     });
   });
+  return harnessResult;
 };
 
 module.exports = harness(__dirname + '/web-platform-tests/html/dom',

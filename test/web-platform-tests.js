@@ -5,181 +5,38 @@ var Path = require('path');
 var domino = require('../lib');
 var Window = require('../lib/Window');
 
+var BLACKLIST_PATH = Path.resolve(__dirname, 'web-platform-blacklist.json');
+// Set to true and delete the existing blacklist file to regenerate the
+// blacklist from currently-failing tests.
+var WRITE_BLACKLIST = false;
+
 // These are the tests we currently fail.
 // Some of these failures are bugs we ought to fix.
-var blacklist = [
-  // web-platform-tests/html/dom
-  'historical',
-  'interfaces',
-  'interfaces.https',
-  'reflection-embedded',
-  'reflection-forms',
-  'reflection-metadata',
-  'reflection-misc',
-  'reflection-obsolete',
-  'reflection-tabular',
-  'self-origin.sub',
-  'usvstring-reflection',
-  'documents dom-tree-accessors Document.body',
-  'documents dom-tree-accessors Document.currentScript',
-  'documents dom-tree-accessors Document.currentScript.sub',
-  'documents dom-tree-accessors document.embeds-document.plugins-01',
-  'documents dom-tree-accessors document.forms',
-  'documents dom-tree-accessors document.head-01',
-  'documents dom-tree-accessors document.images',
-  'documents dom-tree-accessors document.links',
-  'documents dom-tree-accessors document.scripts',
-  'documents dom-tree-accessors document.title-07',
-  'documents dom-tree-accessors document.title-09',
-  'documents dom-tree-accessors nameditem-01',
-  'documents dom-tree-accessors nameditem-02',
-  'documents dom-tree-accessors nameditem-04',
-  'documents dom-tree-accessors nameditem-05',
-  'documents dom-tree-accessors nameditem-06',
-  'documents dom-tree-accessors nameditem-07',
-  'documents dom-tree-accessors nameditem-08',
-  'documents dom-tree-accessors document.getElementsByName document.getElementsByName-interface',
-  'documents dom-tree-accessors document.getElementsByName document.getElementsByName-liveness',
-  'documents resource-metadata-management document-compatmode-06',
-  'documents resource-metadata-management document-cookie',
-  'documents resource-metadata-management document-lastModified-01',
-  'documents resource-metadata-management document-lastModified',
-  'dynamic-markup-insertion closing-the-input-stream document.close-01',
-  /dynamic-markup-insertion document-write [0-9]+/,
-  /dynamic-markup-insertion document-write document.write-0[12]/,
-  /dynamic-markup-insertion document-write iframe_00[0-9]/,
-  /dynamic-markup-insertion document-write script_00[2456789]/,
-  /dynamic-markup-insertion document-write script_01[0123]/,
-  /dynamic-markup-insertion document-writeln document.writeln-0[123]/,
-  /dynamic-markup-insertion opening-the-input-stream 00[1789]/,
-  'dynamic-markup-insertion opening-the-input-stream 010-2',
-  /dynamic-markup-insertion opening-the-input-stream 01[123456]-1/,
-  'dynamic-markup-insertion opening-the-input-stream document.open-01',
-  'dynamic-markup-insertion opening-the-input-stream document.open-02',
-  'dynamic-markup-insertion opening-the-input-stream document.open-03-frame',
-  'elements global-attributes custom-attrs',
-  'elements global-attributes data_unicode_attr',
-  'elements global-attributes dataset-delete',
-  'elements global-attributes dataset-enumeration',
-  'elements global-attributes dataset-get',
-  'elements global-attributes dataset-prototype',
-  'elements global-attributes dataset-set',
-  'elements global-attributes dataset',
-  'elements global-attributes dir_auto-contained-script-L-ref',
-  'elements global-attributes dir_auto-contained-script-L',
-  'elements global-attributes id-attribute',
-  'elements global-attributes the-lang-attribute-001',
-  'elements global-attributes the-lang-attribute-002',
-  'elements global-attributes the-lang-attribute-003',
-  'elements global-attributes the-lang-attribute-004',
-  'elements global-attributes the-lang-attribute-005',
-  'elements global-attributes the-lang-attribute-006',
-  'elements global-attributes the-lang-attribute-007',
-  'elements global-attributes the-lang-attribute-008',
-  'elements global-attributes the-lang-attribute-009',
-  'elements global-attributes the-lang-attribute-010',
-  'elements global-attributes the-translate-attribute-007',
-  'elements global-attributes the-translate-attribute-008',
-  'elements global-attributes the-translate-attribute-009',
-  'elements global-attributes the-translate-attribute-010',
-  'elements global-attributes the-translate-attribute-011',
-  'elements global-attributes the-translate-attribute-012',
-  'elements the-innertext-idl-attribute dynamic-getter',
+var blacklist = {};
+try {
+  blacklist = require(BLACKLIST_PATH);
+} catch(e) {
+  // We expect that you deleted the old blacklist before using WRITE_BLACKLIST
+  if (!WRITE_BLACKLIST) { throw e; }
+}
 
-  // web-platform-tests/dom/nodes
-  'DOMImplementation-createDocument',
-  'DOMImplementation-createDocumentType',
-  'DOMImplementation-createHTMLDocument',
-  'DOMImplementation-hasFeature',
-  'Document-URL.sub',
-  'Document-characterSet-normalization',
-  'Document-constructor',
-  /Document-contentType/,
-  'Document-createAttribute',
-  'Document-createComment',
-  'Document-createElement-namespace',
-  'Document-createEvent',
-  'Document-createTreeWalker',
-  'Document-getElementsByClassName',
-  'Document-getElementsByTagName',
-  'Document-getElementsByTagNameNS',
-  'Element-childElement-null-xhtml',
-  'Element-childElementCount-dynamic-add-xhtml',
-  'Element-childElementCount-dynamic-remove-xhtml',
-  'Element-childElementCount-nochild-xhtml',
-  'Element-childElementCount-xhtml',
-  'Element-children',
-  'Element-classlist',
-  'Element-closest',
-  'Element-firstElementChild-entity-xhtml',
-  'Element-firstElementChild-xhtml',
-  'Element-firstElementChild-namespace-xhtml',
-  'Element-getElementsByClassName',
-  'Element-getElementsByTagName-change-document-HTMLNess',
-  'Element-getElementsByTagName',
-  'Element-getElementsByTagNameNS',
-  'Element-insertAdjacentElement',
-  'Element-insertAdjacentText',
-  'Element-lastElementChild-xhtml',
-  'Element-matches',
-  'Element-nextElementSibling-xhtml',
-  'Element-previousElementSibling-xhtml',
-  'Element-siblingElement-null-xhtml',
-  'Element-tagName',
-  'MutationObserver-attributes',
-  'MutationObserver-characterData',
-  'MutationObserver-childList',
-  'MutationObserver-disconnect',
-  'MutationObserver-document',
-  'MutationObserver-inner-outer',
-  'MutationObserver-takeRecords',
-  'Node-baseURI',
-  'Node-compareDocumentPosition',
-  'Node-isConnected',
-  'Node-isEqualNode',
-  'Node-isEqualNode-xhtml',
-  'Node-nodeName-xhtml',
-  'Node-normalize',
-  'Node-properties',
-  'NodeList-Iterable',
-  'ParentNode-append',
-  'ParentNode-children',
-  'ParentNode-prepend',
-  'ParentNode-querySelector-All-content',
-  'ParentNode-querySelector-All',
-  /^ProcessingInstruction-/,
-  'append-on-Document',
-  'attributes',
-  'case',
-  'insert-adjacent',
-  'prepend-on-Document',
-  'remove-unscopable',
-  'rootNode',
-  'query-target-in-load-event.part',
-
-  // Waiting for patches to the test suite to be merged upstream:
-  // https://github.com/web-platform-tests/wpt/pull/12202
-  'Document-createElement',
-  'Document-createElementNS',
-  // https://github.com/web-platform-tests/wpt/pull/12213
-  'Comment-constructor',
-  'Node-textContent',
-  'Text-constructor',
-].map(function(s) {
-  // Convert strings to equivalent regular expression matchers.
-  if (typeof s === 'string') {
-    return new RegExp('^' + s.replace(/[\^\\$*+?.()|{}\[\]\/]/g, '\\$&') + '$');
-  } else {
-    return s;
-  }
-});
+var escapeRegExp = function(s) {
+  // Note that JSON is not a subset of JavaScript: it allows \u2028 and \u2029
+  // to be embedded as literals.  Escape them in the regexp to prevent this
+  // from causing a syntax error when we eval() this regexp.
+  return s.replace(/[\^\\$*+?.()|{}\[\]\/]/g, '\\$&')
+    .replace(/[\u2028\u2029]/, function(c) {
+      var cp = c.codePointAt(0).toString(16);
+      while (cp.length < 4) { cp = '0' + cp; }
+      return '\\u' + cp;
+    });
+};
 
 var onBlacklist = function(name) {
-  name = name.replace(/\//g, ' ').replace(/\.x?html$/, '');
-  for (var i=0; i<blacklist.length; i++) {
-    if (blacklist[i].test(name)) { return true; }
-  }
-  return false;
+  if (WRITE_BLACKLIST) { return 0; }
+  if (!Array.isArray(blacklist[name])) { return 0; }
+  // convert strings to huge regexp
+  return '^(' + blacklist[name].map(escapeRegExp).join('|') + ')$';
 };
 
 // Test suite requires Array.includes(); polyfill from
@@ -294,26 +151,30 @@ var harness = function() {
       scripts = [].slice.call(scripts);
 
       return function() {
-        var listen = onBlacklist(name) ? function listenForSuccess() {
+        var listen = function listen(expectedFailures) {
           add_completion_callback(function(tests, status) {
             var failed = tests.filter(function(t) {
-              return t.status === t.FAIL || t.status === t.TIMEOUT;
-            });
-            if (failed.length===0) {
-              throw new Error("Expected blacklisted test to fail");
-            }
-          });
-        } : function listenForFailures() {
-          add_completion_callback(function(tests, status) {
-            var failed = tests.filter(function(t) {
-              return t.status === t.FAIL || t.status === t.TIMEOUT;
+              if (t.status === t.TIMEOUT) { return true; /* never ok */ }
+              var expectFail =
+                  (typeof expectedFailures === 'string') ?
+                  new RegExp(expectedFailures).test(t.name) : false;
+              var actualFail = (t.status === t.FAIL);
+              return expectFail !== actualFail;
             });
             if (failed.length) {
-              throw new Error(failed[0].name+": "+failed[0].message);
+              var report = failed.map(function(t) {
+                var item = { name: t.name, message: t.message };
+                if (t.status===t.TIMEOUT) { item.status = 'TIMEOUT'; }
+                else if (t.status!==t.FAIL) { item.status = 'EXPECT FAIL'; }
+                return item;
+              });
+              var e = new Error("Unexpected results");
+              e.report = report;
+              throw e;
             }
           });
         };
-        window._run("(" + listen.toString() + ")();");
+        window._run("(" + listen.toString() + ")("+JSON.stringify(onBlacklist(name))+");");
 
         var concatenatedScripts = scripts.map(function(script) {
           if (/^text\/plain$/.test(script.getAttribute('type')||'')) {
@@ -359,9 +220,31 @@ var harness = function() {
         try {
           go();
         } catch (e) {
-          if ((!onBlacklist(name)) ||
-              /^Expected blacklisted test to fail/.test(e.message||'')) {
-            throw e;
+          if (WRITE_BLACKLIST) {
+            var bl = {};
+            try {
+              bl = JSON.parse(fs.readFileSync(BLACKLIST_PATH, 'utf-8'));
+            } catch (e) { /* ignore */ }
+            if (e.message === 'Unexpected results') {
+              bl[name] = e.report.map(function(item) { return item.name; });
+            } else {
+              bl[name] = e.message;
+            }
+            fs.writeFileSync(
+              BLACKLIST_PATH, JSON.stringify(bl, null, 2), 'utf-8'
+            );
+          } else {
+            if (e.message === 'Unexpected results') {
+              var str = e.report.map(function(item) {
+                var s = item.name;
+                if (item.message) s += ': ' + item.message;
+                if (item.status) s += ' ['+item.status+']';
+                return s;
+              }).join('\n\n');
+              throw new Error(str);
+            } else if (e.message !== blacklist[name]) {
+              throw e;
+            }
           }
         }
       };

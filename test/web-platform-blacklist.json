@@ -4797,7 +4797,6 @@
     "Document.append() with two elements as the argument, on a Document having no child."
   ],
   "attributes.html": [
-    "Toggling element with inline style should make inline style disappear",
     "Basic functionality of setAttributeNode",
     "setAttributeNode should distinguish attributes with same local name and different namespaces",
     "setAttributeNode doesn't have case-insensitivity even with an HTMLElement",

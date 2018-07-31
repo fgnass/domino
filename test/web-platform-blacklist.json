@@ -2303,10 +2303,6 @@
   "documents/dom-tree-accessors/document.scripts.html": [
     "Document.scripts should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.title-07.html": [
-    "createHTMLDocument test 2: undefined,undefined,\"\"",
-    "Missing title argument"
-  ],
   "documents/dom-tree-accessors/document.title-09.html": [
     "No title element in SVG document",
     "Title element not child of SVG root",
@@ -2773,9 +2769,7 @@
     "createDocument test: \"foo\",null,DocumentType node <!DOCTYPE foo>,null",
     "createDocument test: \"foo\",\"bar\",DocumentType node <!DOCTYPE foo>,null",
     "createDocument test: \"http://www.w3.org/1999/xhtml\",\"\",null,null",
-    "createDocument test: metadata for \"http://www.w3.org/1999/xhtml\",\"\",null",
     "createDocument test: \"http://www.w3.org/2000/svg\",\"\",null,null",
-    "createDocument test: metadata for \"http://www.w3.org/2000/svg\",\"\",null",
     "createDocument test: \"http://www.w3.org/1998/Math/MathML\",\"\",null,null",
     "createDocument test: null,\"html\",null,null",
     "createDocument test: null,\"svg\",null,null",
@@ -2786,9 +2780,6 @@
     "createDocument with missing arguments"
   ],
   "DOMImplementation-createHTMLDocument.html": [
-    "createHTMLDocument test 2: undefined,undefined,\"\"",
-    "Missing title argument",
-    "createHTMLDocument(): metadata",
     "createHTMLDocument(): URL parsing"
   ],
   "DOMImplementation-hasFeature.html": [
@@ -2947,52 +2938,38 @@
     "createComment(undefined)"
   ],
   "Document-createElement-namespace.html": [
-    "Created element's namespace in current document",
-    "Created element's namespace in created HTML document",
-    "Created element's namespace in created XHTML document",
-    "Created element's namespace in created SVG document",
     "Created element's namespace in created HTML document by DOMParser ('text/html')",
     "Created element's namespace in created XML document by DOMParser ('text/xml')",
     "Created element's namespace in created XML document by DOMParser ('application/xml')",
     "Created element's namespace in created XHTML document by DOMParser ('application/xhtml+xml')",
     "Created element's namespace in created SVG document by DOMParser ('image/svg+xml')",
-    "Created element's namespace in empty.html",
     "Created element's namespace in empty.xhtml",
     "Created element's namespace in empty.xml",
     "Created element's namespace in empty.svg",
-    "Created element's namespace in minimal_html.html",
     "Created element's namespace in minimal_html.xhtml",
     "Created element's namespace in minimal_html.xml",
     "Created element's namespace in minimal_html.svg",
-    "Created element's namespace in xhtml.html",
     "Created element's namespace in xhtml.xhtml",
     "Created element's namespace in xhtml.xml",
     "Created element's namespace in xhtml.svg",
-    "Created element's namespace in svg.html",
     "Created element's namespace in svg.xhtml",
     "Created element's namespace in svg.xml",
     "Created element's namespace in svg.svg",
-    "Created element's namespace in mathml.html",
     "Created element's namespace in mathml.xhtml",
     "Created element's namespace in mathml.xml",
     "Created element's namespace in mathml.svg",
-    "Created element's namespace in bare_xhtml.html",
     "Created element's namespace in bare_xhtml.xhtml",
     "Created element's namespace in bare_xhtml.xml",
     "Created element's namespace in bare_xhtml.svg",
-    "Created element's namespace in bare_svg.html",
     "Created element's namespace in bare_svg.xhtml",
     "Created element's namespace in bare_svg.xml",
     "Created element's namespace in bare_svg.svg",
-    "Created element's namespace in bare_mathml.html",
     "Created element's namespace in bare_mathml.xhtml",
     "Created element's namespace in bare_mathml.xml",
     "Created element's namespace in bare_mathml.svg",
-    "Created element's namespace in xhtml_ns_removed.html",
     "Created element's namespace in xhtml_ns_removed.xhtml",
     "Created element's namespace in xhtml_ns_removed.xml",
     "Created element's namespace in xhtml_ns_removed.svg",
-    "Created element's namespace in xhtml_ns_changed.html",
     "Created element's namespace in xhtml_ns_changed.xhtml",
     "Created element's namespace in xhtml_ns_changed.xml",
     "Created element's namespace in xhtml_ns_changed.svg"
@@ -4574,9 +4551,6 @@
     "Test with ordinary child nodes",
     "Test with iframes"
   ],
-  "Node-isEqualNode.html": [
-    "documents should not be compared based on properties"
-  ],
   "Node-lookupPrefix.xhtml": [
     "Node.lookupPrefix",
     "Node.lookupPrefix 5",
@@ -4592,10 +4566,6 @@
   ],
   "Node-normalize.html": [
     "Non-text nodes with empty textContent values."
-  ],
-  "Node-properties.html": [
-    "document.contentType",
-    "foreignDoc.contentType"
   ],
   "NodeList-Iterable.html": [
     "NodeList has values method.",
@@ -4731,9 +4701,6 @@
   "Document-contentType/contentType/contenttype_gif.html": [
     "GIF document.contentType === 'image/gif'"
   ],
-  "Document-contentType/contentType/contenttype_html.html": [
-    "HTM document.contentType === 'text/html'"
-  ],
   "Document-contentType/contentType/contenttype_javascripturi.html": [
     "Javascript URI document.contentType === 'text/html'"
   ],
@@ -4743,25 +4710,18 @@
   "Document-contentType/contentType/contenttype_mimeheader_01.html": [
     "Custom document.contentType === 'text/xml' when explicitly set to this value"
   ],
-  "Document-contentType/contentType/contenttype_mimeheader_02.html": [
-    "Custom document.contentType === 'text/html' when explicitly set to this value and an attempt is made to override this value in an HTML meta header"
-  ],
   "Document-contentType/contentType/contenttype_png.html": [
     "PNG document.contentType === 'image/png'"
   ],
   "Document-contentType/contentType/contenttype_txt.html": [
     "TXT document.contentType === 'text/plain'"
   ],
-  "Document-contentType/contentType/createDocument.html": [
-    "document.implementation.createDocument: document.contentType === 'application/xhtml+xml'"
-  ],
-  "Document-contentType/contentType/createHTMLDocument.html": [
-    "document.implementation.createHTMLDocument: document.contentType === 'text/html'"
+  "Document-contentType/contentType/contenttype_xml.html": [
+    "XML document.contentType === 'application/xml'"
   ],
   "Document-contentType/contentType/xhr_responseType_document.html": [
     "XHR - retrieve HTML document: document.contentType === 'application/xml'"
   ],
-
   "-- Waiting for patches to the test suite to be merged upstream --": "----",
   "https://github.com/web-platform-tests/wpt/pull/12202": "---",
   "Document-createElement.html": [

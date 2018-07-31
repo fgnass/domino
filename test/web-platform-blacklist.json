@@ -3246,10 +3246,6 @@
   "Element-siblingElement-null-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-tagName.html": [
-    "tagName should be updated when changing ownerDocument (createDocument without prefix)",
-    "tagName should be updated when changing ownerDocument (createDocument with prefix)"
-  ],
   "Element-webkitMatchesSelector.html": [
     "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
   ],

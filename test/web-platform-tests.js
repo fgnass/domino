@@ -343,4 +343,5 @@ var harness = function() {
 };
 
 module.exports = harness(__dirname + '/web-platform-tests/html/dom',
-                         __dirname + '/web-platform-tests/dom/nodes');
+                         __dirname + '/web-platform-tests/dom/nodes',
+                         __dirname + '/web-platform-tests/domparsing');

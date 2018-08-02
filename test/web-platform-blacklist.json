@@ -4565,6 +4565,189 @@
   "dom/nodes/Document-contentType/contentType/xhr_responseType_document.html": [
     "XHR - retrieve HTML document: document.contentType === 'application/xml'"
   ],
+  "domparsing/DOMParser-parseFromString-html.html": [
+    "Parsing of id attribute",
+    "contentType",
+    "characterSet",
+    "inputEncoding",
+    "charset",
+    "URL value",
+    "baseURI value",
+    "Location value",
+    "DOMParser parses HTML tag soup with no problems",
+    "DOMParser throws on an invalid enum value"
+  ],
+  "domparsing/DOMParser-parseFromString-xml-doctype.html": [
+    "Doctype parsing of System Id must fail on ommitted value",
+    "Doctype parsing of System Id can handle empty string",
+    "Doctype parsing of System Id can handle a quoted value"
+  ],
+  "domparsing/DOMParser-parseFromString-xml-internal-subset.html": [
+    "Parsing and serialization of doctype internal subset"
+  ],
+  "domparsing/DOMParser-parseFromString-xml.html": [
+    "Should parse correctly in type text/xml",
+    "XMLDocument interface for correctly parsed document with type text/xml",
+    "Should return an error document for XML wellformedness errors in type text/xml",
+    "XMLDocument interface for incorrectly parsed document with type text/xml",
+    "Should parse correctly in type application/xml",
+    "XMLDocument interface for correctly parsed document with type application/xml",
+    "Should return an error document for XML wellformedness errors in type application/xml",
+    "XMLDocument interface for incorrectly parsed document with type application/xml",
+    "Should parse correctly in type application/xhtml+xml",
+    "XMLDocument interface for correctly parsed document with type application/xhtml+xml",
+    "Should return an error document for XML wellformedness errors in type application/xhtml+xml",
+    "XMLDocument interface for incorrectly parsed document with type application/xhtml+xml",
+    "Should parse correctly in type image/svg+xml",
+    "XMLDocument interface for correctly parsed document with type image/svg+xml",
+    "Should return an error document for XML wellformedness errors in type image/svg+xml",
+    "XMLDocument interface for incorrectly parsed document with type image/svg+xml"
+  ],
+  "domparsing/XMLSerializer-serializeToString.html": [
+    "check XMLSerializer.serializeToString method could parsing xmldoc to string",
+    "Check if the default namespace is correctly reset.",
+    "Check if there is no redundant empty namespace declaration.",
+    "check XMLSerializer.serializeToString escapes attribute values for roundtripping"
+  ],
+  "domparsing/createContextualFragment.html": [
+    "Must not throw INVALID_STATE_ERR for a detached node.",
+    "Must throw TypeError when calling without arguments",
+    "Simple test with paragraphs",
+    "Don't auto-create <body> when applied to <html>",
+    "<script>s should be run when appended to the document (but not before)",
+    "createContextualFragment should work even when the context is <area>",
+    "createContextualFragment should work even when the context is <base>",
+    "createContextualFragment should work even when the context is <basefont>",
+    "createContextualFragment should work even when the context is <bgsound>",
+    "createContextualFragment should work even when the context is <br>",
+    "createContextualFragment should work even when the context is <col>",
+    "createContextualFragment should work even when the context is <embed>",
+    "createContextualFragment should work even when the context is <frame>",
+    "createContextualFragment should work even when the context is <hr>",
+    "createContextualFragment should work even when the context is <img>",
+    "createContextualFragment should work even when the context is <input>",
+    "createContextualFragment should work even when the context is <keygen>",
+    "createContextualFragment should work even when the context is <link>",
+    "createContextualFragment should work even when the context is <meta>",
+    "createContextualFragment should work even when the context is <param>",
+    "createContextualFragment should work even when the context is <source>",
+    "createContextualFragment should work even when the context is <track>",
+    "createContextualFragment should work even when the context is <wbr>",
+    "createContextualFragment should work even when the context is <menuitem>",
+    "createContextualFragment should work even when the context is <image>",
+    "<html> and <body> must work the same, 1",
+    "<html> and <body> must work the same, 2",
+    "Implicit <body> creation",
+    "Namespace generally shouldn't matter",
+    "<html> in a different namespace shouldn't be special",
+    "SVG namespace shouldn't be special",
+    "null should be stringified",
+    "undefined should be stringified",
+    "Text nodes shouldn't be special",
+    "Non-Element parent should not be special"
+  ],
+  "domparsing/innerhtml-01.xhtml": [
+    "innerHTML in XHTML: getting while the document is in an invalid state",
+    "innerHTML in XHTML: getting while the document is in an invalid state 1"
+  ],
+  "domparsing/innerhtml-03.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "domparsing/innerhtml-05.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "domparsing/innerhtml-07.html": [
+    "innerHTML and string conversion: null.",
+    "innerHTML and string conversion: toString."
+  ],
+  "domparsing/innerhtml-mxss.sub.html": [
+    "href before setter: 1680",
+    "href after setter: 1680",
+    "href before setter: 2000",
+    "href after setter: 2000",
+    "href before setter: 2001",
+    "href after setter: 2001",
+    "href before setter: 2002",
+    "href after setter: 2002",
+    "href before setter: 2003",
+    "href after setter: 2003",
+    "href before setter: 2004",
+    "href after setter: 2004",
+    "href before setter: 2005",
+    "href after setter: 2005",
+    "href before setter: 2006",
+    "href after setter: 2006",
+    "href before setter: 2007",
+    "href after setter: 2007",
+    "href before setter: 2008",
+    "href after setter: 2008",
+    "href before setter: 2009",
+    "href after setter: 2009",
+    "href before setter: 200a",
+    "href after setter: 200a",
+    "href before setter: 2028",
+    "href after setter: 2028",
+    "href before setter: 205f",
+    "href after setter: 205f",
+    "href before setter: 3000",
+    "href after setter: 3000"
+  ],
+  "domparsing/insert-adjacent.html": [
+    "insertAdjacentHTML(beforebegin, <h3>beforebegin</h3> )",
+    "insertAdjacentHTML(afterbegin, <h3>afterbegin</h3> )",
+    "insertAdjacentHTML(beforeend, <h3>beforeend</h3> )",
+    "insertAdjacentHTML(afterend, <h3>afterend</h3> )"
+  ],
+  "domparsing/insert_adjacent_html-xhtml.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "domparsing/insert_adjacent_html.html": [
+    "beforeBegin content without next sibling",
+    "Afterbegin content without next sibling",
+    "BeforeEnd content without next sibling",
+    "afterend content without next sibling",
+    "beforeBegin content again, with next sibling",
+    "Afterbegin content again, with next sibling",
+    "BeforeEnd content again, with next sibling",
+    "afterend content again, with next sibling",
+    "Should throw when inserting with invalid position string",
+    "When the parent node is null, insertAdjacentHTML should throw for beforebegin and afterend (text)",
+    "When the parent node is null, insertAdjacentHTML should throw for beforebegin and afterend (comments)",
+    "When the parent node is null, insertAdjacentHTML should throw for beforebegin and afterend (elements)",
+    "When the parent node is a document, insertAdjacentHTML should throw for beforebegin and afterend (text)",
+    "When the parent node is a document, insertAdjacentHTML should throw for beforebegin and afterend (comments)",
+    "When the parent node is a document, insertAdjacentHTML should throw for beforebegin and afterend (elements)",
+    "Inserting after being and before end should order things correctly",
+    "beforeBegin child node not in tree but has parent",
+    "Afterbegin child node not in tree but has parent",
+    "BeforeEnd child node not in tree but has parent",
+    "afterend child node not in tree but has parent",
+    "beforeBegin content2 without next sibling",
+    "Afterbegin content2 without next sibling",
+    "BeforeEnd content2 without next sibling",
+    "afterend content2 without next sibling",
+    "beforeBegin content2 test again, now that there's a next sibling",
+    "Afterbegin content2 test again, now that there's a next sibling",
+    "BeforeEnd content2 test again, now that there's a next sibling",
+    "afterend content2 test again, now that there's a next sibling",
+    "Inserting kids of the <html> element should not do weird things with implied <body>/<head> tags"
+  ],
+  "domparsing/outerhtml-02.html": [
+    "outerHTML and string conversion: null.",
+    "outerHTML and string conversion: toString."
+  ],
+  "domparsing/style_attribute_html.html": [
+    "Parsing of initial style attribute",
+    "Parsing of invalid style attribute",
+    "Parsing of style attribute",
+    "Update style.backgroundColor"
+  ],
+  "domparsing/xml-serialization.xhtml": [
+    "Uncaught: Unexpected token <"
+  ],
+  "domparsing/xmldomparser.html": [
+    "XML Dom Parse readyState Test"
+  ],
   "-- Waiting for patches to the test suite to be merged upstream --": "----",
   "https://github.com/web-platform-tests/wpt/pull/12202": "---",
   "dom/nodes/Document-createElement.html": [

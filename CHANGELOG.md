@@ -1,7 +1,7 @@
 # domino x.x.x (not yet released)
 * Fix `ContainerNode#removeChildren()` when there is more than one child (#129)
 * Implement `Document#scrollingElement` (#107)
-* Implement setter for `Element#outerHTML`
+* Implement setter for `Element#outerHTML` (#102)
 * Handle null/undefined in setter for `Node#textContent`
 * Handle null/undefined/negative values in `CharacterData` interface methods
 * Spec-correctness fixes for `DOMTokenList`, including handling of duplicate
@@ -29,6 +29,8 @@
 * Implement proper accessors for `HTMLSelectElement#autocomplete`,
   `HTMLTextAreaElement#type/value/defaultValue/textLength`, and
   `HTMLInputElement#width/height/minLength`
+* Implement `Element#insertAdjacentElement()`, `Element#insertAdjacentText()`,
+  and `Element#insertAdjacentHTML()` (#102)
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

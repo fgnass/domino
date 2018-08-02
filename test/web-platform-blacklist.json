@@ -3035,22 +3035,6 @@
     "Empty string namespace",
     "getElementsByTagNameNS() should be a live collection"
   ],
-  "dom/nodes/Element-insertAdjacentElement.html": [
-    "Inserting to an invalid location should cause a Syntax Error exception",
-    "Inserted element should be target element's previous sibling for 'beforebegin' case",
-    "Inserted element should be target element's first child for 'afterbegin' case",
-    "Inserted element should be target element's last child for 'beforeend' case",
-    "Inserted element should be target element's next sibling for 'afterend' case",
-    "Adding more than one child to document should cause a HierarchyRequestError exception"
-  ],
-  "dom/nodes/Element-insertAdjacentText.html": [
-    "Inserting to an invalid location should cause a Syntax Error exception",
-    "Inserted text node should be target element's previous sibling for 'beforebegin' case",
-    "Inserted text node should be target element's first child for 'afterbegin' case",
-    "Inserted text node should be target element's last child for 'beforeend' case",
-    "Inserted text node should be target element's next sibling for 'afterend' case",
-    "Adding more than one child to document should cause a HierarchyRequestError exception"
-  ],
   "dom/nodes/Element-lastElementChild-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
@@ -4496,21 +4480,6 @@
     "getElementsByTagName a:ä",
     "getElementsByTagName a:Ä"
   ],
-  "dom/nodes/insert-adjacent.html": [
-    "insertAdjacentElement(beforebegin, [object Object] )",
-    "insertAdjacentText(beforebegin, raclette )",
-    "insertAdjacentElement(afterbegin, [object Object] )",
-    "insertAdjacentText(afterbegin, tartiflette )",
-    "insertAdjacentElement(beforeend, [object Object] )",
-    "insertAdjacentText(beforeend, lasagne )",
-    "insertAdjacentElement(afterend, [object Object] )",
-    "insertAdjacentText(afterend, gateau aux pommes )",
-    "invalid caller object insertAdjacentElement",
-    "invalid caller object insertAdjacentText",
-    "invalid syntax for insertAdjacentElement",
-    "invalid syntax for insertAdjacentText",
-    "insertAdjacentText should return null"
-  ],
   "dom/nodes/prepend-on-Document.html": [
     "Document.prepend() without any argument, on a Document having no child.",
     "Document.prepend() with only one element as an argument, on a Document having no child.",
@@ -4688,45 +4657,8 @@
     "href before setter: 3000",
     "href after setter: 3000"
   ],
-  "domparsing/insert-adjacent.html": [
-    "insertAdjacentHTML(beforebegin, <h3>beforebegin</h3> )",
-    "insertAdjacentHTML(afterbegin, <h3>afterbegin</h3> )",
-    "insertAdjacentHTML(beforeend, <h3>beforeend</h3> )",
-    "insertAdjacentHTML(afterend, <h3>afterend</h3> )"
-  ],
   "domparsing/insert_adjacent_html-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
-  ],
-  "domparsing/insert_adjacent_html.html": [
-    "beforeBegin content without next sibling",
-    "Afterbegin content without next sibling",
-    "BeforeEnd content without next sibling",
-    "afterend content without next sibling",
-    "beforeBegin content again, with next sibling",
-    "Afterbegin content again, with next sibling",
-    "BeforeEnd content again, with next sibling",
-    "afterend content again, with next sibling",
-    "Should throw when inserting with invalid position string",
-    "When the parent node is null, insertAdjacentHTML should throw for beforebegin and afterend (text)",
-    "When the parent node is null, insertAdjacentHTML should throw for beforebegin and afterend (comments)",
-    "When the parent node is null, insertAdjacentHTML should throw for beforebegin and afterend (elements)",
-    "When the parent node is a document, insertAdjacentHTML should throw for beforebegin and afterend (text)",
-    "When the parent node is a document, insertAdjacentHTML should throw for beforebegin and afterend (comments)",
-    "When the parent node is a document, insertAdjacentHTML should throw for beforebegin and afterend (elements)",
-    "Inserting after being and before end should order things correctly",
-    "beforeBegin child node not in tree but has parent",
-    "Afterbegin child node not in tree but has parent",
-    "BeforeEnd child node not in tree but has parent",
-    "afterend child node not in tree but has parent",
-    "beforeBegin content2 without next sibling",
-    "Afterbegin content2 without next sibling",
-    "BeforeEnd content2 without next sibling",
-    "afterend content2 without next sibling",
-    "beforeBegin content2 test again, now that there's a next sibling",
-    "Afterbegin content2 test again, now that there's a next sibling",
-    "BeforeEnd content2 test again, now that there's a next sibling",
-    "afterend content2 test again, now that there's a next sibling",
-    "Inserting kids of the <html> element should not do weird things with implied <body>/<head> tags"
   ],
   "domparsing/style_attribute_html.html": [
     "Parsing of initial style attribute",

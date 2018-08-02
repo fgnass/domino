@@ -4,17 +4,31 @@
 * Implement setter for `Element#outerHTML`
 * Handle null/undefined in setter for `Node#textContent`
 * Handle null/undefined/negative values in `CharacterData` interface methods
-* More spec-correctness fixes for `DOMTokenList`
-* Fix `[src=...]` selectors
+* Spec-correctness fixes for `DOMTokenList`, including handling of duplicate
+  keys.
+* Fix `[src=...]` selectors in `Document#querySelector()` and similar
 * Spec-correctness fixes for `Document#createElement()` and
-  `Document#createElementNS()`
-* Implement `Attr#cloneNode()`
-* Implement `Element#getAttributeNode()`, `Element#getAttributeNodeNS()`, and
-  `Element#hasAttributes()`
+  `Document#createElementNS()`, including proper exception type and type
+  coercion.
+* Implement `Attr#cloneNode()` (DOM3 compatibility)
+* Implement `Element#getAttributeNode()`, `Element#getAttributeNodeNS()`,
+  `Element#hasAttributes()`, and `Element#toggleAttribute()`
 * Implement `Text#wholeText`
 * Implement `Document#cloneNode()` and `DocumentType#cloneNode()`
 * Spec-correctness fixes for `Node#lookupPrefix()`,
-  `Node#lookupNamespaceURI()`, and `Node#isDefaultNamespace`.
+  `Node#lookupNamespaceURI()`, and `Node#isDefaultNamespace`, including
+  proper type coercion and reconciling DOM 3 and DOM 4 specifications.
+* Ensure `Document#title` continues to use correct whitespace stripping
+  for node > 4, and properly set `<title>` when `undefined` is passed to
+  `DOMImplementation#createHTMLDocument()`
+* Ensure `Element#attributes` implements `NamedNodeMap` and that indexed
+  properties of `Element#attributes` work (previously you needed to use
+  the `item()` accessor method)
+* Improve stubs for `HTMLElement#style`, `Document#documentURI`, and
+  `Document#contentType`
+* Implement proper accessors for `HTMLSelectElement#autocomplete`,
+  `HTMLTextAreaElement#type/value/defaultValue/textLength`, and
+  `HTMLInputElement#width/height/minLength`
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

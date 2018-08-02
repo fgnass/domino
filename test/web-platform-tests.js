@@ -29,7 +29,6 @@ var blacklist = [
   'documents dom-tree-accessors document.images',
   'documents dom-tree-accessors document.links',
   'documents dom-tree-accessors document.scripts',
-  'documents dom-tree-accessors document.title-05',
   'documents dom-tree-accessors document.title-07',
   'documents dom-tree-accessors document.title-09',
   'documents dom-tree-accessors nameditem-01',

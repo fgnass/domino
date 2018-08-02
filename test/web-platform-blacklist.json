@@ -4656,10 +4656,6 @@
   "domparsing/innerhtml-05.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "domparsing/innerhtml-07.html": [
-    "innerHTML and string conversion: null.",
-    "innerHTML and string conversion: toString."
-  ],
   "domparsing/innerhtml-mxss.sub.html": [
     "href before setter: 1680",
     "href after setter: 1680",
@@ -4731,10 +4727,6 @@
     "BeforeEnd content2 test again, now that there's a next sibling",
     "afterend content2 test again, now that there's a next sibling",
     "Inserting kids of the <html> element should not do weird things with implied <body>/<head> tags"
-  ],
-  "domparsing/outerhtml-02.html": [
-    "outerHTML and string conversion: null.",
-    "outerHTML and string conversion: toString."
   ],
   "domparsing/style_attribute_html.html": [
     "Parsing of initial style attribute",

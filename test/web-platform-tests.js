@@ -31,11 +31,11 @@ var escapeRegExp = function(s) {
     });
 };
 
-var onBlacklist = function(name) {
+var onBlacklist = function(shortFile) {
   if (WRITE_BLACKLIST) { return null; }
-  if (!Array.isArray(blacklist[name])) { return null; }
+  if (!Array.isArray(blacklist[shortFile])) { return null; }
   // convert strings to huge regexp
-  return new RegExp('^(' + blacklist[name].map(escapeRegExp).join('|') + ')$');
+  return new RegExp('^(' + blacklist[shortFile].map(escapeRegExp).join('|') + ')$');
 };
 
 // Test suite requires Array.includes(); polyfill from
@@ -124,6 +124,7 @@ var harness = function() {
   paths.forEach(function(path) {
     var shortName = path.replace(/^.*?\/web-platform-tests\//, '');
     harnessResult[shortName] = list(path, '', function(name, file) {
+      var shortFile = file.replace(/^.*?\/web-platform-tests\//, '');
       if (/\/html\/dom\/reflection-original.html$/.test(file)) {
         // This is a compilation file & not a test suite.
         return; // skip
@@ -259,7 +260,7 @@ var harness = function() {
         'Array.from(document.getElementsByTagName("iframe")).forEach(' +
         'function(f){f.dispatchEvent(new Event("load"));});';
 
-      var expectedFailures = onBlacklist(name);
+      var expectedFailures = onBlacklist(shortFile);
 
       return function(done) {
         var haveTests = false, isComplete = false, sawError = [];
@@ -292,11 +293,11 @@ var harness = function() {
             try {
               bl = JSON.parse(fs.readFileSync(BLACKLIST_PATH, 'utf-8'));
             } catch (e) { /* ignore */ }
-            bl[name] = results.map(function(item) { return item.name; });
+            bl[shortFile] = results.map(function(item) { return item.name; });
             sawError.forEach(function(err) {
-              bl[name].push('Uncaught: ' + err.message);
+              bl[shortFile].push('Uncaught: ' + err.message);
             });
-            if (!bl[name].length) { bl[name] = undefined; }
+            if (!bl[shortFile].length) { bl[shortFile] = undefined; }
             fs.writeFileSync(
               BLACKLIST_PATH, JSON.stringify(bl, null, 2), 'utf-8'
             );

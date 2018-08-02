@@ -1,10 +1,10 @@
 {
   "-- web-platform-tests/html/dom --": "-------------------------------------",
-  "historical.html": [
+  "html/dom/historical.html": [
     "document.all cannot find applet",
     "applet is not styled"
   ],
-  "reflection-embedded.html": [
+  "html/dom/reflection-embedded.html": [
     "img.decoding: typeof IDL attribute",
     "img.decoding: IDL get with DOM attribute unset",
     "img.decoding: setAttribute() to \"\"",
@@ -95,7 +95,7 @@
     "iframe.delegateStickyUserActivation: IDL set to \"edia\"",
     "iframe.delegateStickyUserActivation: IDL set to \"MEDIA\""
   ],
-  "reflection-forms.html": [
+  "html/dom/reflection-forms.html": [
     "form.action: IDL get with DOM attribute unset",
     "form.action: setAttribute() to \"\"",
     "form.action: setAttribute() to \" foo \"",
@@ -254,7 +254,7 @@
     "meter.optimum: IDL set to 1",
     "meter.optimum: IDL set to 10000000000"
   ],
-  "reflection-metadata.html": [
+  "html/dom/reflection-metadata.html": [
     "base.href: typeof IDL attribute",
     "base.href: IDL get with DOM attribute unset",
     "base.href: IDL set to \"\"",
@@ -506,7 +506,7 @@
     "style.nonce: IDL set to object \"test-toString\"",
     "style.nonce: IDL set to object \"test-valueOf\""
   ],
-  "reflection-misc.html": [
+  "html/dom/reflection-misc.html": [
     "script.noModule: typeof IDL attribute",
     "script.noModule: IDL get with DOM attribute unset",
     "script.noModule: setAttribute() to \"\"",
@@ -748,7 +748,7 @@
     "undefinedelement.inputMode: IDL set to \"earch\"",
     "undefinedelement.inputMode: IDL set to \"SEARCH\""
   ],
-  "reflection-obsolete.html": [
+  "html/dom/reflection-obsolete.html": [
     "applet.align: typeof IDL attribute",
     "applet.align: IDL get with DOM attribute unset",
     "applet.align: setAttribute() to \"\"",
@@ -1946,7 +1946,7 @@
     "frame.marginWidth: IDL set to object \"test-toString\"",
     "frame.marginWidth: IDL set to object \"test-valueOf\""
   ],
-  "reflection-tabular.html": [
+  "html/dom/reflection-tabular.html": [
     "colgroup.span: setAttribute() to 2147483647",
     "colgroup.span: setAttribute() to 2147483648",
     "colgroup.span: setAttribute() to 4294967295",
@@ -2068,11 +2068,11 @@
     "th.headers: IDL set to object \"test-toString\"",
     "th.headers: IDL set to object \"test-valueOf\""
   ],
-  "self-origin.sub.html": [
+  "html/dom/self-origin.sub.html": [
     "Assigning blob url",
     "We should have the right origin for our page"
   ],
-  "usvstring-reflection.html": [
+  "html/dom/usvstring-reflection.html": [
     "location.hash : unpaired surrogate codepoint should be replaced with U+FFFD",
     "location.href : unpaired surrogate codepoint should be replaced with U+FFFD",
     "window.open : unpaired surrogate codepoint should be replaced with U+FFFD",
@@ -2092,7 +2092,7 @@
     "Document URLs: unpaired surrogate codepoint should be replaced with U+FFFD",
     "RTCDataChannel.send: unpaired surrogate codepoint should be replaced with U+FFFD."
   ],
-  "documents/dom-tree-accessors/Document.body.html": [
+  "html/dom/documents/dom-tree-accessors/Document.body.html": [
     "Frameset followed by body inside the html element",
     "Frameset inside an x element followed by a frameset",
     "Frameset as the root node with a body child",
@@ -2106,17 +2106,17 @@
     "Setting document.body to a frameset will replace the first existing body/frameset.",
     "Setting document.body to a new body element when the root element is a test element."
   ],
-  "documents/dom-tree-accessors/Document.currentScript.html": [
+  "html/dom/documents/dom-tree-accessors/Document.currentScript.html": [
     "Uncaught: XMLHttpRequest is not defined"
   ],
-  "documents/dom-tree-accessors/document.embeds-document.plugins-01.html": [
+  "html/dom/documents/dom-tree-accessors/document.embeds-document.plugins-01.html": [
     "No plugins",
     "One plugin",
     "Two plugins",
     "Document.embeds should be a live collection",
     "Document.plugins should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.forms.html": [
+  "html/dom/documents/dom-tree-accessors/document.forms.html": [
     "document.forms",
     "document.forms.item with string arg",
     "document.forms with empty string",
@@ -2124,10 +2124,10 @@
     "document.forms getOwnPropertyNames",
     "Document.forms should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.head-01.html": [
+  "html/dom/documents/dom-tree-accessors/document.head-01.html": [
     "document.head"
   ],
-  "documents/dom-tree-accessors/document.images.html": [
+  "html/dom/documents/dom-tree-accessors/document.images.html": [
     "document.images should contain all HTML img elements",
     "img with id",
     "img with name",
@@ -2140,22 +2140,22 @@
     "The empty string should not be in the collections",
     "Document.images should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.links.html": [
+  "html/dom/documents/dom-tree-accessors/document.links.html": [
     "Document.links should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.scripts.html": [
+  "html/dom/documents/dom-tree-accessors/document.scripts.html": [
     "Document.scripts should be a live collection"
   ],
-  "documents/dom-tree-accessors/document.title-09.html": [
+  "html/dom/documents/dom-tree-accessors/document.title-09.html": [
     "No title element in SVG document",
     "Title element not child of SVG root",
     "Title element not in SVG namespace",
     "Root element not named \"svg\""
   ],
-  "documents/dom-tree-accessors/nameditem-01.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-01.html": [
     "img elements that have a name and id attribute, should be accessible by both values."
   ],
-  "documents/dom-tree-accessors/nameditem-02.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-02.html": [
     "If the only named item is an iframe, the contentWindow should be returned.",
     "If there are two iframes, a collection should be returned.",
     "If there are an iframe and another element (iframe first), a collection should be returned.",
@@ -2163,21 +2163,21 @@
     "If an iframe has a name and a different id, it should be returned by its name.",
     "An iframe whose name looks like an array index should work."
   ],
-  "documents/dom-tree-accessors/nameditem-04.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-04.html": [
     "If there is one form, it should be returned (name)",
     "If there are two forms, a collection should be returned. (name)",
     "If there are two forms, a collection should be returned. (name and id)",
     "If there are two forms, a collection should be returned. (id and name)",
     "An id shouldn't affect getting an form by name"
   ],
-  "documents/dom-tree-accessors/nameditem-05.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-05.html": [
     "If there is one embed, it should be returned (name)",
     "If there are two embeds, a collection should be returned. (name)",
     "If there are two embeds, a collection should be returned. (name and id)",
     "If there are two embeds, a collection should be returned. (id and name)",
     "An id shouldn't affect getting an embed by name"
   ],
-  "documents/dom-tree-accessors/nameditem-06.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-06.html": [
     "If there is one img, it should be returned (name)",
     "If there are two imgs, a collection should be returned. (name)",
     "If there are two imgs, the one with a name should be returned. (name and id)",
@@ -2185,7 +2185,7 @@
     "A name should affect getting an img by id",
     "An id shouldn't affect getting an img by name"
   ],
-  "documents/dom-tree-accessors/nameditem-07.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-07.html": [
     "If there is one object, it should be returned (name)",
     "If there are two objects, a collection should be returned. (name)",
     "If there is one object, it should be returned (id)",
@@ -2195,37 +2195,37 @@
     "A name shouldn't affect getting an object by id",
     "An id shouldn't affect getting an object by name"
   ],
-  "documents/dom-tree-accessors/nameditem-08.html": [
+  "html/dom/documents/dom-tree-accessors/nameditem-08.html": [
     "If there is a div and object with same id, the object should be returned",
     "If there is a div and img with same id, the img should be returned"
   ],
-  "documents/dom-tree-accessors/document.getElementsByName/document.getElementsByName-interface.html": [
+  "html/dom/documents/dom-tree-accessors/document.getElementsByName/document.getElementsByName-interface.html": [
     "Document.getElementsByName: interfaces"
   ],
-  "documents/dom-tree-accessors/document.getElementsByName/document.getElementsByName-liveness.html": [
+  "html/dom/documents/dom-tree-accessors/document.getElementsByName/document.getElementsByName-liveness.html": [
     "Document.getElementsByName() should be a live collection"
   ],
-  "documents/resource-metadata-management/document-compatmode-06.xhtml": [
+  "html/dom/documents/resource-metadata-management/document-compatmode-06.xhtml": [
     "document.compatMode: Standards"
   ],
-  "documents/resource-metadata-management/document-cookie.html": [
+  "html/dom/documents/resource-metadata-management/document-cookie.html": [
     "document has no cookie",
     "getting cookie for a cookie-averse document returns empty string, setting does nothing"
   ],
-  "documents/resource-metadata-management/document-lastModified-01.html": [
+  "html/dom/documents/resource-metadata-management/document-lastModified-01.html": [
     "Uncaught: NotYetImplemented"
   ],
-  "documents/resource-metadata-management/document-lastModified.html": [
+  "html/dom/documents/resource-metadata-management/document-lastModified.html": [
     "lastModified should return the last modified date and time"
   ],
-  "elements/global-attributes/custom-attrs.html": [
+  "html/dom/elements/global-attributes/custom-attrs.html": [
     "Setting an Element's dataset property should not interfere with namespaced attributes with same name"
   ],
-  "elements/global-attributes/data_unicode_attr.html": [
+  "html/dom/elements/global-attributes/data_unicode_attr.html": [
     "dataset - SBCS",
     "dataset - UNICODE"
   ],
-  "elements/global-attributes/dataset-delete.html": [
+  "html/dom/elements/global-attributes/dataset-delete.html": [
     "Deleting element.dataset['foo'] should also remove an attribute with name 'data-foo' should it exist.",
     "Deleting element.dataset['fooBar'] should also remove an attribute with name 'data-foo-bar' should it exist.",
     "Deleting element.dataset['-'] should also remove an attribute with name 'data--' should it exist.",
@@ -2236,11 +2236,11 @@
     "Deleting element.dataset['à'] should also remove an attribute with name 'data-à' should it exist.",
     "Deleting element.dataset['foo'] should not throw if even if the element does now have an attribute with the name data-foo."
   ],
-  "elements/global-attributes/dataset-enumeration.html": [
+  "html/dom/elements/global-attributes/dataset-enumeration.html": [
     "A dataset should be enumeratable.",
     "Only attributes who qualify as dataset properties should be enumeratable in the dataset."
   ],
-  "elements/global-attributes/dataset-get.html": [
+  "html/dom/elements/global-attributes/dataset-get.html": [
     "Getting element.dataset['foo'] should return the value of element.getAttribute('data-foo')'",
     "Getting element.dataset['fooBar'] should return the value of element.getAttribute('data-foo-bar')'",
     "Getting element.dataset['-'] should return the value of element.getAttribute('data--')'",
@@ -2252,11 +2252,11 @@
     "Getting element.dataset['toString'] should return the value of element.getAttribute('data-to-string')'",
     "Tests that an attribute named dataFoo does not make an entry in the dataset DOMStringMap."
   ],
-  "elements/global-attributes/dataset-prototype.html": [
+  "html/dom/elements/global-attributes/dataset-prototype.html": [
     "An elements dataset property is an instance of a DOMStringMap",
     "Properties on Object.prototype should shine through."
   ],
-  "elements/global-attributes/dataset-set.html": [
+  "html/dom/elements/global-attributes/dataset-set.html": [
     "Setting element.dataset['foo'] should also change the value of element.getAttribute('data-foo')'",
     "Setting element.dataset['fooBar'] should also change the value of element.getAttribute('data-foo-bar')'",
     "Setting element.dataset['-'] should also change the value of element.getAttribute('data--')'",
@@ -2268,7 +2268,7 @@
     "Setting element.dataset['foo '] should throw an INVALID_CHARACTER_ERR'",
     "Setting element.dataset['foo豈'] should throw an INVALID_CHARACTER_ERR'"
   ],
-  "elements/global-attributes/dataset.html": [
+  "html/dom/elements/global-attributes/dataset.html": [
     "HTML elements should have a .dataset",
     "Should return 'undefined' before setting an attribute",
     "Should return 'value' if that's the value",
@@ -2276,13 +2276,13 @@
     "Should return 'undefined' after removing an attribute",
     "SVG elements should have a .dataset"
   ],
-  "elements/global-attributes/dir_auto-contained-script-L-ref.html": [
+  "html/dom/elements/global-attributes/dir_auto-contained-script-L-ref.html": [
     "Uncaught: Unexpected token &"
   ],
-  "elements/global-attributes/dir_auto-contained-script-L.html": [
+  "html/dom/elements/global-attributes/dir_auto-contained-script-L.html": [
     "Uncaught: Unexpected token &"
   ],
-  "elements/global-attributes/id-attribute.html": [
+  "html/dom/elements/global-attributes/id-attribute.html": [
     "User agents must associate the element with an id value for purposes of CSS.",
     "Association for CSS is exact and therefore case-sensitive.",
     "Spaces are allowed in an id and still make an association.",
@@ -2290,55 +2290,55 @@
     "After setting id via id attribute, CSS association is via the new ID.",
     "After setting id via setAttribute attribute, CSS association is via the new ID."
   ],
-  "elements/global-attributes/the-lang-attribute-001.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-001.html": [
     "The browser will recognize a language declared in a lang attribute on the html tag."
   ],
-  "elements/global-attributes/the-lang-attribute-002.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-002.html": [
     "The browser will NOT recognize a language declared in an xml:lang attribute on the html tag."
   ],
-  "elements/global-attributes/the-lang-attribute-003.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-003.html": [
     "The browser will recognize a language declared in the HTTP header, when there is no internal language declaration."
   ],
-  "elements/global-attributes/the-lang-attribute-004.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-004.html": [
     "The browser will recognize a language declared in a meta element in the head using http-equiv='Content-Language' content='..' (with a single language tag value), when there is no other language declaration inside the document."
   ],
-  "elements/global-attributes/the-lang-attribute-005.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-005.html": [
     "If there is a conflict between the language declarations in the HTTP header and the html element using lang, the browser will recognize the language declared in the html element."
   ],
-  "elements/global-attributes/the-lang-attribute-006.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-006.html": [
     "If there is a conflict between the language declarations in the HTTP header and the Content-Language meta element, the UA will recognize the language declared in the meta element."
   ],
-  "elements/global-attributes/the-lang-attribute-007.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-007.html": [
     "If there is a conflict between the language declared using lang in the html element and that in the meta element, the UA will recognize the language declared in the html element."
   ],
-  "elements/global-attributes/the-lang-attribute-008.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-008.html": [
     "If an element contains a lang attribute with an empty value, the value of a lang attribute higher up the document tree will no longer be applied to the content of that element."
   ],
-  "elements/global-attributes/the-lang-attribute-009.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-009.html": [
     "If the HTTP header contains a language declaration but the html element uses an empty lang value, the UA will not recognize the language declared in the HTTP header."
   ],
-  "elements/global-attributes/the-lang-attribute-010.html": [
+  "html/dom/elements/global-attributes/the-lang-attribute-010.html": [
     "If the meta Content-Language element contains a language declaration but the html element uses an empty lang value, the UA will not recognize the language declared in the meta Content-Language element."
   ],
-  "elements/global-attributes/the-translate-attribute-007.html": [
+  "html/dom/elements/global-attributes/the-translate-attribute-007.html": [
     "In the default case, ie. with no translate attribute in the page, javascript will detect the translation mode of text as translate-enabled."
   ],
-  "elements/global-attributes/the-translate-attribute-008.html": [
+  "html/dom/elements/global-attributes/the-translate-attribute-008.html": [
     "If the translate attribute is set to yes, javascript will detect the translation mode of text as translate-enabled."
   ],
-  "elements/global-attributes/the-translate-attribute-009.html": [
+  "html/dom/elements/global-attributes/the-translate-attribute-009.html": [
     "If the translate attribute is set to no, javascript will detect the translation mode of text as no-translate."
   ],
-  "elements/global-attributes/the-translate-attribute-010.html": [
+  "html/dom/elements/global-attributes/the-translate-attribute-010.html": [
     "If the translate attribute is set to no, javascript will detect the translation mode of elements inside that element with no translate flag as no-translate."
   ],
-  "elements/global-attributes/the-translate-attribute-011.html": [
+  "html/dom/elements/global-attributes/the-translate-attribute-011.html": [
     "If the translate attribute is set to yes on an element inside an element with the translate attribute set to no, javascript will detect the translation mode of text in the inner element as translate-enabled."
   ],
-  "elements/global-attributes/the-translate-attribute-012.html": [
+  "html/dom/elements/global-attributes/the-translate-attribute-012.html": [
     "If the translate attribute is set to a null string, javascript will detect the translation mode of text as translate-enabled."
   ],
-  "elements/the-innertext-idl-attribute/dynamic-getter.html": [
+  "html/dom/elements/the-innertext-idl-attribute/dynamic-getter.html": [
     "text-transform applied to child element (\"<div id='target'><div id='child'>abc\")",
     "text-transform applied to parent element (\"<div id='parent'><div id='target'>abc\")",
     "display: none applied to child element (\"<div id='target'>abc<div id='child'>def\")",
@@ -2347,7 +2347,7 @@
     "remove node from sub-tree (\"<div id='target'>abc<div id='remove'>def\")",
     "insert whole sub-tree (\"<div id='target'>\")"
   ],
-  "elements/the-innertext-idl-attribute/getter.html": [
+  "html/dom/elements/the-innertext-idl-attribute/getter.html": [
     "Simplest possible test (\"<div>abc\")",
     "Leading whitespace removed (\"<div> abc\")",
     "Trailing whitespace removed (\"<div>abc \")",
@@ -2400,7 +2400,7 @@
     "child of display:none child of svg (\"<div style='display:none'><div id='target'>abc\")",
     "Uncaught: CSS is not defined"
   ],
-  "elements/the-innertext-idl-attribute/setter.html": [
+  "html/dom/elements/the-innertext-idl-attribute/setter.html": [
     "Simplest possible test",
     "Simplest possible test, detached",
     "Newlines convert to <br> in non-white-space:pre elements",
@@ -2522,7 +2522,7 @@
   ],
 
   "-- web-platform-tests/dom/nodes --": "-------------------------------------",
-  "DOMImplementation-createDocument.html": [
+  "dom/nodes/DOMImplementation-createDocument.html": [
     "createDocument test: null,null,null,null",
     "createDocument test: null,undefined,null,null",
     "createDocument test: null,\"foo\",null,null",
@@ -2622,10 +2622,10 @@
     "createDocument test: null,\"\",DocumentType node <!DOCTYPE math -//W3C//DTD MathML 2.0//EN http://www.w3.org/Math/DTD/mathml2/mathml2.dtd>",
     "createDocument with missing arguments"
   ],
-  "DOMImplementation-createHTMLDocument.html": [
+  "dom/nodes/DOMImplementation-createHTMLDocument.html": [
     "createHTMLDocument(): URL parsing"
   ],
-  "DOMImplementation-hasFeature.html": [
+  "dom/nodes/DOMImplementation-hasFeature.html": [
     "hasFeature()",
     "hasFeature(\"org.w3c.svg\")",
     "hasFeature(\"org.w3c.dom.svg\")",
@@ -2744,15 +2744,15 @@
     "hasFeature(\"org.w3c.dom.svg\", \"1.1\")",
     "hasFeature(\"http://www.w3.org/TR/SVG11/feature#Script\", \"7.5\")"
   ],
-  "Document-URL.sub.html": [
+  "dom/nodes/Document-URL.sub.html": [
     "Document.URL with redirect"
   ],
-  "Document-constructor.html": [
+  "dom/nodes/Document-constructor.html": [
     "new Document(): interfaces",
     "new Document(): metadata",
     "new Document(): URL parsing"
   ],
-  "Document-createAttribute.html": [
+  "dom/nodes/Document-createAttribute.html": [
     "HTML document.createAttribute(\"\")",
     "XML document.createAttribute(\"\")",
     "HTML document.createAttribute(\"invalid^Name\")",
@@ -2776,11 +2776,11 @@
     "HTML document.createAttribute(undefined)",
     "XML document.createAttribute(undefined)"
   ],
-  "Document-createComment.html": [
+  "dom/nodes/Document-createComment.html": [
     "createComment(null)",
     "createComment(undefined)"
   ],
-  "Document-createElement-namespace.html": [
+  "dom/nodes/Document-createElement-namespace.html": [
     "Created element's namespace in created HTML document by DOMParser ('text/html')",
     "Created element's namespace in created XML document by DOMParser ('text/xml')",
     "Created element's namespace in created XML document by DOMParser ('application/xml')",
@@ -2817,7 +2817,7 @@
     "Created element's namespace in xhtml_ns_changed.xml",
     "Created element's namespace in xhtml_ns_changed.svg"
   ],
-  "Document-createEvent.html": [
+  "dom/nodes/Document-createEvent.html": [
     "BeforeUnloadEvent should be an alias for BeforeUnloadEvent.",
     "createEvent('BeforeUnloadEvent') should be initialized correctly.",
     "beforeunloadevent should be an alias for BeforeUnloadEvent.",
@@ -2921,17 +2921,17 @@
     "createEvent('uievents') should be initialized correctly.",
     "createEvent('UIEVENTS') should be initialized correctly."
   ],
-  "Document-createTreeWalker.html": [
+  "dom/nodes/Document-createTreeWalker.html": [
     "Required arguments to createTreeWalker should be required.",
     "Optional arguments to createTreeWalker should be optional (1 passed).",
     "Optional arguments to createTreeWalker should be optional (2 passed).",
     "Optional arguments to createTreeWalker should be optional (3 passed, null).",
     "Optional arguments to createTreeWalker should be optional (3 passed, function)."
   ],
-  "Document-getElementsByClassName.html": [
+  "dom/nodes/Document-getElementsByClassName.html": [
     "getElementsByClassName() should be a live collection"
   ],
-  "Document-getElementsByTagName-xhtml.xhtml": [
+  "dom/nodes/Document-getElementsByTagName-xhtml.xhtml": [
     "HTML element with uppercase tag name matches in XHTML documents",
     "Element in non-HTML namespace, prefix, lowercase name",
     "Element in non-HTML namespace, prefix, uppercase name",
@@ -2939,7 +2939,7 @@
     "Element in HTML namespace, prefix, non-ascii characters in name",
     "Element in non-HTML namespace, prefix, non-ascii characters in name"
   ],
-  "Document-getElementsByTagName.html": [
+  "dom/nodes/Document-getElementsByTagName.html": [
     "Interfaces",
     "Shouldn't be able to set unsigned properties on a HTMLCollection (non-strict mode)",
     "Shouldn't be able to set unsigned properties on a HTMLCollection (strict mode)",
@@ -2952,31 +2952,31 @@
     "Element in non-HTML namespace, prefix, non-ascii characters in name",
     "getElementsByTagName() should be a live collection"
   ],
-  "Document-getElementsByTagNameNS.html": [
+  "dom/nodes/Document-getElementsByTagNameNS.html": [
     "Document.getElementsByTagNameNS",
     "Empty string namespace",
     "getElementsByTagNameNS() should be a live collection"
   ],
-  "Element-childElement-null-xhtml.xhtml": [
+  "dom/nodes/Element-childElement-null-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-childElementCount-dynamic-add-xhtml.xhtml": [
+  "dom/nodes/Element-childElementCount-dynamic-add-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-childElementCount-dynamic-remove-xhtml.xhtml": [
+  "dom/nodes/Element-childElementCount-dynamic-remove-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-childElementCount-nochild-xhtml.xhtml": [
+  "dom/nodes/Element-childElementCount-nochild-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-childElementCount-xhtml.xhtml": [
+  "dom/nodes/Element-childElementCount-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-children.html": [
+  "dom/nodes/Element-children.html": [
     "HTMLCollection edge cases",
     "HTMLCollection edge cases 1"
   ],
-  "Element-classlist.html": [
+  "dom/nodes/Element-classlist.html": [
     "classList.remove(\"a\") with attribute value null (HTML node)",
     "classList.remove(\"a\", \"b\") with attribute value null (HTML node)",
     "classList.replace(\"a\", \"a\") with attribute value \"a\" (HTML node)",
@@ -2998,26 +2998,26 @@
     "classList.replace(\"a\", \"a\") with attribute value \"a\" (foo node)",
     "classList.replace(\"a\", \"a\") with attribute value \"a a a  b\" (foo node)"
   ],
-  "Element-closest.html": [
+  "dom/nodes/Element-closest.html": [
     "Element.closest with context node 'test11' and selector ':invalid'",
     "Element.closest with context node 'test4' and selector ':scope'",
     "Element.closest with context node 'test4' and selector 'select > :scope'",
     "Element.closest with context node 'test4' and selector ':has(> :scope)'"
   ],
-  "Element-firstElementChild-entity-xhtml.xhtml": [
+  "dom/nodes/Element-firstElementChild-entity-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-firstElementChild-namespace-xhtml.xhtml": [
+  "dom/nodes/Element-firstElementChild-namespace-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-firstElementChild-xhtml.xhtml": [
+  "dom/nodes/Element-firstElementChild-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-getElementsByClassName.html": [
+  "dom/nodes/Element-getElementsByClassName.html": [
     "Interface should be correct.",
     "getElementsByClassName() should be a live collection"
   ],
-  "Element-getElementsByTagName.html": [
+  "dom/nodes/Element-getElementsByTagName.html": [
     "Interfaces",
     "Shouldn't be able to set unsigned properties on a HTMLCollection (non-strict mode)",
     "Shouldn't be able to set unsigned properties on a HTMLCollection (strict mode)",
@@ -3030,12 +3030,12 @@
     "Element in non-HTML namespace, prefix, non-ascii characters in name",
     "getElementsByTagName() should be a live collection"
   ],
-  "Element-getElementsByTagNameNS.html": [
+  "dom/nodes/Element-getElementsByTagNameNS.html": [
     "Element.getElementsByTagNameNS",
     "Empty string namespace",
     "getElementsByTagNameNS() should be a live collection"
   ],
-  "Element-insertAdjacentElement.html": [
+  "dom/nodes/Element-insertAdjacentElement.html": [
     "Inserting to an invalid location should cause a Syntax Error exception",
     "Inserted element should be target element's previous sibling for 'beforebegin' case",
     "Inserted element should be target element's first child for 'afterbegin' case",
@@ -3043,7 +3043,7 @@
     "Inserted element should be target element's next sibling for 'afterend' case",
     "Adding more than one child to document should cause a HierarchyRequestError exception"
   ],
-  "Element-insertAdjacentText.html": [
+  "dom/nodes/Element-insertAdjacentText.html": [
     "Inserting to an invalid location should cause a Syntax Error exception",
     "Inserted text node should be target element's previous sibling for 'beforebegin' case",
     "Inserted text node should be target element's first child for 'afterbegin' case",
@@ -3051,25 +3051,25 @@
     "Inserted text node should be target element's next sibling for 'afterend' case",
     "Adding more than one child to document should cause a HierarchyRequestError exception"
   ],
-  "Element-lastElementChild-xhtml.xhtml": [
+  "dom/nodes/Element-lastElementChild-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-matches.html": [
+  "dom/nodes/Element-matches.html": [
     "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
   ],
-  "Element-nextElementSibling-xhtml.xhtml": [
+  "dom/nodes/Element-nextElementSibling-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-previousElementSibling-xhtml.xhtml": [
+  "dom/nodes/Element-previousElementSibling-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-siblingElement-null-xhtml.xhtml": [
+  "dom/nodes/Element-siblingElement-null-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "Element-webkitMatchesSelector.html": [
+  "dom/nodes/Element-webkitMatchesSelector.html": [
     "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
   ],
-  "MutationObserver-attributes.html": [
+  "dom/nodes/MutationObserver-attributes.html": [
     "attributes Element.id: update, no oldValue, mutation",
     "attributes Element.id: update mutation",
     "attributes Element.id: empty string update mutation",
@@ -3113,7 +3113,7 @@
     "attributeFilter alone Element.id/Element.className: multiple filter update mutation",
     "childList false: no childList mutation"
   ],
-  "MutationObserver-characterData.html": [
+  "dom/nodes/MutationObserver-characterData.html": [
     "characterData Text.data: simple mutation without oldValue",
     "characterData Text.data: simple mutation",
     "characterData Text.appendData: simple mutation",
@@ -3138,7 +3138,7 @@
     "characterData Range.extractContents: child and data removal mutation (2)",
     "characterData/characterDataOldValue alone Text.data: simple mutation"
   ],
-  "MutationObserver-childList.html": [
+  "dom/nodes/MutationObserver-childList.html": [
     "childList Node.nodeValue: no mutation",
     "childList Node.textContent: replace content mutation",
     "childList Node.textContent: no previous content mutation",
@@ -3178,33 +3178,33 @@
     "Range (r100) is created",
     "childList Range.surroundContents: children removal and addition mutation"
   ],
-  "MutationObserver-disconnect.html": [
+  "dom/nodes/MutationObserver-disconnect.html": [
     "subtree mutations",
     "disconnect discarded some mutations"
   ],
-  "MutationObserver-document.html": [
+  "dom/nodes/MutationObserver-document.html": [
     "setup test",
     "parser insertion mutations",
     "parser script insertion mutation",
     "removal of parent during parsing"
   ],
-  "MutationObserver-inner-outer.html": [
+  "dom/nodes/MutationObserver-inner-outer.html": [
     "innerHTML mutation",
     "innerHTML with 2 children mutation",
     "outerHTML mutation"
   ],
-  "MutationObserver-takeRecords.html": [
+  "dom/nodes/MutationObserver-takeRecords.html": [
     "unreachabled test",
     "All records present",
     "No more records present"
   ],
-  "Node-baseURI.html": [
+  "dom/nodes/Node-baseURI.html": [
     "For elements belonging to document, baseURI should be document url",
     "For elements unassigned to document, baseURI should be document url",
     "For elements belonging to document fragments, baseURI should be document url",
     "After inserting fragment into document, element baseURI should be document url"
   ],
-  "Node-compareDocumentPosition.html": [
+  "dom/nodes/Node-compareDocumentPosition.html": [
     "paras[0].compareDocumentPosition(foreignPara1)",
     "paras[0].compareDocumentPosition(foreignPara1.firstChild)",
     "paras[0].compareDocumentPosition(detachedPara1)",
@@ -4390,11 +4390,11 @@
     "xmlDoctype.compareDocumentPosition(foreignDocfrag)",
     "xmlDoctype.compareDocumentPosition(xmlDocfrag)"
   ],
-  "Node-isConnected.html": [
+  "dom/nodes/Node-isConnected.html": [
     "Test with ordinary child nodes",
     "Test with iframes"
   ],
-  "Node-lookupPrefix.xhtml": [
+  "dom/nodes/Node-lookupPrefix.xhtml": [
     "Node.lookupPrefix",
     "Node.lookupPrefix 5",
     "Node.lookupPrefix 6",
@@ -4404,13 +4404,13 @@
     "Node.lookupPrefix 10",
     "Uncaught: Cannot read property 'removeChild' of null"
   ],
-  "Node-nodeName-xhtml.xhtml": [
+  "dom/nodes/Node-nodeName-xhtml.xhtml": [
     "For Element nodes, nodeName should return the same as tagName."
   ],
-  "Node-normalize.html": [
+  "dom/nodes/Node-normalize.html": [
     "Non-text nodes with empty textContent values."
   ],
-  "NodeList-Iterable.html": [
+  "dom/nodes/NodeList-Iterable.html": [
     "NodeList has values method.",
     "NodeList has entries method.",
     "NodeList has forEach method.",
@@ -4418,7 +4418,7 @@
     "NodeList is iterable via for-of loop.",
     "NodeList responds to Object.keys correctly"
   ],
-  "ParentNode-append.html": [
+  "dom/nodes/ParentNode-append.html": [
     "Element.append() without any argument, on a parent having no child.",
     "Element.append() with null as an argument, on a parent having no child.",
     "Element.append() with undefined as an argument, on a parent having no child.",
@@ -4434,10 +4434,10 @@
     "DocumentFrgment.append() with null as an argument, on a parent having a child.",
     "DocumentFrgment.append() with one element and text as argument, on a parent having a child."
   ],
-  "ParentNode-children.html": [
+  "dom/nodes/ParentNode-children.html": [
     "ParentNode.children should be a live collection"
   ],
-  "ParentNode-prepend.html": [
+  "dom/nodes/ParentNode-prepend.html": [
     "Element.prepend() without any argument, on a parent having no child.",
     "Element.prepend() with null as an argument, on a parent having no child.",
     "Element.prepend() with undefined as an argument, on a parent having no child.",
@@ -4453,23 +4453,23 @@
     "DocumentFrgment.prepend() with null as an argument, on a parent having a child.",
     "DocumentFrgment.prepend() with one element and text as argument, on a parent having a child."
   ],
-  "ProcessingInstruction-escapes-1.xhtml": [
+  "dom/nodes/ProcessingInstruction-escapes-1.xhtml": [
     "Uncaught: Unexpected token <"
   ],
-  "ProcessingInstruction-literal-1.xhtml": [
+  "dom/nodes/ProcessingInstruction-literal-1.xhtml": [
     "<?xml?> is not a ProcessingInstruction"
   ],
-  "ProcessingInstruction-literal-2.xhtml": [
+  "dom/nodes/ProcessingInstruction-literal-2.xhtml": [
     "ProcessingInstruction literals"
   ],
-  "append-on-Document.html": [
+  "dom/nodes/append-on-Document.html": [
     "Document.append() without any argument, on a Document having no child.",
     "Document.append() with only one element as an argument, on a Document having no child.",
     "Document.append() with only one element as an argument, on a Document having one child.",
     "Document.append() with text as an argument, on a Document having no child.",
     "Document.append() with two elements as the argument, on a Document having no child."
   ],
-  "attributes.html": [
+  "dom/nodes/attributes.html": [
     "Basic functionality of setAttributeNode",
     "setAttributeNode should distinguish attributes with same local name and different namespaces",
     "setAttributeNode doesn't have case-insensitivity even with an HTMLElement",
@@ -4489,14 +4489,14 @@
     "Own property names should include all qualified names for a non-HTML element in an HTML document",
     "Own property names should include all qualified names for an HTML element in a non-HTML document"
   ],
-  "case.html": [
+  "dom/nodes/case.html": [
     "getElementsByTagName a:abc",
     "getElementsByTagName a:Abc",
     "getElementsByTagName a:ABC",
     "getElementsByTagName a:ä",
     "getElementsByTagName a:Ä"
   ],
-  "insert-adjacent.html": [
+  "dom/nodes/insert-adjacent.html": [
     "insertAdjacentElement(beforebegin, [object Object] )",
     "insertAdjacentText(beforebegin, raclette )",
     "insertAdjacentElement(afterbegin, [object Object] )",
@@ -4511,17 +4511,17 @@
     "invalid syntax for insertAdjacentText",
     "insertAdjacentText should return null"
   ],
-  "prepend-on-Document.html": [
+  "dom/nodes/prepend-on-Document.html": [
     "Document.prepend() without any argument, on a Document having no child.",
     "Document.prepend() with only one element as an argument, on a Document having no child.",
     "Document.append() with only one element as an argument, on a Document having one child.",
     "Document.prepend() with text as an argument, on a Document having no child.",
     "Document.prepend() with two elements as the argument, on a Document having no child."
   ],
-  "query-target-in-load-event.part.html": [
+  "dom/nodes/query-target-in-load-event.part.html": [
     "Uncaught: window.location is not supported."
   ],
-  "remove-unscopable.html": [
+  "dom/nodes/remove-unscopable.html": [
     "before() should be unscopable",
     "after() should be unscopable",
     "replaceWith() should be unscopable",
@@ -4529,45 +4529,45 @@
     "prepend() should be unscopable",
     "append() should be unscopable"
   ],
-  "rootNode.html": [
+  "dom/nodes/rootNode.html": [
     "getRootNode() must return the context object when it does not have any parent",
     "getRootNode() must return the parent node of the context object when the context object has a single ancestor not in a document",
     "getRootNode() must return the document when a node is in document",
     "getRootNode() must return a document fragment when a node is in the fragment"
   ],
-  "Document-contentType/contentType/contenttype_bmp.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_bmp.html": [
     "BMP document.contentType === 'image/bmp'"
   ],
-  "Document-contentType/contentType/contenttype_css.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_css.html": [
     "CSS document.contentType === 'text/css'"
   ],
-  "Document-contentType/contentType/contenttype_gif.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_gif.html": [
     "GIF document.contentType === 'image/gif'"
   ],
-  "Document-contentType/contentType/contenttype_javascripturi.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_javascripturi.html": [
     "Javascript URI document.contentType === 'text/html'"
   ],
-  "Document-contentType/contentType/contenttype_jpg.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_jpg.html": [
     "JPG document.contentType === 'image/jpeg'"
   ],
-  "Document-contentType/contentType/contenttype_mimeheader_01.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_mimeheader_01.html": [
     "Custom document.contentType === 'text/xml' when explicitly set to this value"
   ],
-  "Document-contentType/contentType/contenttype_png.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_png.html": [
     "PNG document.contentType === 'image/png'"
   ],
-  "Document-contentType/contentType/contenttype_txt.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_txt.html": [
     "TXT document.contentType === 'text/plain'"
   ],
-  "Document-contentType/contentType/contenttype_xml.html": [
+  "dom/nodes/Document-contentType/contentType/contenttype_xml.html": [
     "XML document.contentType === 'application/xml'"
   ],
-  "Document-contentType/contentType/xhr_responseType_document.html": [
+  "dom/nodes/Document-contentType/contentType/xhr_responseType_document.html": [
     "XHR - retrieve HTML document: document.contentType === 'application/xml'"
   ],
   "-- Waiting for patches to the test suite to be merged upstream --": "----",
   "https://github.com/web-platform-tests/wpt/pull/12202": "---",
-  "Document-createElement.html": [
+  "dom/nodes/Document-createElement.html": [
     "createElement(\"ெfoo\") in HTML document",
     "createElement(\"ெfoo\") in XML document",
     "createElement(\"ெfoo\") in XHTML document",
@@ -4575,7 +4575,7 @@
     "createElement(\"ெ\") in XML document",
     "createElement(\"ெ\") in XHTML document"
   ],
-  "Document-createElementNS.html": [
+  "dom/nodes/Document-createElementNS.html": [
     "createElementNS test in HTML document: null,\"ெfoo\",\"INVALID_CHARACTER_ERR\"",
     "createElementNS test in XML document: null,\"ெfoo\",\"INVALID_CHARACTER_ERR\"",
     "createElementNS test in XHTML document: null,\"ெfoo\",\"INVALID_CHARACTER_ERR\"",
@@ -4587,13 +4587,13 @@
     "createElementNS test in XHTML document: \"http://example.com/\",\"ெ:a\",\"INVALID_CHARACTER_ERR\""
   ],
   "https://github.com/web-platform-tests/wpt/pull/12213": "---",
-  "Comment-constructor.html": [
+  "dom/nodes/Comment-constructor.html": [
     "Uncaught: Unexpected eval or arguments in strict mode"
   ],
-  "Node-textContent.html": [
+  "dom/nodes/Node-textContent.html": [
     "Uncaught: Unexpected eval or arguments in strict mode"
   ],
-  "Text-constructor.html": [
+  "dom/nodes/Text-constructor.html": [
     "Uncaught: Unexpected eval or arguments in strict mode"
   ]
 }

@@ -31,6 +31,8 @@
   `HTMLInputElement#width/height/minLength`
 * Implement `Element#insertAdjacentElement()`, `Element#insertAdjacentText()`,
   and `Element#insertAdjacentHTML()` (#102)
+* Spec-correctness fixes for `TreeWalker`: read-only properties, proper
+  exception types, type coercion of `NodeFilter` results.
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

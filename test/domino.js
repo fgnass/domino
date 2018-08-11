@@ -224,7 +224,6 @@ exports.treeWalker = function() {
   tw.root.should.equal(root);
   tw.currentNode.should.equal(root);
   tw.whatToShow.should.equal(0x4);
-  tw.filter.constructor.should.equal(window.NodeFilter.constructor);
 
   var actual = [];
   while (tw.nextNode() !== null) {
@@ -251,7 +250,6 @@ exports.nodeIterator = function() {
   ni.root.should.equal(root);
   ni.referenceNode.should.equal(root);
   ni.whatToShow.should.equal(0x4);
-  ni.filter.constructor.should.equal(window.NodeFilter.constructor);
 
   var actual = [];
   for (var n = ni.nextNode(); n ; n = ni.nextNode()) {

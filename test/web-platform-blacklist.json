@@ -2522,13 +2522,30 @@
   ],
 
   "-- web-platform-tests/dom/nodes --": "-------------------------------------",
+  "dom/nodes/Comment-constructor.html": [
+    "new Comment(): prototype chain",
+    "new Comment(): no arguments",
+    "new Comment(): undefined",
+    "new Comment(): null",
+    "new Comment(): 42",
+    "new Comment(): \"\"",
+    "new Comment(): \"-\"",
+    "new Comment(): \"--\"",
+    "new Comment(): \"-->\"",
+    "new Comment(): \"<!--\"",
+    "new Comment(): \"\\0\"",
+    "new Comment(): \"\\0test\"",
+    "new Comment(): \"&amp;\"",
+    "new Comment(): two arguments",
+    "new Comment() should get the correct ownerDocument across globals"
+  ],
   "dom/nodes/DOMImplementation-createDocument.html": [
     "createDocument test: null,null,null,null",
     "createDocument test: null,undefined,null,null",
     "createDocument test: null,\"foo\",null,null",
     "createDocument test: null,\"f1oo\",null,null",
     "createDocument test: null,\"foo1\",null,null",
-    "createDocument test: null,\"ெfoo\",null,\"INVALID_CHARACTER_ERR\"",
+    "createDocument test: null,\"ெfoo\",null,null",
     "createDocument test: null,\"xml\",null,null",
     "createDocument test: null,\"xmlfoo\",null,null",
     "createDocument test: \"\",null,null,null",
@@ -2544,8 +2561,8 @@
     "createDocument test: \"http://example.com/\",\"foo1\",null,null",
     "createDocument test: \"http://example.com/\",\"f:oo\",null,null",
     "createDocument test: \"http://example.com/\",\"a:_\",null,null",
-    "createDocument test: \"http://example.com/\",\"a:ெ\",null,\"INVALID_CHARACTER_ERR\"",
-    "createDocument test: \"http://example.com/\",\"ெ:a\",null,\"INVALID_CHARACTER_ERR\"",
+    "createDocument test: \"http://example.com/\",\"a:ெ\",null,null",
+    "createDocument test: \"http://example.com/\",\"ெ:a\",null,null",
     "createDocument test: \"http://example.com/\",\"a:aெ\",null,null",
     "createDocument test: \"http://example.com/\",\"aெ:a\",null,null",
     "createDocument test: \"http://example.com/\",\"test:xmlns\",null,null",
@@ -2744,7 +2761,7 @@
     "hasFeature(\"org.w3c.dom.svg\", \"1.1\")",
     "hasFeature(\"http://www.w3.org/TR/SVG11/feature#Script\", \"7.5\")"
   ],
-  "dom/nodes/Document-URL.sub.html": [
+  "dom/nodes/Document-URL.html": [
     "Document.URL with redirect"
   ],
   "dom/nodes/Document-constructor.html": [
@@ -4446,6 +4463,23 @@
   "dom/nodes/ProcessingInstruction-literal-2.xhtml": [
     "ProcessingInstruction literals"
   ],
+  "dom/nodes/Text-constructor.html": [
+    "new Text(): prototype chain",
+    "new Text(): no arguments",
+    "new Text(): undefined",
+    "new Text(): null",
+    "new Text(): 42",
+    "new Text(): \"\"",
+    "new Text(): \"-\"",
+    "new Text(): \"--\"",
+    "new Text(): \"-->\"",
+    "new Text(): \"<!--\"",
+    "new Text(): \"\\0\"",
+    "new Text(): \"\\0test\"",
+    "new Text(): \"&amp;\"",
+    "new Text(): two arguments",
+    "new Text() should get the correct ownerDocument across globals"
+  ],
   "dom/nodes/append-on-Document.html": [
     "Document.append() without any argument, on a Document having no child.",
     "Document.append() with only one element as an argument, on a Document having no child.",
@@ -4499,6 +4533,7 @@
     "append() should be unscopable"
   ],
   "dom/nodes/rootNode.html": [
+    "getRootNode() must return context object's shadow-including root if options's composed is true, and context object's root otherwise",
     "getRootNode() must return the context object when it does not have any parent",
     "getRootNode() must return the parent node of the context object when the context object has a single ancestor not in a document",
     "getRootNode() must return the document when a node is in document",
@@ -4671,36 +4706,5 @@
   ],
   "domparsing/xmldomparser.html": [
     "XML Dom Parse readyState Test"
-  ],
-  "-- Waiting for patches to the test suite to be merged upstream --": "----",
-  "https://github.com/web-platform-tests/wpt/pull/12202": "---",
-  "dom/nodes/Document-createElement.html": [
-    "createElement(\"ெfoo\") in HTML document",
-    "createElement(\"ெfoo\") in XML document",
-    "createElement(\"ெfoo\") in XHTML document",
-    "createElement(\"ெ\") in HTML document",
-    "createElement(\"ெ\") in XML document",
-    "createElement(\"ெ\") in XHTML document"
-  ],
-  "dom/nodes/Document-createElementNS.html": [
-    "createElementNS test in HTML document: null,\"ெfoo\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in XML document: null,\"ெfoo\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in XHTML document: null,\"ெfoo\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in HTML document: \"http://example.com/\",\"a:ெ\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in XML document: \"http://example.com/\",\"a:ெ\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in XHTML document: \"http://example.com/\",\"a:ெ\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in HTML document: \"http://example.com/\",\"ெ:a\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in XML document: \"http://example.com/\",\"ெ:a\",\"INVALID_CHARACTER_ERR\"",
-    "createElementNS test in XHTML document: \"http://example.com/\",\"ெ:a\",\"INVALID_CHARACTER_ERR\""
-  ],
-  "https://github.com/web-platform-tests/wpt/pull/12213": "---",
-  "dom/nodes/Comment-constructor.html": [
-    "Uncaught: Unexpected eval or arguments in strict mode"
-  ],
-  "dom/nodes/Node-textContent.html": [
-    "Uncaught: Unexpected eval or arguments in strict mode"
-  ],
-  "dom/nodes/Text-constructor.html": [
-    "Uncaught: Unexpected eval or arguments in strict mode"
   ]
 }

@@ -33,6 +33,11 @@
   and `Element#insertAdjacentHTML()` (#102)
 * Spec-correctness fixes for `TreeWalker` and `NodeIterator`: read-only
   properties, proper exception types, type coercion of `NodeFilter` results.
+* Implement `NodeIterator` pre-removal steps.  Note that in the absence
+  of weak references, be cautious about the number of `NodeIterator`s you
+  create on any single document, since domino does not artificially limit
+  these.
+  See https://github.com/tc39/proposal-weakrefs/issues/17 for details.
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

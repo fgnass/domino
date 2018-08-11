@@ -265,6 +265,41 @@ exports.nodeIterator = function() {
   ]);
 };
 
+exports.nodeIterator2 = function() {
+  /* jshint bitwise: false */
+  var document = domino.createDocument(
+    '<a>123<b>456<script>alert(1)</script></b></a>789'
+  );
+  var NodeFilter = domino.impl.NodeFilter;
+  var ni = document.createNodeIterator(
+    document.body,
+    NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT,
+    function() { return NodeFilter.FILTER_ACCEPT; },
+    false
+  );
+  var node = ni.nextNode();
+  node.tagName.should.equal('BODY');
+  node = ni.nextNode();
+  node.tagName.should.equal('A');
+  node = ni.nextNode();
+  node.nodeName.should.equal('#text');
+  node = ni.nextNode();
+  node.tagName.should.equal('B');
+  node.insertAdjacentHTML('AfterEnd', node.innerHTML);
+  node.parentNode.removeChild(node);
+  node = ni.nextNode();
+  node.nodeName.should.equal('#text');
+  node = ni.nextNode();
+  node.tagName.should.equal('SCRIPT');
+  node.parentNode.removeChild(node);
+  node = ni.nextNode();
+  node.nodeName.should.equal('#text');
+  node = ni.nextNode();
+  (node === null).should.be.true();
+  document.body.innerHTML.should.equal('<a>123456</a>789');
+  /* jshint bitwise: true */
+};
+
 exports.innerHTML = function() {
   var d = domino.createDocument();
   ['pre','textarea','listing'].forEach(function(elementName) {

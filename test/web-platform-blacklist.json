@@ -4562,30 +4562,6 @@
   "dom/nodes/Document-contentType/contentType/xhr_responseType_document.html": [
     "XHR - retrieve HTML document: document.contentType === 'application/xml'"
   ],
-  "dom/traversal/NodeIterator-removal.html": [
-    "Test removing node paras[0]",
-    "Test removing node paras[0].firstChild",
-    "Test removing node paras[1].firstChild",
-    "Test removing node foreignPara1",
-    "Test removing node foreignPara1.firstChild",
-    "Test removing node detachedPara1",
-    "Test removing node detachedPara1.firstChild",
-    "Test removing node foreignPara2",
-    "Test removing node xmlElement",
-    "Test removing node foreignTextNode",
-    "Test removing node processingInstruction",
-    "Test removing node comment",
-    "Test removing node doctype",
-    "Test removing node foreignDoctype",
-    "Test removing node paras[1]",
-    "Test removing node detachedPara2",
-    "Test removing node detachedPara2.firstChild",
-    "Test removing node testDiv",
-    "Test removing node xmlTextNode",
-    "Test removing node xmlComment",
-    "Test removing node foreignComment",
-    "Test removing node xmlDoctype"
-  ],
   "domparsing/DOMParser-parseFromString-html.html": [
     "Parsing of id attribute",
     "contentType",

@@ -2769,30 +2769,6 @@
     "new Document(): metadata",
     "new Document(): URL parsing"
   ],
-  "dom/nodes/Document-createAttribute.html": [
-    "HTML document.createAttribute(\"\")",
-    "XML document.createAttribute(\"\")",
-    "HTML document.createAttribute(\"invalid^Name\")",
-    "XML document.createAttribute(\"invalid^Name\")",
-    "HTML document.createAttribute(\"\\\\\")",
-    "XML document.createAttribute(\"\\\\\")",
-    "HTML document.createAttribute(\"'\")",
-    "XML document.createAttribute(\"'\")",
-    "HTML document.createAttribute(\"\\\"\")",
-    "XML document.createAttribute(\"\\\"\")",
-    "HTML document.createAttribute(\"0\")",
-    "XML document.createAttribute(\"0\")",
-    "HTML document.createAttribute(\"0:a\")",
-    "XML document.createAttribute(\"0:a\")",
-    "HTML document.createAttribute(\"title\")",
-    "XML document.createAttribute(\"title\")",
-    "HTML document.createAttribute(\"TITLE\")",
-    "XML document.createAttribute(\"TITLE\")",
-    "HTML document.createAttribute(null)",
-    "XML document.createAttribute(null)",
-    "HTML document.createAttribute(undefined)",
-    "XML document.createAttribute(undefined)"
-  ],
   "dom/nodes/Document-createComment.html": [
     "createComment(null)",
     "createComment(undefined)"
@@ -4481,11 +4457,6 @@
     "Document.append() with two elements as the argument, on a Document having no child."
   ],
   "dom/nodes/attributes.html": [
-    "setAttributeNode should distinguish attributes with same local name and different namespaces",
-    "setAttributeNode doesn't have case-insensitivity even with an HTMLElement",
-    "If attr’s element is neither null nor element, throw an InUseAttributeError.",
-    "Replacing an attr by itself",
-    "setAttributeNode, if it fires mutation events, should fire one with the new node when resetting an existing attribute (outer shell)",
     "setAttributeNode called with an Attr that has the same name as an existing one should not change attribute order",
     "getAttributeNames tests",
     "Own property correctness with basic attributes",

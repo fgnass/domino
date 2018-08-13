@@ -14,6 +14,7 @@
   `Element#getAttributeNodeNS()`, `Element#setAttributeNode()`,
   `Element#setAttributeNodeNS()`, and `Element#removeAttributeNode()`
   (DOM3 compatibility)
+* Implement `Document#createAttribute()` and `Document#createAttributeNS()`
 * Implement `Element#hasAttributes()` and `Element#toggleAttribute()`
 * Implement `Text#wholeText`
 * Implement `Document#cloneNode()` and `DocumentType#cloneNode()`

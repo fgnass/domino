@@ -245,14 +245,13 @@ var harness = function() {
       // Workaround for https://github.com/w3c/web-platform-tests/pull/3984
       concatenatedScripts =
         '"use strict";\n' +
-        'var x, doc, ReflectionTests;\n' +
+        'var ReflectionTests, x, attr;\n' +
         // Hack in globals on window object
         '"String|Boolean|Number".split("|").forEach(function(x){' +
         'window[x] = global[x];})\n' +
         // Hack in frames on window object
         'Array.from(document.getElementsByTagName("iframe")).forEach(' +
         'function(f,i){window[i]=f.contentWindow;});\n' +
-        //'window.setup = function(f) { console.log("setup",f); f(); };\n' +
         concatenatedScripts;
       // Fire load events
       var closeDocument =

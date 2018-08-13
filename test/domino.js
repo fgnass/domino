@@ -1249,3 +1249,25 @@ exports.documentClone = function() {
   copy.head.ownerDocument.should.equal(copy);
   copy.body.ownerDocument.should.equal(copy);
 };
+
+exports.insertForeignElement = function() {
+  // Sanitization test case from DOMPurify
+  // Verifies that prefixes are handled correctly during the
+  // "insert a foreign element" step in HTML parsing.
+  // https://html.spec.whatwg.org/multipage/parsing.html#insert-a-foreign-element
+  var document = domino.createDocument(
+    '<svg xmlns="http://www.w3.org/2000/svg">'+
+    '<xsl:stylesheet id="stylesheet" version="1.0" ' +
+      'xmlns:xsl="http://www.w3.org/1999/XSL/Transform">' +
+    '<xsl:template match="/">' +
+    '<iframe xmlns="http://www.w3.org/1999/xhtml" src="javascript:alert(125)">'
+  );
+  var el = document.querySelector('*[match]');
+  el.namespaceURI.should.equal('http://www.w3.org/2000/svg');
+  el.localName.should.equal('xsl:template'); // Not 'template' !
+  el.outerHTML.should.equal(
+    '<xsl:template match="/">' +
+    '<iframe xmlns="http://www.w3.org/1999/xhtml" src="javascript:alert(125)">'+
+    '</iframe></xsl:template>'
+  );
+};

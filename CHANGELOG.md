@@ -42,6 +42,7 @@
   create on any single document, since domino does not artificially limit
   these.
   See https://github.com/tc39/proposal-weakrefs/issues/17 for details.
+* Preserve prefix of SVG elements during parsing. (#102)
 
 # domino 2.0.3 (12 Jul 2018)
 * Define `blur()`, `focus()` and `forceSpellCheck()` on `HTMLElement` (#125)

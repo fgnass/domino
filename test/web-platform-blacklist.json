@@ -4481,14 +4481,10 @@
     "Document.append() with two elements as the argument, on a Document having no child."
   ],
   "dom/nodes/attributes.html": [
-    "Basic functionality of setAttributeNode",
     "setAttributeNode should distinguish attributes with same local name and different namespaces",
     "setAttributeNode doesn't have case-insensitivity even with an HTMLElement",
-    "Basic functionality of setAttributeNodeNS",
     "If attr’s element is neither null nor element, throw an InUseAttributeError.",
     "Replacing an attr by itself",
-    "Basic functionality of removeAttributeNode",
-    "setAttributeNode on bound attribute should throw InUseAttributeError",
     "setAttributeNode, if it fires mutation events, should fire one with the new node when resetting an existing attribute (outer shell)",
     "setAttributeNode called with an Attr that has the same name as an existing one should not change attribute order",
     "getAttributeNames tests",

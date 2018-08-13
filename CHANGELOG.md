@@ -10,9 +10,11 @@
 * Spec-correctness fixes for `Document#createElement()` and
   `Document#createElementNS()`, including proper exception type and type
   coercion.
-* Implement `Attr#cloneNode()` (DOM3 compatibility)
-* Implement `Element#getAttributeNode()`, `Element#getAttributeNodeNS()`,
-  `Element#hasAttributes()`, and `Element#toggleAttribute()`
+* Implement `Attr#cloneNode()`, `Element#getAttributeNode()`,
+  `Element#getAttributeNodeNS()`, `Element#setAttributeNode()`,
+  `Element#setAttributeNodeNS()`, and `Element#removeAttributeNode()`
+  (DOM3 compatibility)
+* Implement `Element#hasAttributes()` and `Element#toggleAttribute()`
 * Implement `Text#wholeText`
 * Implement `Document#cloneNode()` and `DocumentType#cloneNode()`
 * Spec-correctness fixes for `Node#lookupPrefix()`,

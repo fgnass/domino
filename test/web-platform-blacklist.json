@@ -4458,7 +4458,6 @@
   ],
   "dom/nodes/attributes.html": [
     "setAttributeNode called with an Attr that has the same name as an existing one should not change attribute order",
-    "getAttributeNames tests",
     "Own property correctness with basic attributes",
     "Own property correctness with non-namespaced attribute before same-name namespaced one",
     "Own property correctness with namespaced attribute before same-name non-namespaced one",

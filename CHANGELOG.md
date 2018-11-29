@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Add `domino.createIncrementalHTMLParser` interface.
 
 # domino 2.1.0 (13 Aug 2018)
 * Fix `ContainerNode#removeChildren()` when there is more than one child (#129)

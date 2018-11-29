@@ -1271,3 +1271,68 @@ exports.insertForeignElement = function() {
     '</iframe></xsl:template>'
   );
 };
+
+exports.testIncompleteTag = function() {
+  var document = domino.createDocument('<p>hello<');
+  document.body.outerHTML.should.equal('<body><p>hello&lt;</p></body>');
+};
+
+exports.incrementalHTMLParser1 = function() {
+  // Verify correct operation of incremental parser, fed chunks which split
+  // up tokens.
+  var incrParser = domino.createIncrementalHTMLParser();
+  var neverPause = function() { return false; };
+  incrParser.write('<p>hello<');
+  incrParser.process(neverPause);
+
+  incrParser.write('b>foo&am');
+  incrParser.process(neverPause);
+
+  incrParser.write('p;<');
+  incrParser.process(neverPause);
+
+  incrParser.write('/p>');
+  incrParser.process(neverPause);
+
+  incrParser.end();
+  // omitting the pauseFunc is equivalent to passing neverPause
+  incrParser.process().should.equal(/*no more to do*/false);
+
+  incrParser.document().outerHTML.should.equal(
+    '<html><head></head><body><p>hello<b>foo&amp;</b></p></body></html>'
+  );
+};
+
+exports.incrementalHTMLParser2 = function() {
+  // Verify correct operation of incremental parser when we only manage to
+  // scan one token at each step.
+  var justOneStep = function() {
+    var counter = 1;
+    return function() { return (counter--) <= 0; };
+  };
+  var incrParser = domino.createIncrementalHTMLParser();
+  incrParser.write('<p>hello<');
+  incrParser.write('b>foo&am');
+  incrParser.write('p;<');
+  incrParser.write('/p>');
+  incrParser.end();
+
+  [
+    '<html><head></head><body><p></p></body></html>',
+    '<html><head></head><body><p>hello</p></body></html>',
+    '<html><head></head><body><p>hello<b></b></p></body></html>',
+    '<html><head></head><body><p>hello<b>foo</b></p></body></html>',
+    '<html><head></head><body><p>hello<b>foo</b></p></body></html>',
+    '<html><head></head><body><p>hello<b>foo</b></p></body></html>',
+    '<html><head></head><body><p>hello<b>foo</b></p></body></html>',
+    '<html><head></head><body><p>hello<b>foo</b></p></body></html>',
+    '<html><head></head><body><p>hello<b>foo&amp;</b></p></body></html>',
+  ].forEach(function(step) {
+    incrParser.process(justOneStep()).should.equal(/*more to do!*/true);
+    incrParser.document().outerHTML.should.equal(step);
+  });
+  incrParser.process(justOneStep()).should.equal(/*no more to do*/false);
+  incrParser.document().outerHTML.should.equal(
+    '<html><head></head><body><p>hello<b>foo&amp;</b></p></body></html>'
+  );
+};

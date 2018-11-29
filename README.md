@@ -63,6 +63,31 @@ console.log(h1.innerHTML);
 console.log(h1 instanceof Element);
 ```
 
+There is also an incremental parser available, if you need to interleave
+parsing with other processing:
+```javascript
+var domino = require('domino');
+
+var pauseAfter = function(ms) {
+  var start = Date.now();
+  return function() { return (Date.now() - start) >= ms; };
+};
+
+var incrParser = domino.createIncrementalHTMLParser();
+incrParser.write('<p>hello<');
+incrParser.write('b>&am');
+incrParser.process(pauseAfter(1/*ms*/)); // can interleave processing
+incrParser.write('p;');
+// ...etc...
+incrParser.end(); // when done writing the document
+
+while (incrParser.process(pauseAfter(10/*ms*/))) {
+  // ...do other housekeeping...
+}
+
+console.log(incrParser.document().outerHTML);
+```
+
 If you want a more standards-compliant way to create a `Document`, you can
 also use [DOMImplementation](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation):
 ```javascript

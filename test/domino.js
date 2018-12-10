@@ -1180,6 +1180,12 @@ exports.gh129 = function() {
   (span.parentNode === null).should.equal(true);
 };
 
+exports.gh135 = function() {
+  var document = domino.createDocument('<a target="foobar"></a>');
+  var a = document.querySelectorAll('*[target$="aaaaaaa"]');
+  a.length.should.equal(0);
+};
+
 // Examples from
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML
 exports.outerHTML1 = function() {

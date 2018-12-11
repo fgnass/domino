@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Bug fix for CSS `$=` selector. (#135)
 
 # domino 2.1.1 (30 Nov 2018)
 * Add `domino.createIncrementalHTMLParser` interface.

@@ -2774,7 +2774,6 @@
     "createComment(undefined)"
   ],
   "dom/nodes/Document-createElement-namespace.html": [
-    "Created element's namespace in created HTML document by DOMParser ('text/html')",
     "Created element's namespace in created XML document by DOMParser ('text/xml')",
     "Created element's namespace in created XML document by DOMParser ('application/xml')",
     "Created element's namespace in created XHTML document by DOMParser ('application/xhtml+xml')",
@@ -3035,6 +3034,9 @@
   ],
   "dom/nodes/Element-siblingElement-null-xhtml.xhtml": [
     "Uncaught: Unexpected token <"
+  ],
+  "dom/nodes/Element-tagName.html": [
+    "tagName should be updated when changing ownerDocument"
   ],
   "dom/nodes/Element-webkitMatchesSelector.html": [
     "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
@@ -4529,16 +4531,7 @@
     "XHR - retrieve HTML document: document.contentType === 'application/xml'"
   ],
   "domparsing/DOMParser-parseFromString-html.html": [
-    "Parsing of id attribute",
-    "contentType",
-    "characterSet",
-    "inputEncoding",
-    "charset",
-    "URL value",
-    "baseURI value",
-    "Location value",
-    "DOMParser parses HTML tag soup with no problems",
-    "DOMParser throws on an invalid enum value"
+    "baseURI value"
   ],
   "domparsing/DOMParser-parseFromString-xml-doctype.html": [
     "Doctype parsing of System Id must fail on ommitted value",
@@ -4657,8 +4650,7 @@
   "domparsing/style_attribute_html.html": [
     "Parsing of initial style attribute",
     "Parsing of invalid style attribute",
-    "Parsing of style attribute",
-    "Update style.backgroundColor"
+    "Parsing of style attribute"
   ],
   "domparsing/xml-serialization.xhtml": [
     "Uncaught: Unexpected token <"

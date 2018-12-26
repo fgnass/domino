@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Allow writable Element constructors unless __domino_frozen__ is set to true (#138)
 * Bug fix for CSS `$=` selector. (#135)
 
 # domino 2.1.1 (30 Nov 2018)

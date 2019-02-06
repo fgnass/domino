@@ -1,6 +1,8 @@
 # domino x.x.x (not yet released)
 * Allow writable Element constructors unless __domino_frozen__ is set to true (#138)
 * Bug fix for CSS `$=` selector. (#135)
+* Move `Node#_serializeOne()` to `NodeUtils.serializeOne()` to reduce pressure
+  on the megamorphic stub cache in V8, and thereby improve throughput (#142).
 
 # domino 2.1.1 (30 Nov 2018)
 * Add `domino.createIncrementalHTMLParser` interface.

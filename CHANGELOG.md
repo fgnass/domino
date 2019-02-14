@@ -3,6 +3,7 @@
 * Bug fix for CSS `$=` selector. (#135)
 * Move `Node#_serializeOne()` to `NodeUtils.serializeOne()` to reduce pressure
   on the megamorphic stub cache in V8, and thereby improve throughput (#142).
+* Implemented `HTMLOptionElement#text` and `HTMLOptionElement#value` (#136)
 
 # domino 2.1.1 (30 Nov 2018)
 * Add `domino.createIncrementalHTMLParser` interface.

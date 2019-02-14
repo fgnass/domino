@@ -1186,6 +1186,21 @@ exports.gh135 = function() {
   a.length.should.equal(0);
 };
 
+exports.gh136 = function() {
+  var document = domino.createDocument('<option> \f\tabc\n');
+  var o = document.querySelector('option');
+  o.value.should.equal('abc');
+  o.text.should.equal('abc');
+  o.textContent.should.equal(' \f\tabc\n');
+  o.value = ' def ';
+  o.value.should.equal(' def ');
+  o.text.should.equal('abc');
+  o.text = ' ghi ';
+  o.text.should.equal('ghi');
+  o.textContent.should.equal(' ghi ');
+  o.outerHTML.should.equal("<option value=\" def \"> ghi </option>");
+};
+
 // Examples from
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML
 exports.outerHTML1 = function() {

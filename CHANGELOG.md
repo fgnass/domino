@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 2.1.2 (14 Feb 2019)
 * Allow writable Element constructors unless __domino_frozen__ is set to true (#138)
 * Bug fix for CSS `$=` selector. (#135)
 * Move `Node#_serializeOne()` to `NodeUtils.serializeOne()` to reduce pressure

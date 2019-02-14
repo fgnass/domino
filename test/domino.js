@@ -1278,6 +1278,14 @@ exports.insertForeignElement = function() {
   );
 };
 
+exports.bodyNL = function() {
+  var document = domino.createDocument(
+    '<body></body>\n'
+  );
+  // This may be surprising, but it's what the spec requires.
+  document.body.textContent.should.equal('\n');
+};
+
 exports.testIncompleteTag = function() {
   var document = domino.createDocument('<p>hello<');
   document.body.outerHTML.should.equal('<body><p>hello&lt;</p></body>');

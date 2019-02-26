@@ -45,6 +45,32 @@ exports.orphanQSA = function() {
   p.querySelectorAll('p').should.have.length(0);
 };
 
+// This is https://github.com/chjj/zest/issues/22
+exports.tildeQSA = function() {
+  var document = domino.createDocument('<div class="foo-bar foo">');
+  var els = document.querySelectorAll('.foo');
+  els.should.have.length(1);
+};
+
+exports.rootQSA = function() {
+  // the root element should be both first-child and last-child
+  var document = domino.createDocument('foo');
+  var html = document.documentElement;
+  html.matches(':first-child').should.be.true();
+  html.matches(':last-child').should.be.true();
+  html.matches(':only-child').should.be.true();
+  html.matches(':first-of-type').should.be.true();
+  html.matches(':last-of-type').should.be.true();
+  html.matches(':nth-child(1)').should.be.true();
+  html.matches(':nth-child(2)').should.be.false();
+  html.matches(':nth-last-child(1)').should.be.true();
+  html.matches(':nth-last-child(2)').should.be.false();
+  html.matches(':nth-of-type(1)').should.be.true();
+  html.matches(':nth-of-type(2)').should.be.false();
+  html.matches(':nth-last-of-type(1)').should.be.true();
+  html.matches(':nth-last-of-type(2)').should.be.false();
+};
+
 exports.gh20 = function() {
   var window = domino.createWindow('');
   var frag = window.document.createDocumentFragment();

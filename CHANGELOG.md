@@ -1,4 +1,7 @@
 # domino x.x.x (not yet released)
+* Bug fix for CSS `$=` selector and for matches on root `<html>` element.
+* Renamed CSS `:matches` to `:is`
+  ( https://github.com/w3c/csswg-drafts/issues/3258 )
 
 # domino 2.1.2 (14 Feb 2019)
 * Allow writable Element constructors unless __domino_frozen__ is set to true (#138)

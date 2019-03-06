@@ -2,6 +2,7 @@
 * Bug fix for CSS `$=` selector and for matches on root `<html>` element.
 * Renamed CSS `:matches` to `:is`
   ( https://github.com/w3c/csswg-drafts/issues/3258 )
+* Bug fix for CSS matches with escape characters in tag name.
 
 # domino 2.1.2 (14 Feb 2019)
 * Allow writable Element constructors unless __domino_frozen__ is set to true (#138)

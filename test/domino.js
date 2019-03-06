@@ -71,6 +71,13 @@ exports.rootQSA = function() {
   html.matches(':nth-last-of-type(2)').should.be.false();
 };
 
+exports.escapeQSA = function() {
+  var document = domino.createDocument('<p>foo');
+  // ensure that selector parsing can handle escaped characters
+  document.querySelectorAll('p\\22\\27p').should.have.length(0);
+  document.querySelectorAll('\\50').should.have.length(1);
+};
+
 exports.gh20 = function() {
   var window = domino.createWindow('');
   var frag = window.document.createDocumentFragment();

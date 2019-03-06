@@ -1,3 +1,5 @@
+# domino x.x.x (not yet released)
+
 # domino 2.1.3 (6 Mar 2019)
 * Bug fix for CSS `$=` selector and for matches on root `<html>` element.
 * Renamed CSS `:matches` to `:is`

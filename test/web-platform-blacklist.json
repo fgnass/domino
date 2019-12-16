@@ -2277,10 +2277,12 @@
     "SVG elements should have a .dataset"
   ],
   "html/dom/elements/global-attributes/dir_auto-contained-script-L-ref.html": [
-    "Uncaught: Unexpected token &"
+    "Uncaught: Unexpected token &",
+    "Uncaught: Unexpected token '&'"
   ],
   "html/dom/elements/global-attributes/dir_auto-contained-script-L.html": [
-    "Uncaught: Unexpected token &"
+    "Uncaught: Unexpected token &",
+    "Uncaught: Unexpected token '&'"
   ],
   "html/dom/elements/global-attributes/id-attribute.html": [
     "User agents must associate the element with an id value for purposes of CSS.",
@@ -2944,19 +2946,24 @@
     "getElementsByTagNameNS() should be a live collection"
   ],
   "dom/nodes/Element-childElement-null-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-childElementCount-dynamic-add-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-childElementCount-dynamic-remove-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-childElementCount-nochild-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-childElementCount-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-children.html": [
     "HTMLCollection edge cases",
@@ -2991,13 +2998,16 @@
     "Element.closest with context node 'test4' and selector ':has(> :scope)'"
   ],
   "dom/nodes/Element-firstElementChild-entity-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-firstElementChild-namespace-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-firstElementChild-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-getElementsByClassName.html": [
     "Interface should be correct.",
@@ -3022,19 +3032,23 @@
     "getElementsByTagNameNS() should be a live collection"
   ],
   "dom/nodes/Element-lastElementChild-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-matches.html": [
     "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
   ],
   "dom/nodes/Element-nextElementSibling-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-previousElementSibling-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-siblingElement-null-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/Element-webkitMatchesSelector.html": [
     "Selectors-API Level 2 Test Suite: HTML with Selectors Level 3"
@@ -4424,7 +4438,8 @@
     "DocumentFrgment.prepend() with one element and text as argument, on a parent having a child."
   ],
   "dom/nodes/ProcessingInstruction-escapes-1.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "dom/nodes/ProcessingInstruction-literal-1.xhtml": [
     "<?xml?> is not a ProcessingInstruction"
@@ -4614,10 +4629,12 @@
     "innerHTML in XHTML: getting while the document is in an invalid state 1"
   ],
   "domparsing/innerhtml-03.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "domparsing/innerhtml-05.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "domparsing/innerhtml-mxss.sub.html": [
     "href before setter: 1680",
@@ -4652,7 +4669,8 @@
     "href after setter: 3000"
   ],
   "domparsing/insert_adjacent_html-xhtml.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "domparsing/style_attribute_html.html": [
     "Parsing of initial style attribute",
@@ -4661,7 +4679,8 @@
     "Update style.backgroundColor"
   ],
   "domparsing/xml-serialization.xhtml": [
-    "Uncaught: Unexpected token <"
+    "Uncaught: Unexpected token <",
+    "Uncaught: Unexpected token '<'"
   ],
   "domparsing/xmldomparser.html": [
     "XML Dom Parse readyState Test"

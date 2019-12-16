@@ -1,6 +1,6 @@
 {
   "name": "domino",
-  "version": "2.1.4",
+  "version": "2.1.4+git",
   "license": "BSD-2-Clause",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "description": "Server-side DOM implementation based on Mozilla's dom.js",

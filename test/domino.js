@@ -16,6 +16,41 @@ exports.matches = function() {
   h1.matches('h2,h1').should.equal(true);
 };
 
+exports.closest = function() {
+  // see https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+  var html =
+      '<article>\n' +
+      '  <div id="div-01">Here is div-01\n' +
+      '    <div id="div-02">Here is div-02\n' +
+      '      <div id="div-03">Here is div-03</div>\n' +
+      '    </div>\n' +
+      '  </div>\n' +
+      '</article>';
+  var document = domino.createWindow(html).document;
+  var el = document.getElementById('div-03');
+  var r1 = el.closest('#div-02');
+  r1.id.should.equal('div-02');
+  var r2 = el.closest('div div');
+  r2.id.should.equal('div-03');
+  var r3 = el.closest('article > div');
+  r3.id.should.equal('div-01');
+  var r4 = el.closest(':not(div)');
+  r4.tagName.should.equal('ARTICLE');
+  var r5 = el.closest('#nothere');
+  (r5 === null).should.be.true();
+  // GH #154
+  var disconnected = document.createElement('div');
+  var r6 = disconnected.closest('#nothere');
+  (r6 === null).should.be.true();
+  var fragment = document.createDocumentFragment();
+  fragment.appendChild(disconnected);
+  var r7 = disconnected.closest('#nothere');
+  (r7 === null).should.be.true();
+  var r8 = disconnected.closest(':not(div)');
+  // This should not return DocumentFragment! Always should return an Element.
+  (r8 === null).should.be.true();
+};
+
 exports.querySelectorAll = function() {
   var window = domino.createWindow(html);
   var d = window.document;

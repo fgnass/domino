@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 2.1.4 (16 Dec 2019)
 * Bug fix for `Element#closest` when selector doesn't match (#154)
 
 # domino 2.1.3 (6 Mar 2019)

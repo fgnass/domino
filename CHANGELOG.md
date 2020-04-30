@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* Bumped version of jquery dev dependency (#163)
 
 # domino 2.1.4 (16 Dec 2019)
 * Bug fix for `Element#closest` when selector doesn't match (#154)

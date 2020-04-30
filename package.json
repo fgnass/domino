@@ -10,6 +10,12 @@
     "type": "git",
     "url": "https://github.com/fgnass/domino.git"
   },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "lib"
+  ],
   "scripts": {
     "lint": "jshint lib test/*.js",
     "mocha": "./node_modules/.bin/mocha",

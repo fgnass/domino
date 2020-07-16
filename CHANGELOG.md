@@ -1,4 +1,6 @@
 # domino x.x.x (not yet released)
+* Bumped version of lodash (#169)
+* Performance improvement to DOMTokenList (#166)
 
 # domino 2.1.5 (30 Apr 2020)
 * Bumped version of jquery dev dependency (#163)

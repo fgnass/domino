@@ -1,6 +1,8 @@
 # domino x.x.x (not yet released)
 * Bumped version of lodash (#169)
 * Performance improvement to DOMTokenList (#166)
+* `mocha` dependency has been updated to 6.x.  As a result, we are
+  no longer testing on node 4.
 
 # domino 2.1.5 (30 Apr 2020)
 * Bumped version of jquery dev dependency (#163)

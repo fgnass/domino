@@ -1,4 +1,5 @@
 # domino x.x.x (not yet released)
+* wrap/replace eval calls with function constructor calls (#153, #170, #180)
 
 # domino 2.1.7 (26 Mar 2026)
 * Updated CSS parser to latest upstream from

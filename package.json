@@ -29,8 +29,8 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "jquery": "^3.5.1",
-    "jshint": "^2.11.1",
-    "mocha": "^6.2.3",
+    "jshint": "^2.13.6",
+    "mocha": "^11.3.0",
     "should": "^13.2.3"
   }
 }

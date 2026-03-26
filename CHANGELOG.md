@@ -1,4 +1,7 @@
 # domino x.x.x (not yet released)
+* Updated CSS parser to latest upstream from
+  https://github.com/CSSLint/parser-lib including basic support for
+  CSS custom properties.
 
 # domino 2.1.6 (16 Jul 2020)
 * Bumped version of lodash (#169)

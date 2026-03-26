@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 2.1.7 (26 Mar 2026)
 * Updated CSS parser to latest upstream from
   https://github.com/CSSLint/parser-lib including basic support for
   CSS custom properties.

@@ -147,18 +147,6 @@ exports.fallbackRawContentClosingTagEscapedAcrossTextNodes = function() {
   });
 };
 
-exports.fallbackRawContentClosingTagEscapedInAttribute = function() {
-  FALLBACK_TAGS.forEach(function(tag) {
-    serializeFallback(tag, function(document, container) {
-      var span = document.createElement('span');
-      span.setAttribute('title', '</' + tag + '>' + PAYLOAD);
-      container.appendChild(span);
-    }).should.equal(
-      '<' + tag + '><span title="&lt;/' + tag + '>' + PAYLOAD + '"></span></' + tag + '>'
-    );
-  });
-};
-
 exports.fallbackRawContentClosingTagEscapedWithOtherTerminators = function() {
   FALLBACK_TAGS.forEach(function(tag) {
     ['\t', '\n', '\f', '\r', ' ', '/'].forEach(function(c) {
@@ -232,6 +220,28 @@ exports.commentClosingTagEscaped = function() {
     div.textContent = '';
     div.appendChild(document.createComment(c[0] + PAYLOAD));
     div.innerHTML.should.equal('<!--' + c[1] + PAYLOAD + '-->');
+  });
+};
+
+exports.attributeAngleBracketsEscaped = function() {
+  // whatwg/html#6235: the <p> keeps the <style> in SVG here, but not when
+  // the serialized HTML is parsed again.
+  var document = domino.createDocument('');
+  document.body.innerHTML =
+    '<svg></p><style><a title="</style><img src onerror=alert(1)>">';
+  document.body.innerHTML.should.equal(
+    '<svg><p></p><style><a title="&lt;/style&gt;&lt;img src onerror=alert(1)&gt;">' +
+    '</a></style></svg>'
+  );
+  FALLBACK_TAGS.forEach(function(tag) {
+    serializeFallback(tag, function(document, container) {
+      var span = document.createElement('span');
+      span.setAttribute('title', '</' + tag + '>' + PAYLOAD);
+      container.appendChild(span);
+    }).should.equal(
+      '<' + tag + '><span title="&lt;/' + tag +
+        '&gt;&lt;img src=x onerror=alert(1)&gt;"></span></' + tag + '>'
+    );
   });
 };
 

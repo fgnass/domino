@@ -153,10 +153,12 @@ var serialize_doc = function(filename, fragment, doc) {
     });
   };
   var escapeAttr = function(s) {
-    return s.replace(/[&"\u00A0]/g, function(c) {
+    return s.replace(/[&"<>\u00A0]/g, function(c) {
       switch(c) {
       case '&': return '&amp;';
       case '"': return '&quot;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
       case '\u00A0': return '&nbsp;';
       }
     });

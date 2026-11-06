@@ -13,6 +13,8 @@
   end the comment; escape `</noscript`, `</iframe`, `</noembed` and
   `</noframes` anywhere inside those elements.
 * `template.cloneNode(true)` copies the template's content.
+* Escape `<` and `>` in attribute values when serializing, following
+  the 2025 change to the HTML spec (whatwg/html#6362).
 
 # domino 2.1.8 (19 Aug 2026)
 * wrap/replace eval calls with function constructor calls (#153, #170, #180)

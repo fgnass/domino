@@ -390,7 +390,7 @@ exports.outerHTML = function() {
     // see https://github.com/whatwg/html/issues/944
     //'<body><pre>\n\na\n</pre></body>',
     '<body bgcolor="white"><h1 style="color: red">\nOne\n2 &amp; 3</h1></body>',
-    '<body data-test="<>&amp;&quot;\'"></body>'
+    '<body data-test="&lt;&gt;&amp;&quot;\'"></body>'
   ];
   tests.forEach(function(html) {
     var d = domino.createDocument(html);

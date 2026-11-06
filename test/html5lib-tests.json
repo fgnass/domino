@@ -8293,7 +8293,8 @@
             "head": true,
             "body": true,
             "div": true
-          }
+          },
+          "escaped": true
         },
         "tree": [
           {
@@ -8310,7 +8311,8 @@
                     "attrs": [
                       {
                         "name": "bar",
-                        "value": "ZZ>YY"
+                        "value": "ZZ>YY",
+                        "escaped": true
                       }
                     ]
                   }
@@ -8319,8 +8321,8 @@
             ]
           }
         ],
-        "html": "<html><head></head><body><div bar=\"ZZ>YY\"></div></body></html>",
-        "noQuirksBodyHtml": "<div bar=\"ZZ>YY\"></div>"
+        "html": "<html><head></head><body><div bar=\"ZZ&gt;YY\"></div></body></html>",
+        "noQuirksBodyHtml": "<div bar=\"ZZ&gt;YY\"></div>"
       }
     },
     {
@@ -8689,7 +8691,8 @@
             "head": true,
             "body": true,
             "div": true
-          }
+          },
+          "escaped": true
         },
         "tree": [
           {
@@ -8706,7 +8709,8 @@
                     "attrs": [
                       {
                         "name": "bar",
-                        "value": "ZZ> YY"
+                        "value": "ZZ> YY",
+                        "escaped": true
                       }
                     ]
                   }
@@ -8715,8 +8719,8 @@
             ]
           }
         ],
-        "html": "<html><head></head><body><div bar=\"ZZ> YY\"></div></body></html>",
-        "noQuirksBodyHtml": "<div bar=\"ZZ> YY\"></div>"
+        "html": "<html><head></head><body><div bar=\"ZZ&gt; YY\"></div></body></html>",
+        "noQuirksBodyHtml": "<div bar=\"ZZ&gt; YY\"></div>"
       }
     },
     {
@@ -8732,7 +8736,8 @@
             "head": true,
             "body": true,
             "div": true
-          }
+          },
+          "escaped": true
         },
         "tree": [
           {
@@ -8749,7 +8754,8 @@
                     "attrs": [
                       {
                         "name": "bar",
-                        "value": "ZZ>"
+                        "value": "ZZ>",
+                        "escaped": true
                       }
                     ]
                   }
@@ -8758,8 +8764,8 @@
             ]
           }
         ],
-        "html": "<html><head></head><body><div bar=\"ZZ>\"></div></body></html>",
-        "noQuirksBodyHtml": "<div bar=\"ZZ>\"></div>"
+        "html": "<html><head></head><body><div bar=\"ZZ&gt;\"></div></body></html>",
+        "noQuirksBodyHtml": "<div bar=\"ZZ&gt;\"></div>"
       }
     },
     {
@@ -8775,7 +8781,8 @@
             "head": true,
             "body": true,
             "div": true
-          }
+          },
+          "escaped": true
         },
         "tree": [
           {
@@ -8792,7 +8799,8 @@
                     "attrs": [
                       {
                         "name": "bar",
-                        "value": "ZZ>"
+                        "value": "ZZ>",
+                        "escaped": true
                       }
                     ]
                   }
@@ -8801,8 +8809,8 @@
             ]
           }
         ],
-        "html": "<html><head></head><body><div bar=\"ZZ>\"></div></body></html>",
-        "noQuirksBodyHtml": "<div bar=\"ZZ>\"></div>"
+        "html": "<html><head></head><body><div bar=\"ZZ&gt;\"></div></body></html>",
+        "noQuirksBodyHtml": "<div bar=\"ZZ&gt;\"></div>"
       }
     },
     {
@@ -8818,7 +8826,8 @@
             "head": true,
             "body": true,
             "div": true
-          }
+          },
+          "escaped": true
         },
         "tree": [
           {
@@ -8835,7 +8844,8 @@
                     "attrs": [
                       {
                         "name": "bar",
-                        "value": "ZZ>"
+                        "value": "ZZ>",
+                        "escaped": true
                       }
                     ]
                   }
@@ -8844,8 +8854,8 @@
             ]
           }
         ],
-        "html": "<html><head></head><body><div bar=\"ZZ>\"></div></body></html>",
-        "noQuirksBodyHtml": "<div bar=\"ZZ>\"></div>"
+        "html": "<html><head></head><body><div bar=\"ZZ&gt;\"></div></body></html>",
+        "noQuirksBodyHtml": "<div bar=\"ZZ&gt;\"></div>"
       }
     },
     {
@@ -14217,7 +14227,7 @@
           }
         ],
         "html": "<html><head><noscript><noframes>XXX</noscript></noframes></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><noframes>XXX</noscript></noframes></noscript>"
+        "noQuirksBodyHtml": "<noscript><noframes>XXX&lt;/noscript></noframes></noscript>"
       }
     },
     {
@@ -14405,7 +14415,7 @@
           }
         ],
         "html": "<html><head><noscript><!--foo--></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><noscript class=\"foo\"><!--foo--></noscript></noscript>"
+        "noQuirksBodyHtml": "<noscript><noscript class=\"foo\"><!--foo-->&lt;/noscript></noscript>"
       }
     },
     {
@@ -36879,7 +36889,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head></head><body><svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg></body></html>",
-        "noQuirksBodyHtml": "<svg contentScriptType=\"\" contentStyleType=\"\" externalResourcesRequired=\"\" filterres=\"\"></svg>"
+        "noQuirksBodyHtml": "<svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg>"
       }
     },
     {
@@ -36936,7 +36946,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head></head><body><svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg></body></html>",
-        "noQuirksBodyHtml": "<svg contentScriptType=\"\" contentStyleType=\"\" externalResourcesRequired=\"\" filterres=\"\"></svg>"
+        "noQuirksBodyHtml": "<svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg>"
       }
     },
     {
@@ -36993,7 +37003,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head></head><body><svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg></body></html>",
-        "noQuirksBodyHtml": "<svg contentScriptType=\"\" contentStyleType=\"\" externalResourcesRequired=\"\" filterres=\"\"></svg>"
+        "noQuirksBodyHtml": "<svg contentscripttype=\"\" contentstyletype=\"\" externalresourcesrequired=\"\" filterres=\"\"></svg>"
       }
     },
     {
@@ -43363,7 +43373,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head><noscript><!--<noscript></noscript></head><body>--&gt;</body></html>",
-        "noQuirksBodyHtml": "<noscript><!--<noscript></noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--<noscript>&lt;/noscript>--></noscript>"
       }
     },
     {
@@ -43408,7 +43418,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head><noscript><!--<noscript></noscript>--></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--<noscript></noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--<noscript>&lt;/noscript>--></noscript>"
       }
     },
     {
@@ -43468,7 +43478,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head><noscript><!--</noscript></head><body>X<noscript>--></noscript></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--</noscript>X<noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--&lt;/noscript>X<noscript>--></noscript>"
       }
     },
     {
@@ -43513,7 +43523,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head><noscript><!--</noscript>X<noscript>--></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--</noscript>X<noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--&lt;/noscript>X<noscript>--></noscript>"
       }
     },
     {
@@ -43564,7 +43574,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head><noscript><iframe></noscript></head><body>X</body></html>",
-        "noQuirksBodyHtml": "<noscript><iframe></noscript>X</iframe></noscript>"
+        "noQuirksBodyHtml": "<noscript><iframe>&lt;/noscript>X</iframe></noscript>"
       }
     },
     {
@@ -43619,7 +43629,7 @@
           }
         ],
         "html": "<!DOCTYPE html><html><head><noscript></noscript></head><body><iframe></noscript>X</iframe></body></html>",
-        "noQuirksBodyHtml": "<noscript><iframe></noscript>X</iframe></noscript>"
+        "noQuirksBodyHtml": "<noscript><iframe>&lt;/noscript>X</iframe></noscript>"
       }
     },
     {
@@ -47787,7 +47797,7 @@
           }
         ],
         "html": "<html><head><noscript><!--<noscript></noscript></head><body>--&gt;</body></html>",
-        "noQuirksBodyHtml": "<noscript><!--<noscript></noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--<noscript>&lt;/noscript>--></noscript>"
       }
     },
     {
@@ -47830,7 +47840,7 @@
           }
         ],
         "html": "<html><head><noscript><!--<noscript></noscript>--></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--<noscript></noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--<noscript>&lt;/noscript>--></noscript>"
       }
     },
     {
@@ -47888,7 +47898,7 @@
           }
         ],
         "html": "<html><head><noscript><!--</noscript></head><body>X<noscript>--></noscript></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--</noscript>X<noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--&lt;/noscript>X<noscript>--></noscript>"
       }
     },
     {
@@ -47931,7 +47941,7 @@
           }
         ],
         "html": "<html><head><noscript><!--</noscript>X<noscript>--></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--</noscript>X<noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--&lt;/noscript>X<noscript>--></noscript>"
       }
     },
     {
@@ -47980,7 +47990,7 @@
           }
         ],
         "html": "<html><head><noscript><iframe></noscript></head><body>X</body></html>",
-        "noQuirksBodyHtml": "<noscript><iframe></noscript>X</iframe></noscript>"
+        "noQuirksBodyHtml": "<noscript><iframe>&lt;/noscript>X</iframe></noscript>"
       }
     },
     {
@@ -48032,7 +48042,7 @@
           }
         ],
         "html": "<html><head><noscript></noscript></head><body><iframe></noscript>X</iframe></body></html>",
-        "noQuirksBodyHtml": "<noscript><iframe></noscript>X</iframe></noscript>"
+        "noQuirksBodyHtml": "<noscript><iframe>&lt;/noscript>X</iframe></noscript>"
       }
     },
     {
@@ -67808,7 +67818,7 @@
           }
         ],
         "html": "<html><head><noscript><!--</noscript></head><body>--&gt;</body></html>",
-        "noQuirksBodyHtml": "<noscript><!--</noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--&lt;/noscript>--></noscript>"
       }
     },
     {
@@ -67851,7 +67861,7 @@
           }
         ],
         "html": "<html><head><noscript><!--</noscript>--></noscript></head><body></body></html>",
-        "noQuirksBodyHtml": "<noscript><!--</noscript>--></noscript>"
+        "noQuirksBodyHtml": "<noscript><!--&lt;/noscript>--></noscript>"
       }
     }
   ],

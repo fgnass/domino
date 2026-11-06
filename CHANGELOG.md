@@ -1,4 +1,11 @@
 # domino x.x.x (not yet released)
+* lib/select.js is now generated from https://github.com/cscott/zest
+  with `make domino`.
+* Fix infinite loop in `[attr~=""]` selectors; empty values never match
+  `~=`, `^=`, `$=`, or `*=`, and `~=` splits on any whitespace (#193)
+* Attribute selectors match attributes rather than DOM properties, and
+  treat empty attributes as present: `[title]` now matches `title=""`.
+* Unknown attribute operators throw a SyntaxError.
 
 # domino 2.1.8 (19 Aug 2026)
 * wrap/replace eval calls with function constructor calls (#153, #170, #180)

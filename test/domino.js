@@ -1202,6 +1202,53 @@ exports.gh121 = function() {
   div.matches('[class~=a]').should.be.true();
 };
 
+exports.gh193 = function() {
+  var document = domino.createDocument(
+    '<p title="x y"></p><p title="a\tb"></p><p title="ba a"></p>'
+  );
+  var p = document.querySelectorAll('p');
+  // Empty values never match (and used to loop forever for ~=)
+  document.querySelectorAll('[title~=""]').length.should.equal(0);
+  document.querySelectorAll('[title^=""]').length.should.equal(0);
+  document.querySelectorAll('[title$=""]').length.should.equal(0);
+  document.querySelectorAll('[title*=""]').length.should.equal(0);
+  p[0].matches('[title~=""]').should.be.false();
+  (p[0].closest('[title~=""]') === null).should.be.true();
+  // Values containing whitespace never match ~=
+  document.querySelectorAll('[title~="x y"]').length.should.equal(0);
+  // Any whitespace separates words
+  document.querySelectorAll('[title~="b"]').length.should.equal(1);
+  document.querySelectorAll('[title~="a"]').length.should.equal(2);
+};
+
+exports.attributeSelectorsMatchAttributes = function() {
+  var document = domino.createDocument(
+    '<p id=a title="">a</p><p id=b>b</p><label id=l>l</label>' +
+    '<input id=c type=checkbox checked>'
+  );
+  var ids = function(sel) {
+    return Array.prototype.map.call(
+      document.querySelectorAll(sel), function(el) { return el.id; }
+    ).join();
+  };
+  // An empty attribute is present, not missing
+  ids('[title]').should.equal('a');
+  ids('[title=""]').should.equal('a');
+  ids('[title|=""]').should.equal('a');
+  ids('p:not([title])').should.equal('b');
+  // Attributes are matched, not DOM properties
+  ids('[for]').should.equal('');
+  ids('[checked=""]').should.equal('c');
+  // The parent of <html> is the Document, which has no attributes
+  ids('[title] > html').should.equal('');
+  ids('[title] html').should.equal('');
+  // Unknown attribute operators are a syntax error
+  (function() { document.querySelectorAll('[title/x]'); })
+    .should.throw(SyntaxError);
+  (function() { document.querySelectorAll('[title%=x]'); })
+    .should.throw(SyntaxError);
+};
+
 exports.gh127 = function() {
   var document = domino.createDocument('<a href="#foo"></a><a href="http://#foo"></a>');
   var aEls = document.querySelectorAll('a');

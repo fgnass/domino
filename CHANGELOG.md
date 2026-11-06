@@ -6,6 +6,13 @@
 * Attribute selectors match attributes rather than DOM properties, and
   treat empty attributes as present: `[title]` now matches `title=""`.
 * Unknown attribute operators throw a SyntaxError.
+* Fix infinite loop parsing an unterminated DOCTYPE ending in
+  whitespace, such as `<!DOCTYPE html ` (CVE-2026-101895, #190)
+* Fix XSS in serialization (#191): escape `>` in processing instruction
+  data, and `>`, `->`, `-->` and `--!>` in comment data where they would
+  end the comment; escape `</noscript`, `</iframe`, `</noembed` and
+  `</noframes` anywhere inside those elements.
+* `template.cloneNode(true)` copies the template's content.
 
 # domino 2.1.8 (19 Aug 2026)
 * wrap/replace eval calls with function constructor calls (#153, #170, #180)

@@ -1482,19 +1482,9 @@ exports.incrementalHTMLParser2 = function() {
 };
 
 exports.malformedDoctypeAtEOFDoesNotHang = function() {
-  // Regression test for CVE-2026-101895 / GHSA-f67j-2jqw-jpq7 (originally
-  // disclosed against @angular/platform-server's vendored copy of domino).
-  //
-  // after_doctype_name_state() declares a fixed lookahead (6 chars), which
-  // means scanChars() does *not* advance `nextchar` on its behalf -- the
-  // state function must do so itself on every branch, including EOF. The
-  // EOF branch used to leave `nextchar` untouched, so an incomplete DOCTYPE
-  // that ends in whitespace right before EOF (no closing '>'), such as
-  // '<!DOCTYPE html ', left the scanner's `while (nextchar < numchars)`
-  // loop re-invoking the very same state with the very same EOF codepoint
-  // forever: a synchronous infinite loop. If this regresses, this test
-  // will hang and eventually fail on mocha's default timeout rather than
-  // reporting a normal assertion failure.
+  // CVE-2026-101895: an unterminated DOCTYPE ending in whitespace used
+  // to hang the tokenizer.
   var doc = domino.createDocument('<!DOCTYPE html ');
   doc.doctype.name.should.equal('html');
+  doc.compatMode.should.equal('BackCompat');
 };

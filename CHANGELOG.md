@@ -1,4 +1,4 @@
-# domino x.x.x (not yet released)
+# domino 2.1.9 (7 Nov 2026)
 * lib/select.js is now generated from https://github.com/cscott/zest
   with `make domino`.
 * Fix infinite loop in `[attr~=""]` selectors; empty values never match

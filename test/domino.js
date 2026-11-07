@@ -1488,3 +1488,88 @@ exports.malformedDoctypeAtEOFDoesNotHang = function() {
   doc.doctype.name.should.equal('html');
   doc.compatMode.should.equal('BackCompat');
 };
+
+exports.langPseudoClass = function() {
+  // Github issue #195: :lang() was a case-sensitive string prefix match.
+  var ids = function(doc, sel) {
+    return Array.from(doc.querySelectorAll(sel)).map(function(el) {
+      return el.id || el.localName;
+    }).join(',');
+  };
+  var doc = domino.createDocument(
+    '<meta http-equiv=Content-Language content="fr, de">' +
+    '<meta http-equiv=content-language content=" de-CH">' +
+    '<p id=p lang=EN-us><span id=sp></span></p><p id=q lang=""></p>' +
+    '<p id=d lang=de-Latn-DE></p>'
+  );
+  ids(doc, ':lang(en)').should.equal('p,sp');
+  ids(doc, ':lang("en-US", fr)').should.equal('p,sp');
+  ids(doc, ':lang(e)').should.equal('');
+  ids(doc, 'p:lang("")').should.equal('q');
+  ids(doc, 'p:lang("*")').should.equal('p,d');
+  ids(doc, ':lang(de-DE)').should.equal('d');
+  // The Content-Language pragma
+  ids(doc, 'body:lang(de-ch)').should.equal('body');
+  ids(doc, ':lang(fr)').should.equal('');
+};
+
+exports.formPseudoClasses = function() {
+  // Github issue #195: form pseudo-classes matched every element.
+  var ids = function(doc, sel) {
+    return Array.from(doc.querySelectorAll(sel)).map(function(el) {
+      return el.id || el.localName;
+    }).join(',');
+  };
+  var doc = domino.createDocument(
+    '<form id=f>' +
+    '<input id=req required>' +
+    '<input id=num type=number min=1 max=10 value=5>' +
+    '<input id=big type=number min=1 max=10 value=20>' +
+    '<input id=nine type=number min=2 max=10 value=9>' +
+    '<input id=pat pattern="[a-z]+" value="ABC">' +
+    '<input id=mail type=email value="nope">' +
+    '<input id=step type=number step=2 min=1 value=4>' +
+    '<input id=night type=time min=22:00 max=02:00 value=23:00>' +
+    '<input id=wk type=week min=2026-W02 value=2026-W01>' +
+    '<input id=far type=date required value=300000-01-01>' +
+    '<input id=ro readonly>' +
+    '<input id=r1 type=radio name=g checked>' +
+    '<input id=r2 type=radio name=g checked>' +
+    '<input id=r3 type=radio name=h>' +
+    '<input id=cb type=checkbox checked>' +
+    '<button id=sub>go</button><button id=sub2>go</button>' +
+    '</form>' +
+    '<fieldset id=fs disabled><legend><input id=leg></legend>' +
+    '<input id=dis></fieldset>' +
+    '<select id=s1><option id=o1>a<option id=o2 disabled>b</select>' +
+    '<select id=s2 required><option id=ph value="">-' +
+    '<option id=o3>c</select>' +
+    '<progress id=prog></progress>' +
+    '<div id=ce contenteditable><b id=ceb></b></div>'
+  );
+  ids(doc, ':required').should.equal('req,far,s2');
+  ids(doc, 'input:optional').should.equal(
+    'num,big,nine,pat,mail,step,night,wk,ro,r1,r2,r3,cb,leg,dis');
+  ids(doc, 'input:read-only').should.equal('ro,r1,r2,r3,cb,dis');
+  ids(doc, ':read-write').should.equal(
+    'req,num,big,nine,pat,mail,step,night,wk,far,leg,ce,ceb');
+};
+
+exports.unsupportedFormPseudoClasses = function() {
+  // Github issue #195: these need form state which domino doesn't track.
+  var doc = domino.createDocument('<form><input></form>');
+  [
+    ':checked',
+    ':indeterminate',
+    ':enabled',
+    ':disabled',
+    ':default',
+    ':valid',
+    ':invalid',
+    ':in-range',
+    ':out-of-range'
+  ].forEach(function(sel) {
+    (function() { doc.querySelectorAll(sel); })
+      .should.throw(sel + ' is not supported.');
+  });
+};

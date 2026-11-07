@@ -1,4 +1,15 @@
 # domino x.x.x (not yet released)
+* `:lang()` does case-insensitive extended filtering per Selectors 4,
+  accepts a list of ranges, and honors `xml:lang` and the
+  `Content-Language` pragma.
+* Implement the form pseudo-classes `:required`, `:optional`,
+  `:read-only` and `:read-write` per the HTML spec (#195), taking
+  input types, disabled fieldsets and `contenteditable` into account.
+  Form state is computed from the markup (attributes), since domino
+  does not track user edits.  `:checked`, `:indeterminate`,
+  `:enabled`, `:disabled`, `:default`, `:valid`, `:invalid`,
+  `:in-range` and `:out-of-range` throw a "not supported" error, as
+  `:hover` does.
 
 # domino 2.1.9 (7 Nov 2026)
 * lib/select.js is now generated from https://github.com/cscott/zest
